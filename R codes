@@ -1,906 +1,1844 @@
-##################Evidence that genome editing is superior to transgenesis in enhancing##########
-###########################animal traits################## 
-############R CODES: META-ANALYSIS ###################
-install.packages("pacman")
-install.packages("devtools", type = "win.binary")
-install.packages("tidyverse")
-library(devtools)
+###################################### Evidence that genome editing is superior to transgenesis for enhancing animal traits#############################
+######################################################################################################################################################
+#########################R CODES: META-ANAYLSIS###############################################
 
-#> Installing package into '/Users/danielnoble/Library/R/library'
-#> (as 'lib' is unspecified)
-pacman::p_load(devtools, tidyverse, metafor, patchwork, R.rsp)
+install.packages('pacman')
+rm(list = ls())
+pacman::p_load(devtools, tidyverse, metafor, patchwork, R.rsp, orchaRd, emmeans,ape, phytools, flextable)
+install.packages("metafor")
+#??????
+devtools::install_github("daniel1noble/orchaRd")
 
-# Install orchaRd
-devtools::install_github("itchyshin/orchard_plot", subdir = "orchaRd", 
-                         force = TRUE, build_vignettes = TRUE)
-devtools::install_github("alecri/dosresmeta")
-
-#> Downloading GitHub repo itchyshin/orchard_plot@master
-#> Installing package into '/Users/danielnoble/Library/R/library'
-#> (as 'lib' is unspecified)
-library(orchaRd)
+library(pacman)
+library(ggplot2)
 library(metafor)
-library(tidyverse)
-install.packages("ggplot2")              
-library("ggplot2")
+library(viridis)
+install.packages("gt")  
+library(gt) 
+setwd("C:/Users/v1lliu34/Downloads")
 
-################################
-###########################
-##########START FROM HERE##############
-################################
-##################################
-#############################################################
-###1. calculate the effect size of gene/protein expression###
-#############################################################
-datum=read.csv(file.choose()) ##input data from the gene/protein expression dataset
-datum  #check data
-datum2a=escalc(measure="SMDH", n1i=treat_n, m1i=treat_mean,
-               sd1i=treat_sd, n2i=control_n, m2i=control_mean, sd2i=control_sd, data=datum)
-datum2a #calculate effect size metrics
+##############################I2 for gene-protein using a multilevel meta-analysis ###########################
+######################################################################################################################
 
-##run meta-analysis - random effects
-result2=rma(yi, vi, data=datum2a, method="REML")
-result2
+View(X1Effect_size_cal_gene_protein_expression)
+datag<-X1Effect_size_cal_gene_protein_expression
+datag1_ROM<-escalc(measure = "ROM", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnRR", "vlnRR"), data = datag)
+datag1_SMD<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag_combined <- merge(datag1_ROM, datag1_SMD, by = "ID", all = TRUE)
 
-###95% PI and I2####
-result2a=rma.mv(yi, vi, method="REML", random =~ 1 | Author, data=datum2a)
-result2a #95% PI
 
-I2 <- orchaRd::i2_ml(result2a)
-I2 #I2
+# running multilevel intercept-only meta-analytic model
+meta.analysis.model.r <- rma.mv(yi = lnRR, V = vlnRR,
+                                mods=~1,
+                                random=list(~ 1 | species.x, # non-phylo effect
+                                            ~ 1 | Author.x, 
+                                            ~ 1 | ID), 
+                                method="REML",
+                                test="t", # using t dist rather than z because t is a better, more conservative distribution than z
+                                data=datag_combined, verbose = FALSE)
+summary(meta.analysis.model.r)
 
-######calculate I2 percentage###########
-res2 <- rma.mv(yi, vi, mods = ~ taxon, 
-               random = list(~1|taxon,~1|Author, ~1|gene, ~1|tissue,~1|species), 
-               data = datum2a)
-I2_mod <- orchaRd::i2_ml(res2)
-I2_mod
+metaanalytic.mean.model.r <- predict(meta.analysis.model.r, digits=3)
 
-###contour-enhanced funnel
-funnel(result2, col= "#A65628",back="white",hlines="#F0F0F0",refline=0, 
-       level=c(90,95,99), shade=c("#FAF4FF", "#FFE6FF", "#E6CAFF"))
-trf<-trimfill(result2) #trim and fill
-trf
-##conduct classical Egger test regression analysis
-regtest(result2, model="lm") 
-funnel(trf, col= "#A65628",back="white",hlines="#F0F0F0",refline=0, 
-       level=c(90,95,99), shade=c("#FAF4FF", "#FFE6FF", "#E6CAFF")) #funnel plot after trim and fill
+I2.model.r <- i2_ml(meta.analysis.model.r, method = "matrix")
+I2.model.r
 
-###sensitivity analysis
-inf<-influence(result2)
-inf
-plot(inf)#red points indicates outliers
-## leave-one-out analysis
-le<-leave1out(result2)
-le
 
-######print the result as a table###
-length(le$estimate) #Should be the same as the number of studies
-nrow(datum)  
-loo_table <- data.frame(
-  Study_Left_Out = 1:length(le$estimate),
-  Effect_Size = le$estimate,
-  SE = le$se,
-  Z = le$zval,
-  P = le$pval,
-  Lower_CI = le$ci.lb,
-  Upper_CI = le$ci.ub,
-  Q = le$Q,
-  Qp = le$Qp,
-  tau2 = le$tau2,
-  I2 = le$I2,
-  H2 = le$H2
-)
-loo_table
-# Create the PDF file
-install.packages("gridExtra")
-library(gridExtra)
-library(grid)
-pdf("growth_leave_one_out_analysis.pdf", width = 22, height = 145)# Open a PDF device
-# Use grid.table to print the table into the PDF
-grid.table(loo_table)
-# Close the PDF device
+table.model.r <- data.frame(n=length(unique(datag_combined$Author.x)),
+                            k=nrow(datag_combined),
+                            mean=round(metaanalytic.mean.model.r[[1]],2),
+                            CI=paste0("[",round(metaanalytic.mean.model.r[[3]],2),",",round(metaanalytic.mean.model.r[[4]],2),"]"),
+                            PI=paste0("[",round(metaanalytic.mean.model.r[[5]],2),",",round(metaanalytic.mean.model.r[[6]],2),"]"),
+                            I2_ID=round(I2.model.r[["I2_ID"]],1),
+                            I2_paperID=round(I2.model.r[["I2_Author.x"]],1),
+                            I2_nonphylo=round(I2.model.r[["I2_species.x"]],1), 
+                            I2_total=round(I2.model.r[["I2_Total"]],1))
+table.model.r.gt <- table.model.r %>% 
+  gt::gt() %>% 
+  cols_label(n=md("**n**"),
+             k=md("**k**"),
+             mean=md("**Meta-analytic mean**"),
+             CI=md("**95% CI**"),
+             PI=md("**95% PI**"),
+             I2_ID=md("***I*<sup>2</sup><sub>residual</sub>\n(%)**"),
+             I2_paperID=md("***I*<sup>2</sup><sub>study</sub>\n(%)**"),
+             I2_total=md("***I*<sup>2</sup><sub>total</sub>    \n(%)**"),
+  ) %>%
+  cols_align(align = "center") %>%
+  tab_source_note(source_note = md("n = number of authors; k = number of effects; CI = confidence interval; PI = prediction interval; *I*<sup>2</sup> = heterogeneity")) #%>%
+# tab_options(table.width=770)
+
+table.model.r.gt
+
+#################Funnel plot, using precision (1/SE)######################################  
+png("funnel_gene_protein_plot.png", height = 800, width = 800)
+funnel(meta.analysis.model.r, yaxis = "seinv", xlab = "Effect size (lnRR)")
 dev.off()
 
-##conduct fail safe N analysis
-fsn(yi, vi, data=datum2a, type="Rosenberg")
 
-####moderator analysis
-##method as a moderator:compare transgenesis and gene editing [w/o LepR and IGF2]
-result3a_wo=rma.mv(yi, vi, mods= ~method-1, random =~ 1 | Author, data=datum2a)
-result3a_wo
-res3a_wo <- orchaRd::mod_results(result3a_wo, mod = "method", group = "Author")
-res3a_wo
-p63 <- orchaRd::orchard_plot(res3a_wo, mod = "method", group = "Author", 
-                             xlab = "Standardised mean difference")
-p63
+##############################I2 for Growth using a multilevel meta-analysis ###########################
+######################################################################################################################
 
-#####only input trnasgenesis dataset
-##taxon as a moderator
-result3a_wo=rma.mv(yi, vi, mods= ~taxon-1, random =~ 1 | Author, data=datum2a)
-result3a_wo
-res3a_wo <- orchaRd::mod_results(result3a_wo, mod = "taxon", group = "Author")
-res3a_wo
-p63 <- orchaRd::orchard_plot(res3a_wo, mod = "taxon", group = "Author", 
-                             xlab = "Standardised mean difference")
-p63
-####species as the moderator
-result3a_wo=rma.mv(yi, vi, mods= ~species-1, random =~ 1 | Author, data=datum2a)
-result3a_wo
-res3a_wo <- orchaRd::mod_results(result3a_wo, mod = "species", group = "Author")
-res3a_wo
-p64 <- orchaRd::orchard_plot(res3a_wo, mod = "species", group = "Author", 
-                             xlab = "Standardised mean difference")
-p64
-####gene as the moderator
-result333a_wo=rma.mv(yi, vi, mods= ~gene-1, random =~ 1 | Author, data=datum2a)
-result333a_wo
-res333a_wo <- orchaRd::mod_results(result333a_wo, mod = "gene", group = "Author")
-res333a_wo
-p65 <- orchaRd::orchard_plot(res333a_wo, mod = "gene", group = "Author", 
-                             xlab = "Standardised mean difference")
-p65
-####promoter as the moderator
-result1111a_wo=rma.mv(yi, vi, mods= ~ promoter-1, random =~ 1 | Author, data=datum2a)
-result1111a_wo
-res1111a_wo <- orchaRd::mod_results(result1111a_wo, mod = "promoter", group = "Author")
-res1111a_wo
-p66 <- orchaRd::orchard_plot(res1111a_wo, mod = "promoter", group = "Author", 
-                             xlab = "Standardised mean difference")
-p66
+View(X2Effect_size_cal_GROWTH)
+datag2<-X2Effect_size_cal_GROWTH
+datag2<-escalc(measure = "ROM", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnRR", "vlnRR"), data = datag2)
 
-####parameter as the moderator
-result1111a_wo=rma.mv(yi, vi, mods= ~ parameter-1, random =~ 1 | Author, data=datum2a)
-result1111a_wo
-res1111a_wo <- orchaRd::mod_results(result1111a_wo, mod = "parameter", group = "Author")
-res1111a_wo
-p67 <- orchaRd::orchard_plot(res1111a_wo, mod = "parameter", group = "Author", 
-                             xlab = "Standardised mean difference")
-p67
+# running multilevel intercept-only meta-analytic model
+meta.analysis.model.r <- rma.mv(yi = lnRR, V = vlnRR,
+                                mods=~1,
+                                random=list(~ 1 | species, # non-phylo effect
+                                            ~ 1 | Author, 
+                                            ~ 1 | ID), 
+                                method="REML",
+                                test="t", # using t dist rather than z because t is a better, more conservative distribution than z
+                                data=datag2, verbose = FALSE)
+summary(meta.analysis.model.r)
 
-####generation as the moderator
-result1111a_wo=rma.mv(yi, vi, mods= ~ generation-1, random =~ 1 | Author, data=datum2a)
-result1111a_wo
-res1111a_wo <- orchaRd::mod_results(result1111a_wo, mod = "generation", group = "Author")
-res1111a_wo
-p68 <- orchaRd::orchard_plot(res1111a_wo, mod = "generation", group = "Author", 
-                             xlab = "Standardised mean difference")
-p68
+metaanalytic.mean.model.r <- predict(meta.analysis.model.r, digits=3)
+
+I2.model.r <- i2_ml(meta.analysis.model.r, method = "matrix")
+I2.model.r
 
 
+table.model.r <- data.frame(n=length(unique(datag2$Author)),
+                            k=nrow(datag2),
+                            mean=round(metaanalytic.mean.model.r[[1]],2),
+                            CI=paste0("[",round(metaanalytic.mean.model.r[[3]],2),",",round(metaanalytic.mean.model.r[[4]],2),"]"),
+                            PI=paste0("[",round(metaanalytic.mean.model.r[[5]],2),",",round(metaanalytic.mean.model.r[[6]],2),"]"),
+                            I2_ID=round(I2.model.r[["I2_ID"]],1),
+                            I2_paperID=round(I2.model.r[["I2_Author"]],1),
+                            I2_nonphylo=round(I2.model.r[["I2_species"]],1), 
+                            I2_total=round(I2.model.r[["I2_Total"]],1))
+table.model.r.gt <- table.model.r %>% 
+  gt::gt() %>% 
+  cols_label(n=md("**n**"),
+             k=md("**k**"),
+             mean=md("**Meta-analytic mean**"),
+             CI=md("**95% CI**"),
+             PI=md("**95% PI**"),
+             I2_ID=md("***I*<sup>2</sup><sub>residual</sub>\n(%)**"),
+             I2_paperID=md("***I*<sup>2</sup><sub>study</sub>\n(%)**"),
+             I2_total=md("***I*<sup>2</sup><sub>total</sub>    \n(%)**"),
+  ) %>%
+  cols_align(align = "center") %>%
+  tab_source_note(source_note = md("n = number of authors; k = number of effects; CI = confidence interval; PI = prediction interval; *I*<sup>2</sup> = heterogeneity")) #%>%
+# tab_options(table.width=770)
 
-#####only input gene editing dataset
-##taxon as a moderator
-result3a_wo=rma.mv(yi, vi, mods= ~taxon-1, random =~ 1 | Author, data=datum2a)
-result3a_wo
-res3a_wo <- orchaRd::mod_results(result3a_wo, mod = "taxon", group = "Author")
-res3a_wo
-p63 <- orchaRd::orchard_plot(res3a_wo, mod = "taxon", group = "Author", 
-                             xlab = "Standardised mean difference")
-p63
-####species as the moderator
-result3a_wo=rma.mv(yi, vi, mods= ~species-1, random =~ 1 | Author, data=datum2a)
-result3a_wo
-res3a_wo <- orchaRd::mod_results(result3a_wo, mod = "species", group = "Author")
-res3a_wo
-p64 <- orchaRd::orchard_plot(res3a_wo, mod = "species", group = "Author", 
-                             xlab = "Standardised mean difference")
-p64
-####gene as the moderator
-result333a_wo=rma.mv(yi, vi, mods= ~gene-1, random =~ 1 | Author, data=datum2a)
-result333a_wo
-res333a_wo <- orchaRd::mod_results(result333a_wo, mod = "gene", group = "Author")
-res333a_wo
-p65 <- orchaRd::orchard_plot(res333a_wo, mod = "gene", group = "Author", 
-                             xlab = "Standardised mean difference")
-p65
-####parameter as the moderator
-result1111a_wo=rma.mv(yi, vi, mods= ~ parameter-1, random =~ 1 | Author, data=datum2a)
-result1111a_wo
-res1111a_wo <- orchaRd::mod_results(result1111a_wo, mod = "parameter", group = "Author")
-res1111a_wo
-p67 <- orchaRd::orchard_plot(res1111a_wo, mod = "parameter", group = "Author", 
-                             xlab = "Standardised mean difference")
-p67
-####generation as the moderator
-result1111a_wo=rma.mv(yi, vi, mods= ~ generation-1, random =~ 1 | Author, data=datum2a)
-result1111a_wo
-res1111a_wo <- orchaRd::mod_results(result1111a_wo, mod = "generation", group = "Author")
-res1111a_wo
-p68 <- orchaRd::orchard_plot(res1111a_wo, mod = "generation", group = "Author", 
-                             xlab = "Standardised mean difference")
-p68
+table.model.r.gt
 
+#################Funnel plot, using precision (1/SE)######################################  
 
-
-#############################################################
-###2. calculate the effect size of growth####################
-#############################################################
-datum=read.csv(file.choose()) ##input data from the growth dataset
-datum  #check data
-datum2a=escalc(measure="SMDH", n1i=treat_n, m1i=treat_mean,
-               sd1i=treat_sd, n2i=control_n, m2i=control_mean, sd2i=control_sd, data=datum)
-datum2a #calculate effect size metrics
-
-##run meta-analysis - random effects
-result2=rma(yi, vi, data=datum2a, method="REML")
-result2
-
-###95% PI and I2####
-result2a=rma.mv(yi, vi, method="REML", random =~ 1 | Author, data=datum2a)
-result2a #95% PI
-
-I2 <- orchaRd::i2_ml(result2a)
-I2 #I2
-
-######calculate I2 percentage###########
-res2 <- rma.mv(yi, vi, mods = ~ taxon, 
-               random = list(~1|taxon,~1|Author, ~1|gene,~1|age, ~1|species), 
-               data = datum2a)
-I2_mod <- orchaRd::i2_ml(res2)
-I2_mod
-
-###contour-enhanced funnel
-funnel(result2, col= "#A65628",back="white",hlines="#F0F0F0",refline=0, 
-       level=c(90,95,99), shade=c("#FAF4FF", "#FFE6FF", "#E6CAFF"))
-trf<-trimfill(result2) #trim and fill
-trf
-##conduct classical Egger test regression analysis
-regtest(result2, model="lm") 
-funnel(trf, col= "#A65628",back="white",hlines="#F0F0F0",refline=0, 
-       level=c(90,95,99), shade=c("#FAF4FF", "#FFE6FF", "#E6CAFF")) #funnel plot after trim and fill
-
-###sensitivity analysis
-inf<-influence(result2)
-inf
-plot(inf)#red points indicates outliers
-## leave-one-out analysis
-le<-leave1out(result2)
-le
-
-######print the result as a table###
-length(le$estimate) #Should be the same as the number of studies
-nrow(datum)  
-loo_table <- data.frame(
-  Study_Left_Out = 1:length(le$estimate),
-  Effect_Size = le$estimate,
-  SE = le$se,
-  Z = le$zval,
-  P = le$pval,
-  Lower_CI = le$ci.lb,
-  Upper_CI = le$ci.ub,
-  Q = le$Q,
-  Qp = le$Qp,
-  tau2 = le$tau2,
-  I2 = le$I2,
-  H2 = le$H2
-)
-loo_table
-# Create the PDF file
-install.packages("gridExtra")
-library(gridExtra)
-library(grid)
-pdf("growth_leave_one_out_analysis.pdf", width = 22, height = 145)# Open a PDF device
-# Use grid.table to print the table into the PDF
-grid.table(loo_table)
-# Close the PDF device
+png("funnel_growth_se_plot.png", height = 800, width = 800)
+funnel(meta.analysis.model.r, yaxis = "sei", xlab = "Effect size (lnRR)")
 dev.off()
 
-##conduct fail safe N analysis
-fsn(yi, vi, data=datum2a, type="Rosenberg")
-
-####moderator analysis
-##method as a moderator:compare transgenesis and gene editing
-result3a_wo=rma.mv(yi, vi, mods= ~method-1, random =~ 1 | Author, data=datum2a)
-result3a_wo
-res3a_wo <- orchaRd::mod_results(result3a_wo, mod = "method", group = "Author")
-res3a_wo
-p63 <- orchaRd::orchard_plot(res3a_wo, mod = "method", group = "Author", 
-                             xlab = "Standardised mean difference")
-p63
-
-#####only input trnasgenesis dataset
-##taxon as a moderator
-result3a_wo=rma.mv(yi, vi, mods= ~taxon-1, random =~ 1 | Author, data=datum2a)
-result3a_wo
-res3a_wo <- orchaRd::mod_results(result3a_wo, mod = "taxon", group = "Author")
-res3a_wo
-p63 <- orchaRd::orchard_plot(res3a_wo, mod = "taxon", group = "Author", 
-                             xlab = "Standardised mean difference")
-p63
-####species as the moderator
-result3a_wo=rma.mv(yi, vi, mods= ~species-1, random =~ 1 | Author, data=datum2a)
-result3a_wo
-res3a_wo <- orchaRd::mod_results(result3a_wo, mod = "species", group = "Author")
-res3a_wo
-p64 <- orchaRd::orchard_plot(res3a_wo, mod = "species", group = "Author", 
-                             xlab = "Standardised mean difference")
-p64
-####gene as the moderator
-result333a_wo=rma.mv(yi, vi, mods= ~gene-1, random =~ 1 | Author, data=datum2a)
-result333a_wo
-res333a_wo <- orchaRd::mod_results(result333a_wo, mod = "gene", group = "Author")
-res333a_wo
-p65 <- orchaRd::orchard_plot(res333a_wo, mod = "gene", group = "Author", 
-                             xlab = "Standardised mean difference")
-p65
-####promoter as the moderator
-result1111a_wo=rma.mv(yi, vi, mods= ~ promoter-1, random =~ 1 | Author, data=datum2a)
-result1111a_wo
-res1111a_wo <- orchaRd::mod_results(result1111a_wo, mod = "promoter", group = "Author")
-res1111a_wo
-p66 <- orchaRd::orchard_plot(res1111a_wo, mod = "promoter", group = "Author", 
-                             xlab = "Standardised mean difference")
-p66
-
-####parameter as the moderator
-result1111a_wo=rma.mv(yi, vi, mods= ~ parameter-1, random =~ 1 | Author, data=datum2a)
-result1111a_wo
-res1111a_wo <- orchaRd::mod_results(result1111a_wo, mod = "parameter", group = "Author")
-res1111a_wo
-p67 <- orchaRd::orchard_plot(res1111a_wo, mod = "parameter", group = "Author", 
-                             xlab = "Standardised mean difference")
-p67
-
-####generation as the moderator
-result1111a_wo=rma.mv(yi, vi, mods= ~ generation-1, random =~ 1 | Author, data=datum2a)
-result1111a_wo
-res1111a_wo <- orchaRd::mod_results(result1111a_wo, mod = "generation", group = "Author")
-res1111a_wo
-p68 <- orchaRd::orchard_plot(res1111a_wo, mod = "generation", group = "Author", 
-                             xlab = "Standardised mean difference")
-p68
-
-
-#####only input gene editing dataset
-##taxon as a moderator
-result3a_wo=rma.mv(yi, vi, mods= ~taxon-1, random =~ 1 | Author, data=datum2a)
-result3a_wo
-res3a_wo <- orchaRd::mod_results(result3a_wo, mod = "taxon", group = "Author")
-res3a_wo
-p63 <- orchaRd::orchard_plot(res3a_wo, mod = "taxon", group = "Author", 
-                             xlab = "Standardised mean difference")
-p63
-####species as the moderator
-result3a_wo=rma.mv(yi, vi, mods= ~species-1, random =~ 1 | Author, data=datum2a)
-result3a_wo
-res3a_wo <- orchaRd::mod_results(result3a_wo, mod = "species", group = "Author")
-res3a_wo
-p64 <- orchaRd::orchard_plot(res3a_wo, mod = "species", group = "Author", 
-                             xlab = "Standardised mean difference")
-p64
-####gene as the moderator
-result333a_wo=rma.mv(yi, vi, mods= ~gene-1, random =~ 1 | Author, data=datum2a)
-result333a_wo
-res333a_wo <- orchaRd::mod_results(result333a_wo, mod = "gene", group = "Author")
-res333a_wo
-p65 <- orchaRd::orchard_plot(res333a_wo, mod = "gene", group = "Author", 
-                             xlab = "Standardised mean difference")
-p65
-####parameter as the moderator
-result1111a_wo=rma.mv(yi, vi, mods= ~ parameter-1, random =~ 1 | Author, data=datum2a)
-result1111a_wo
-res1111a_wo <- orchaRd::mod_results(result1111a_wo, mod = "parameter", group = "Author")
-res1111a_wo
-p67 <- orchaRd::orchard_plot(res1111a_wo, mod = "parameter", group = "Author", 
-                             xlab = "Standardised mean difference")
-p67
-####generation as the moderator
-result1111a_wo=rma.mv(yi, vi, mods= ~ generation-1, random =~ 1 | Author, data=datum2a)
-result1111a_wo
-res1111a_wo <- orchaRd::mod_results(result1111a_wo, mod = "generation", group = "Author")
-res1111a_wo
-p68 <- orchaRd::orchard_plot(res1111a_wo, mod = "generation", group = "Author", 
-                             xlab = "Standardised mean difference")
-p68
-
-#####meta-regression linaer model to determine the age-dependent effects on growth
-res.lin <- rma.mv(yi, vi, mods = ~ age, data=datum2a, method="REML", random =~ 1 | Author)
-res.lin
-####draw the plot
-regplot(res.lin, las=1, digits=1, bty="l", psize=.20/sqrt(datum2a$vi),
-        xlab="Predictor", main="Linear Model",lcol="black",
-        shade="gainsboro",col="#f2766d", bg="#f2766d")
-
-####growth overall effect
-rp <- ggplot(aes(x = age, y = yi), data = datum2a) + 
-  geom_point() +
-  geom_linerange(aes(x = age, ymin = yi - 0.224 * sqrt(vi), 
-                     ymax = yi + 0.224 * sqrt(vi)), color = "white") +
-  geom_hline(yintercept = 1, linetype = 2) +
-  geom_point(aes(size = I(4 * sqrt(vi))), shape = 1, color = "pink") + 
-  labs(y = "Effect size of growth", size = "Standard Error") + 
-  labs(x = "Age") +
-  theme_bw() +   
-  geom_smooth(se = TRUE, method = "lm", formula = y ~ poly(x, 1), 
-              linetype = "dotdash", color = "blue", fill = "grey") +
-  theme(panel.grid = element_blank())
-rp
-
-####different parameters######
-###body weight
-rp <- ggplot(aes(x = age, y = yi), data = datum2a) + 
-  geom_point() +
-  geom_linerange(aes(x = age, ymin = yi - 0.224 * sqrt(vi), 
-                     ymax = yi + 0.224 * sqrt(vi)), color = "white") +
-  geom_hline(yintercept = 1, linetype = 2) +
-  geom_point(aes(size = I(4 * sqrt(vi))), shape = 1, color = "#b395bd") + 
-  labs(y = "Effect size of body weight", size = "Standard Error") + 
-  labs(x = "Age") +
-  theme_bw() +   
-  geom_smooth(se = TRUE, method = "lm", formula = y ~ poly(x, 1), 
-              linetype = "dotdash", color = "blue", fill = "grey") +
-  theme(panel.grid = element_blank())
-rp
-
-####myofiber
-rp <- ggplot(aes(x = age, y = yi), data = datum2a) + 
-  geom_point() +
-  geom_linerange(aes(x = age, ymin = yi - 0.224 * sqrt(vi), 
-                     ymax = yi + 0.224 * sqrt(vi)), color = "white") +
-  geom_hline(yintercept = 1, linetype = 2) +
-  geom_point(aes(size = I(4 * sqrt(vi))), shape = 1, color = "#d87659") + 
-  labs(y = "Effect size of myofiber", size = "Standard Error") + 
-  labs(x = "Age") +
-  theme_bw() +   
-  geom_smooth(se = TRUE, method = "lm", formula = y ~ poly(x, 1), 
-              linetype = "dotdash", color = "blue", fill = "grey") +
-  theme(panel.grid = element_blank())
-rp
-
-####SGR
-rp <- ggplot(aes(x = age, y = yi), data = datum2a) + 
-  geom_point() +
-  geom_linerange(aes(x = age, ymin = yi - 0.224 * sqrt(vi), 
-                     ymax = yi + 0.224 * sqrt(vi)), color = "white") +
-  geom_hline(yintercept = 1, linetype = 2) +
-  geom_point(aes(size = I(4 * sqrt(vi))), shape = 1, color = "#ea8379") + 
-  labs(y = "Effect size of SGR", size = "Standard Error") + 
-  labs(x = "Age") +
-  theme_bw() +   
-  geom_smooth(se = TRUE, method = "lm", formula = y ~ poly(x, 1), 
-              linetype = "dotdash", color = "blue", fill = "grey") +
-  theme(panel.grid = element_blank())
-rp
-
-
-
-
-#############################################################
-###3. calculate the effect size of disease resistance####################
-#############################################################
-datum=read.csv(file.choose()) ##input data from the disease resistance dataset
-datum  #check data
-datum2a=escalc(measure="SMDH", n1i=treat_n, m1i=treat_mean,
-               sd1i=treat_sd, n2i=control_n, m2i=control_mean, sd2i=control_sd, data=datum)
-datum2a #calculate effect size metrics
-
-##run meta-analysis - random effects
-result2=rma(yi, vi, data=datum2a, method="REML")
-result2
-
-###95% PI and I2####
-result2a=rma.mv(yi, vi, method="REML", random =~ 1 | Author, data=datum2a)
-result2a #95% PI
-
-I2 <- orchaRd::i2_ml(result2a)
-I2 #I2
-
-######calculate I2 percentage###########
-res2 <- rma.mv(yi, vi, mods = ~ taxon, 
-               random = list(~1|taxon,~1|Author, ~1|gene,~1|pathogen, ~1|tissue,~1|species), 
-               data = datum2a)
-I2_mod <- orchaRd::i2_ml(res2)
-I2_mod
-
-###contour-enhanced funnel
-funnel(result2, col= "#A65628",back="white",hlines="#F0F0F0",refline=0, 
-       level=c(90,95,99), shade=c("#FAF4FF", "#FFE6FF", "#E6CAFF"))
-trf<-trimfill(result2) #trim and fill
-trf
-##conduct classical Egger test regression analysis
-regtest(result2, model="lm") 
-funnel(trf, col= "#A65628",back="white",hlines="#F0F0F0",refline=0, 
-       level=c(90,95,99), shade=c("#FAF4FF", "#FFE6FF", "#E6CAFF")) #funnel plot after trim and fill
-
-###sensitivity analysis
-inf<-influence(result2)
-inf
-plot(inf)#red points indicates outliers
-## leave-one-out analysis
-le<-leave1out(result2)
-le
-
-######print the result as a table###
-length(le$estimate) #Should be the same as the number of studies
-nrow(datum)  
-loo_table <- data.frame(
-  Study_Left_Out = 1:length(le$estimate),
-  Effect_Size = le$estimate,
-  SE = le$se,
-  Z = le$zval,
-  P = le$pval,
-  Lower_CI = le$ci.lb,
-  Upper_CI = le$ci.ub,
-  Q = le$Q,
-  Qp = le$Qp,
-  tau2 = le$tau2,
-  I2 = le$I2,
-  H2 = le$H2
-)
-loo_table
-# Create the PDF file
-install.packages("gridExtra")
-library(gridExtra)
-library(grid)
-pdf("growth_leave_one_out_analysis.pdf", width = 22, height = 145)# Open a PDF device
-# Use grid.table to print the table into the PDF
-grid.table(loo_table)
-# Close the PDF device
+png("funnel_growth_seinv_plot.png", height = 800, width = 800)
+funnel(meta.analysis.model.r, yaxis = "seinv", xlab = "Effect size (lnRR)")
 dev.off()
 
-##conduct fail safe N analysis
-fsn(yi, vi, data=datum2a, type="Rosenberg")
+##############################I2 for disease_resistance using a multilevel meta-analysis ###########################
+######################################################################################################################
 
-####moderator analysis
-##method as a moderator:compare transgenesis and gene editing
-result3a_wo=rma.mv(yi, vi, mods= ~method-1, random =~ 1 | Author, data=datum2a)
-result3a_wo
-res3a_wo <- orchaRd::mod_results(result3a_wo, mod = "method", group = "Author")
-res3a_wo
-p63 <- orchaRd::orchard_plot(res3a_wo, mod = "method", group = "Author", 
-                             xlab = "Standardised mean difference")
-p63
+View(X3Effect_size_cal_DISEASE_RESISTANCE)
+datag2<-X3Effect_size_cal_DISEASE_RESISTANCE
+datag2<-escalc(measure = "ROM", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnRR", "vlnRR"), data = datag2)
 
-#####only input trnasgenesis dataset
-##taxon as a moderator
-result3a_wo=rma.mv(yi, vi, mods= ~taxon-1, random =~ 1 | Author, data=datum2a)
-result3a_wo
-res3a_wo <- orchaRd::mod_results(result3a_wo, mod = "taxon", group = "Author")
-res3a_wo
-p63 <- orchaRd::orchard_plot(res3a_wo, mod = "taxon", group = "Author", 
-                             xlab = "Standardised mean difference")
-p63
-####species as the moderator
-result3a_wo=rma.mv(yi, vi, mods= ~species-1, random =~ 1 | Author, data=datum2a)
-result3a_wo
-res3a_wo <- orchaRd::mod_results(result3a_wo, mod = "species", group = "Author")
-res3a_wo
-p64 <- orchaRd::orchard_plot(res3a_wo, mod = "species", group = "Author", 
-                             xlab = "Standardised mean difference")
-p64
-####gene as the moderator
-result333a_wo=rma.mv(yi, vi, mods= ~gene-1, random =~ 1 | Author, data=datum2a)
-result333a_wo
-res333a_wo <- orchaRd::mod_results(result333a_wo, mod = "gene", group = "Author")
-res333a_wo
-p65 <- orchaRd::orchard_plot(res333a_wo, mod = "gene", group = "Author", 
-                             xlab = "Standardised mean difference")
-p65
-####promoter as the moderator
-result1111a_wo=rma.mv(yi, vi, mods= ~ promoter-1, random =~ 1 | Author, data=datum2a)
-result1111a_wo
-res1111a_wo <- orchaRd::mod_results(result1111a_wo, mod = "promoter", group = "Author")
-res1111a_wo
-p66 <- orchaRd::orchard_plot(res1111a_wo, mod = "promoter", group = "Author", 
-                             xlab = "Standardised mean difference")
-p66
+# running multilevel intercept-only meta-analytic model
+meta.analysis.model.r <- rma.mv(yi = lnRR, V = vlnRR,
+                                mods=~1,
+                                random=list(~ 1 | species, # non-phylo effect
+                                            ~ 1 | Author, 
+                                            ~ 1 | ID), 
+                                method="REML",
+                                test="t", # using t dist rather than z because t is a better, more conservative distribution than z
+                                data=datag2, verbose = FALSE)
+summary(meta.analysis.model.r)
 
-####parameter as the moderator
-result1111a_wo=rma.mv(yi, vi, mods= ~ parameter-1, random =~ 1 | Author, data=datum2a)
-result1111a_wo
-res1111a_wo <- orchaRd::mod_results(result1111a_wo, mod = "parameter", group = "Author")
-res1111a_wo
-p67 <- orchaRd::orchard_plot(res1111a_wo, mod = "parameter", group = "Author", 
-                             xlab = "Standardised mean difference")
-p67
+metaanalytic.mean.model.r <- predict(meta.analysis.model.r, digits=3)
 
-####generation as the moderator
-result1111a_wo=rma.mv(yi, vi, mods= ~ generation-1, random =~ 1 | Author, data=datum2a)
-result1111a_wo
-res1111a_wo <- orchaRd::mod_results(result1111a_wo, mod = "generation", group = "Author")
-res1111a_wo
-p68 <- orchaRd::orchard_plot(res1111a_wo, mod = "generation", group = "Author", 
-                             xlab = "Standardised mean difference")
-p68
-
-####pathogen as the moderator
-result1111a_wo=rma.mv(yi, vi, mods= ~ pathogen-1, random =~ 1 | Author, data=datum2a)
-result1111a_wo
-res1111a_wo <- orchaRd::mod_results(result1111a_wo, mod = "pathogen", group = "Author")
-res1111a_wo
-p69 <- orchaRd::orchard_plot(res1111a_wo, mod = "pathogen", group = "Author", 
-                             xlab = "Standardised mean difference")
-p69
-
-#####only input gene editing dataset
-##taxon as a moderator
-result3a_wo=rma.mv(yi, vi, mods= ~taxon-1, random =~ 1 | Author, data=datum2a)
-result3a_wo
-res3a_wo <- orchaRd::mod_results(result3a_wo, mod = "taxon", group = "Author")
-res3a_wo
-p63 <- orchaRd::orchard_plot(res3a_wo, mod = "taxon", group = "Author", 
-                             xlab = "Standardised mean difference")
-p63
-####species as the moderator
-result3a_wo=rma.mv(yi, vi, mods= ~species-1, random =~ 1 | Author, data=datum2a)
-result3a_wo
-res3a_wo <- orchaRd::mod_results(result3a_wo, mod = "species", group = "Author")
-res3a_wo
-p64 <- orchaRd::orchard_plot(res3a_wo, mod = "species", group = "Author", 
-                             xlab = "Standardised mean difference")
-p64
-####gene as the moderator
-result333a_wo=rma.mv(yi, vi, mods= ~gene-1, random =~ 1 | Author, data=datum2a)
-result333a_wo
-res333a_wo <- orchaRd::mod_results(result333a_wo, mod = "gene", group = "Author")
-res333a_wo
-p65 <- orchaRd::orchard_plot(res333a_wo, mod = "gene", group = "Author", 
-                             xlab = "Standardised mean difference")
-p65
-####parameter as the moderator
-result1111a_wo=rma.mv(yi, vi, mods= ~ parameter-1, random =~ 1 | Author, data=datum2a)
-result1111a_wo
-res1111a_wo <- orchaRd::mod_results(result1111a_wo, mod = "parameter", group = "Author")
-res1111a_wo
-p67 <- orchaRd::orchard_plot(res1111a_wo, mod = "parameter", group = "Author", 
-                             xlab = "Standardised mean difference")
-p67
-####generation as the moderator
-result1111a_wo=rma.mv(yi, vi, mods= ~ generation-1, random =~ 1 | Author, data=datum2a)
-result1111a_wo
-res1111a_wo <- orchaRd::mod_results(result1111a_wo, mod = "generation", group = "Author")
-res1111a_wo
-p68 <- orchaRd::orchard_plot(res1111a_wo, mod = "generation", group = "Author", 
-                             xlab = "Standardised mean difference")
-p68
-
-####pathogen as the moderator
-result1111a_wo=rma.mv(yi, vi, mods= ~ pathogen-1, random =~ 1 | Author, data=datum2a)
-result1111a_wo
-res1111a_wo <- orchaRd::mod_results(result1111a_wo, mod = "pathogen", group = "Author")
-res1111a_wo
-p69 <- orchaRd::orchard_plot(res1111a_wo, mod = "pathogen", group = "Author", 
-                             xlab = "Standardised mean difference")
-p69
+I2.model.r <- i2_ml(meta.analysis.model.r, method = "matrix")
+I2.model.r
 
 
+table.model.r <- data.frame(n=length(unique(datag2$Author)),
+                            k=nrow(datag2),
+                            mean=round(metaanalytic.mean.model.r[[1]],2),
+                            CI=paste0("[",round(metaanalytic.mean.model.r[[3]],2),",",round(metaanalytic.mean.model.r[[4]],2),"]"),
+                            PI=paste0("[",round(metaanalytic.mean.model.r[[5]],2),",",round(metaanalytic.mean.model.r[[6]],2),"]"),
+                            I2_ID=round(I2.model.r[["I2_ID"]],1),
+                            I2_paperID=round(I2.model.r[["I2_Author"]],1),
+                            I2_nonphylo=round(I2.model.r[["I2_species"]],1), 
+                            I2_total=round(I2.model.r[["I2_Total"]],1))
+table.model.r.gt <- table.model.r %>% 
+  gt::gt() %>% 
+  cols_label(n=md("**n**"),
+             k=md("**k**"),
+             mean=md("**Meta-analytic mean**"),
+             CI=md("**95% CI**"),
+             PI=md("**95% PI**"),
+             I2_ID=md("***I*<sup>2</sup><sub>residual</sub>\n(%)**"),
+             I2_paperID=md("***I*<sup>2</sup><sub>study</sub>\n(%)**"),
+             I2_total=md("***I*<sup>2</sup><sub>total</sub>    \n(%)**"),
+  ) %>%
+  cols_align(align = "center") %>%
+  tab_source_note(source_note = md("n = number of authors; k = number of effects; CI = confidence interval; PI = prediction interval; *I*<sup>2</sup> = heterogeneity")) #%>%
+# tab_options(table.width=770)
 
-#############################################################
-###4. calculate the effect size of FATTY ACID####################
-#############################################################
-datum=read.csv(file.choose()) ##input data from the FATTY ACID dataset
-datum  #check data
-datum2a=escalc(measure="SMDH", n1i=treat_n, m1i=treat_mean,
-               sd1i=treat_sd, n2i=control_n, m2i=control_mean, sd2i=control_sd, data=datum)
-datum2a #calculate effect size metrics
+table.model.r.gt
 
-##run meta-analysis - random effects
-result2=rma(yi, vi, data=datum2a, method="REML")
-result2
+#################Funnel plot, using precision (1/SE)######################################  
 
-###95% PI and I2####
-result2a=rma.mv(yi, vi, method="REML", random =~ 1 | Author, data=datum2a)
-result2a #95% PI
-
-I2 <- orchaRd::i2_ml(result2a)
-I2 #I2
-
-######calculate I2 percentage###########
-res2 <- rma.mv(yi, vi, mods = ~ taxon, 
-               random = list(~1|taxon,~1|Author, ~1|gene,~1|age, ~1|species), 
-               data = datum2a)
-I2_mod <- orchaRd::i2_ml(res2)
-I2_mod
-
-###contour-enhanced funnel
-funnel(result2, col= "#A65628",back="white",hlines="#F0F0F0",refline=0, 
-       level=c(90,95,99), shade=c("#FAF4FF", "#FFE6FF", "#E6CAFF"))
-trf<-trimfill(result2) #trim and fill
-trf
-##conduct classical Egger test regression analysis
-regtest(result2, model="lm") 
-funnel(trf, col= "#A65628",back="white",hlines="#F0F0F0",refline=0, 
-       level=c(90,95,99), shade=c("#FAF4FF", "#FFE6FF", "#E6CAFF")) #funnel plot after trim and fill
-
-###sensitivity analysis
-inf<-influence(result2)
-inf
-plot(inf)#red points indicates outliers
-## leave-one-out analysis
-le<-leave1out(result2)
-le
-
-######print the result as a table###
-length(le$estimate) #Should be the same as the number of studies
-nrow(datum)  
-loo_table <- data.frame(
-  Study_Left_Out = 1:length(le$estimate),
-  Effect_Size = le$estimate,
-  SE = le$se,
-  Z = le$zval,
-  P = le$pval,
-  Lower_CI = le$ci.lb,
-  Upper_CI = le$ci.ub,
-  Q = le$Q,
-  Qp = le$Qp,
-  tau2 = le$tau2,
-  I2 = le$I2,
-  H2 = le$H2
-)
-loo_table
-# Create the PDF file
-install.packages("gridExtra")
-library(gridExtra)
-library(grid)
-pdf("growth_leave_one_out_analysis.pdf", width = 22, height = 145)# Open a PDF device
-# Use grid.table to print the table into the PDF
-grid.table(loo_table)
-# Close the PDF device
+png("funnel_disease_se_plot.png", height = 800, width = 800)
+funnel(meta.analysis.model.r, yaxis = "sei", xlab = "Effect size (lnRR)")
 dev.off()
 
-##conduct fail safe N analysis
-fsn(yi, vi, data=datum2a, type="Rosenberg")
+png("funnel_disease_seinv_plot.png", height = 800, width = 800)
+funnel(meta.analysis.model.r, yaxis = "seinv", xlab = "Effect size (lnRR)")
+dev.off()
 
-####moderator analysis
-##method as a moderator:compare transgenesis and gene editing
-result3a_wo=rma.mv(yi, vi, mods= ~method-1, random =~ 1 | Author, data=datum2a)
-result3a_wo
-res3a_wo <- orchaRd::mod_results(result3a_wo, mod = "method", group = "Author")
-res3a_wo
-p63 <- orchaRd::orchard_plot(res3a_wo, mod = "method", group = "Author", 
-                             xlab = "Standardised mean difference")
-p63
 
-#####only input transgenesis dataset
-#####only input transgenesis dataset——n-3
-#####only input transgenesis dataset——n-6
-#####only input transgenesis dataset——n-6/n-3
-#####only input transgenesis dataset——DHA
-#####only input transgenesis dataset——EPA
-datum=read.csv(file.choose())
-datum  ##check data
-datum2a=escalc(measure="SMDH", n1i=treat_n, m1i=treat_mean,
-               sd1i=treat_sd, n2i=control_n, m2i=control_mean, sd2i=control_sd, data=datum)
-datum2a
-####category as the moderator
-result3=rma(yi, vi, data=datum2a, method="REML")
-result3
-result3a_wo=rma.mv(yi, vi, mods= ~category-1, random =~ 1 | Author, data=datum2a)
-result3a_wo
-res3a_wo <- orchaRd::mod_results(result3a_wo, mod = "category", group = "Author")
-res3a_wo
-p63 <- orchaRd::orchard_plot(res3a_wo, mod = "category", group = "Author", 
-                             xlab = "Standardised mean difference")
-p63
-####species as the moderator
-result3=rma(yi, vi, data=datum2a, method="REML")
-result3
-result3a_wo=rma.mv(yi, vi, mods= ~species-1, random =~ 1 | Author, data=datum2a)
-result3a_wo
-res3a_wo <- orchaRd::mod_results(result3a_wo, mod = "species", group = "Author")
-res3a_wo
-p64 <- orchaRd::orchard_plot(res3a_wo, mod = "species", group = "Author", 
-                             xlab = "Standardised mean difference")
-p64
-####gene as the moderator
-result333a_wo=rma.mv(yi, vi, mods= ~gene-1, random =~ 1 | Author, data=datum2a)
-result333a_wo
-res333a_wo <- orchaRd::mod_results(result333a_wo, mod = "gene", group = "Author")
-res333a_wo
-p65 <- orchaRd::orchard_plot(res333a_wo, mod = "gene", group = "Author", 
-                             xlab = "Standardised mean difference")
-p65
-####promoter as the moderator
-result1111a_wo=rma.mv(yi, vi, mods= ~ promoter-1, random =~ 1 | Author, data=datum2a)
-result1111a_wo
-res1111a_wo <- orchaRd::mod_results(result1111a_wo, mod = "promoter", group = "Author")
-res1111a_wo
-p66 <- orchaRd::orchard_plot(res1111a_wo, mod = "promoter", group = "Author", 
-                             xlab = "Standardised mean difference")
-p66
-####parameter as the moderator
-result33333a_wo=rma.mv(yi, vi, mods= ~ parameter-1, random =~ 1 | Author, data=datum2a)
-####generation as the moderator
-result22222222a_wo=rma.mv(yi, vi, mods= ~ generation-1, random =~ 1 | Author, data=datum2a)
-result22222222a_wo
-res22222222a_wo <- orchaRd::mod_results(result22222222a_wo, mod = "generation", group = "Author")
-res22222222a_wo
-p68 <- orchaRd::orchard_plot(res22222222a_wo, mod = "generation", group = "Author", 
-                             xlab = "Standardised mean difference")
-p68
-####pathogen as the moderator
-result22222222a_wo=rma.mv(yi, vi, mods= ~ pathogen-1, random =~ 1 | Author, data=datum2a)
-result22222222a_wo
-res22222222a_wo <- orchaRd::mod_results(result22222222a_wo, mod = "pathogen", group = "Author")
-res22222222a_wo
-p69 <- orchaRd::orchard_plot(res22222222a_wo, mod = "pathogen", group = "Author", 
-                             xlab = "Standardised mean difference")
-p69
+##############################I2 for fatty_acid using a multilevel meta-analysis ###########################
+######################################################################################################################
 
-#####meta-regression linaer model to determine the age-dependent effects on fatty acid
-res.lin <- rma.mv(yi, vi, mods = ~ age, data=datum2a, method="REML", random =~ 1 | Author)
-res.lin
-####draw the plot
-regplot(res.lin, las=1, digits=1, bty="l", psize=.20/sqrt(datum2a$vi),
-        xlab="Predictor", main="Linear Model",lcol="black",
-        shade="gainsboro",col="#f2766d", bg="#f2766d")
+View(X4Effect_size_cal_FATTY_ACID)
+datag2<-X4Effect_size_cal_FATTY_ACID
+datag2<-escalc(measure = "ROM", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnRR", "vlnRR"), data = datag2)
 
-####fatty acid overall effect
-rp <- ggplot(aes(x = age, y = yi), data = datum2a) + 
-  geom_point() +
-  geom_linerange(aes(x = age, ymin = yi - 0.224 * sqrt(vi), 
-                     ymax = yi + 0.224 * sqrt(vi)), color = "white") +
-  geom_hline(yintercept = 1, linetype = 2) +
-  geom_point(aes(size = I(4 * sqrt(vi))), shape = 1, color = "pink") + 
-  labs(y = "Effect size of fatty acid", size = "Standard Error") + 
-  labs(x = "Age") +
-  theme_bw() +   
-  geom_smooth(se = TRUE, method = "lm", formula = y ~ poly(x, 1), 
-              linetype = "dotdash", color = "blue", fill = "grey") +
-  theme(panel.grid = element_blank())
-rp
+# running multilevel intercept-only meta-analytic model
+meta.analysis.model.r <- rma.mv(yi = lnRR, V = vlnRR,
+                                mods=~1,
+                                random=list(~ 1 | species, # non-phylo effect
+                                            ~ 1 | category, 
+                                            ~ 1 | ID), 
+                                method="REML",
+                                test="t", # using t dist rather than z because t is a better, more conservative distribution than z
+                                data=datag2, verbose = FALSE)
+summary(meta.analysis.model.r)
 
-####different parameters######
-###ω-3
-rp <- ggplot(aes(x = age, y = yi), data = datum2a) + 
-  geom_point() +
-  geom_linerange(aes(x = age, ymin = yi - 0.224 * sqrt(vi), 
-                     ymax = yi + 0.224 * sqrt(vi)), color = "white") +
-  geom_hline(yintercept = 1, linetype = 2) +
-  geom_point(aes(size = I(4 * sqrt(vi))), shape = 1, color = "#b395bd") + 
-  labs(y = "Effect size of ω-3", size = "Standard Error") + 
-  labs(x = "Age") +
-  theme_bw() +   
-  geom_smooth(se = TRUE, method = "lm", formula = y ~ poly(x, 1), 
-              linetype = "dotdash", color = "blue", fill = "grey") +
-  theme(panel.grid = element_blank())
-rp
+metaanalytic.mean.model.r <- predict(meta.analysis.model.r, digits=3)
 
-####ω-6
-rp <- ggplot(aes(x = age, y = yi), data = datum2a) + 
-  geom_point() +
-  geom_linerange(aes(x = age, ymin = yi - 0.224 * sqrt(vi), 
-                     ymax = yi + 0.224 * sqrt(vi)), color = "white") +
-  geom_hline(yintercept = 1, linetype = 2) +
-  geom_point(aes(size = I(4 * sqrt(vi))), shape = 1, color = "#d87659") + 
-  labs(y = "Effect size of ω-3", size = "Standard Error") + 
-  labs(x = "Age") +
-  theme_bw() +   
-  geom_smooth(se = TRUE, method = "lm", formula = y ~ poly(x, 1), 
-              linetype = "dotdash", color = "blue", fill = "grey") +
-  theme(panel.grid = element_blank())
-rp
+I2.model.r <- i2_ml(meta.analysis.model.r, method = "matrix")
+I2.model.r
 
-####ω-6/ω-3
-rp <- ggplot(aes(x = age, y = yi), data = datum2a) + 
-  geom_point() +
-  geom_linerange(aes(x = age, ymin = yi - 0.224 * sqrt(vi), 
-                     ymax = yi + 0.224 * sqrt(vi)), color = "white") +
-  geom_hline(yintercept = 1, linetype = 2) +
-  geom_point(aes(size = I(4 * sqrt(vi))), shape = 1, color = "#ea8379") + 
-  labs(y = "Effect size of ω-6/ω-3", size = "Standard Error") + 
-  labs(x = "Age") +
-  theme_bw() +   
-  geom_smooth(se = TRUE, method = "lm", formula = y ~ poly(x, 1), 
-              linetype = "dotdash", color = "blue", fill = "grey") +
-  theme(panel.grid = element_blank())
-rp
 
-####DHA+EPA
-rp <- ggplot(aes(x = age, y = yi), data = datum2a) + 
-  geom_point() +
-  geom_linerange(aes(x = age, ymin = yi - 0.224 * sqrt(vi), 
-                     ymax = yi + 0.224 * sqrt(vi)), color = "white") +
-  geom_hline(yintercept = 1, linetype = 2) +
-  geom_point(aes(size = I(4 * sqrt(vi))), shape = 1, color = "#ea8379") + 
-  labs(y = "Effect size of DHA+EPA", size = "Standard Error") + 
-  labs(x = "Age") +
-  theme_bw() +   
-  geom_smooth(se = TRUE, method = "lm", formula = y ~ poly(x, 1), 
-              linetype = "dotdash", color = "blue", fill = "grey") +
-  theme(panel.grid = element_blank())
-rp
+table.model.r <- data.frame(n=length(unique(datag2$Author)),
+                            k=nrow(datag2),
+                            mean=round(metaanalytic.mean.model.r[[1]],2),
+                            CI=paste0("[",round(metaanalytic.mean.model.r[[3]],2),",",round(metaanalytic.mean.model.r[[4]],2),"]"),
+                            PI=paste0("[",round(metaanalytic.mean.model.r[[5]],2),",",round(metaanalytic.mean.model.r[[6]],2),"]"),
+                            I2_ID=round(I2.model.r[["I2_ID"]],1),
+                            I2_paperID=round(I2.model.r[["I2_category"]],1),
+                            I2_nonphylo=round(I2.model.r[["I2_species"]],1), 
+                            I2_total=round(I2.model.r[["I2_Total"]],1))
+table.model.r.gt <- table.model.r %>% 
+  gt::gt() %>% 
+  cols_label(n=md("**n**"),
+             k=md("**k**"),
+             mean=md("**Meta-analytic mean**"),
+             CI=md("**95% CI**"),
+             PI=md("**95% PI**"),
+             I2_ID=md("***I*<sup>2</sup><sub>residual</sub>\n(%)**"),
+             I2_paperID=md("***I*<sup>2</sup><sub>study</sub>\n(%)**"),
+             I2_total=md("***I*<sup>2</sup><sub>total</sub>    \n(%)**"),
+  ) %>%
+  cols_align(align = "center") %>%
+  tab_source_note(source_note = md("n = number of authors; k = number of effects; CI = confidence interval; PI = prediction interval; *I*<sup>2</sup> = heterogeneity")) #%>%
+# tab_options(table.width=770)
+
+table.model.r.gt
+
+#################Funnel plot, using precision (1/SE)######################################  
+
+png("funnel_fatty_acid_se_plot.png", height = 800, width = 800)
+funnel(meta.analysis.model.r, yaxis = "sei", xlab = "Effect size (lnRR)")
+dev.off()
+
+png("funnel_fatty_acid_seinv_plot.png", height = 800, width = 800)
+funnel(meta.analysis.model.r, yaxis = "seinv", xlab = "Effect size (lnRR)")
+dev.off()
+
+
+#-------calculate the effect size measures------------
+
+
+
+
+#--------------gene_protein  overall---------------------------------
+View(X1Effect_size_cal_gene_protein_expression)
+datag<-X1Effect_size_cal_gene_protein_expression
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MA <- rma.mv(yi = SMD , V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
+summary(datag1_MA)
+model_results <- orchaRd::mod_results(datag1_MA, mod = "1", at = NULL, group = "Author")
+model_results
+orchaRd::orchard_plot(datag1_MA, mod = "1", group = "Author", xlab = "Effect Size (lnRR)",transfm = "none", twig.size = 0.5, trunk.size = 1)
+I2 <- orchaRd::i2_ml(datag1_MA)
+I2
+pp<-orchaRd::orchard_plot(model_results, mod = "1", xlab = "Effect Size (lnRR)") +annotate(geom = "text", x = 0.8, y = 1.25, label = paste0("italic(I)^{2} == ", round(I2[1],2), "*\"%\""),
+                                                                                           color = "black", parse = TRUE, size = 5)
+pp
+ggsave('GENE_PROTEIN_overall.pdf',width = 15,height = 12,pp)
+
+
+
+
+#### method(transgenesis vs gene editing) as a moderator ###########
+
+View(X1_1Effect_size_cal_gene_protein_expression_wo_LepR_IGF2)
+datag<-X1_1Effect_size_cal_gene_protein_expression_wo_LepR_IGF2
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MA <- rma.mv(yi = SMD, V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
+summary(datag1_MA)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~method, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+res2 <- orchaRd::mod_results(datag_MR0, mod = "method", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "method", group = "Author", xlab = "Effect Size (SMD)")
+p1
+ggsave('gene_protein_method_moderator.pdf',width = 10,height = 8,p1)
+
+
+
+
+#######################sensitive analysis#################
+
+##########leave_one_study##############################
+datag1$Author <- as.factor(datag1$Author)
+result1 <- rma(SMD, vSMD, data = datag1, method="REML")
+leave_one_out_results <- list()
+for (author in unique(datag1$Author)) {
+  subset_data <- datag1[datag1$Author != author, ]
+  result_author <- rma(SMD, vSMD, data = subset_data, method = "REML")
+  leave_one_out_results[[author]] <- result_author
+}
+
+print(leave_one_out_results[["Author1"]])
+smd_estimates <- sapply(leave_one_out_results, function(model) model$b)
+plot(smd_estimates, type = "b", xlab = "Author", ylab = "Effect Size (SMD)", 
+     main = "Leave-One-Out Estimates for Each Author")
+leave_one_out_summary <- lapply(leave_one_out_results, function(model) {
+  data.frame(estimate = model$b, se = model$se, zval = model$zval, pval = model$pval)
+})
+leave_one_out_df <- do.call(rbind, leave_one_out_summary)
+leave_one_out_df$Author <- rep(names(leave_one_out_summary), each = 1)
+print(leave_one_out_df)
+
+###################multilevel meta-analysis and funnel plots for publication bias of residual #########################
+
+lm_model <- lm(SMD ~ ID + Author, data = datag1)
+summary(lm_model)
+
+datag1$residual_effect <- resid(lm_model)
+result_residual <- rma(residual_effect, vSMD, data = datag1, method = "REML")
+print(result_residual)
+funnel(result_residual, main = "Funnel Plot of Residual Effect Sizes")
+regtest(result_residual, model = "lm")
+res.tf <- trimfill(result_residual)
+res.tf
+funnel(res.tf)
+
+
+###########################multilevel meta-analysis and funnel plots for publication bias of conditional residual#################
+result_fe <- rma(SMD, vSMD, data = datag1, method = "FE")
+result_re <- rma(SMD, vSMD, data = datag1, method = "REML")
+pred_re <- predict(result_re)$pred
+datag1$conditional_residuals <- datag1$SMD - pred_re
+funnel(result_re, main = "Funnel Plot of Conditional Residuals (Fixed and Between-Study Effects Removed)")
+result_re
+print(result_re)
+res.tf <- trimfill(result_re)
+res.tf
+funnel(res.tf)
+#######################funnel plot of conditional residuals with all effects apart from sampling errors removed######################
+
+result_re_all_removed <- rma(SMD, vSMD, data = datag1, method = "REML")
+pred_re_all_removed <- predict(result_re_all_removed)$pred
+datag1$conditional_residuals_all_removed <- datag1$SMD - pred_re_all_removed
+funnel(result_re_all_removed, 
+       main = "Funnel Plot of Conditional Residuals (All Effects Apart from Sampling Errors Removed)", 
+       xlab = "Effect Size", 
+       ylab = "Standard Error")
+result_re_all_removed
+res.tf <- trimfill(result_re_all_removed)
+res.tf
+funnel(res.tf)
+
+
+
+######################time-lag effects##########################
+View(X1Effect_size_cal_gene_protein_expression)
+datag<-X1Effect_size_cal_gene_protein_expression
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MA <- rma.mv(yi = SMD, V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
+summary(datag1_MA)
+datag1[,'Year']<-as.numeric(datag$Year)
+model<-metafor::rma.mv(yi = SMD, V = vSMD, mods = ~method * Year, random = list(~1 | Author, ~1 | 
+                                                                                 ID), data = datag1)
+
+datag1_bubble <- orchaRd::mod_results(model, mod = "Year", group = "ID", weights = "prop",by = "method")
+orchaRd::bubble_plot(datag1_bubble, group = "ID", mod = "Year", xlab = "Year",legend.pos = "top.left")
+
+
+
+
+
+
+
+
+#--------------growth  overall---------------------------------
+View(X2Effect_size_cal_GROWTH)
+datag<-X2Effect_size_cal_GROWTH
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MA <- rma.mv(yi = SMD , V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
+summary(datag1_MA)
+model_results <- orchaRd::mod_results(datag1_MA, mod = "1", at = NULL, group = "Author")
+model_results
+orchaRd::orchard_plot(datag1_MA, mod = "1", group = "Author", xlab = "Effect Size (SMD)",transfm = "none", twig.size = 0.5, trunk.size = 1)
+I2 <- orchaRd::i2_ml(datag1_MA)
+I2
+pp<-orchaRd::orchard_plot(model_results, mod = "1", xlab = "Effect Size (SMD)") +annotate(geom = "text", x = 0.8, y = 1.25, label = paste0("italic(I)^{2} == ", round(I2[1],2), "*\"%\""),
+                                                                                           color = "black", parse = TRUE, size = 5)
+pp
+ggsave('growth_overall.pdf',width = 15,height = 12,pp)
+
+
+
+
+
+
+
+
+
+#######################sensitive analysis#################
+
+##########leave_one_study##############################
+datag1$Author <- as.factor(datag1$Author)
+result1 <- rma(SMD, vSMD, data = datag1, method="REML")
+leave_one_out_results <- list()
+for (author in unique(datag1$Author)) {
+  subset_data <- datag1[datag1$Author != author, ]
+  result_author <- rma(SMD, vSMD, data = subset_data, method = "REML")
+  leave_one_out_results[[author]] <- result_author
+}
+
+print(leave_one_out_results[["Author1"]])
+smd_estimates <- sapply(leave_one_out_results, function(model) model$b)
+plot(smd_estimates, type = "b", xlab = "Author", ylab = "Effect Size (SMD)", 
+     main = "Leave-One-Out Estimates for Each Author")
+leave_one_out_summary <- lapply(leave_one_out_results, function(model) {
+  data.frame(estimate = model$b, se = model$se, zval = model$zval, pval = model$pval)
+})
+leave_one_out_df <- do.call(rbind, leave_one_out_summary)
+leave_one_out_df$Author <- rep(names(leave_one_out_summary), each = 1)
+print(leave_one_out_df)
+
+
+###################multilevel meta-analysis and funnel plots for publication bias of residual #########################
+
+lm_model <- lm(SMD ~ ID + Author, data = datag1)
+summary(lm_model)
+
+datag1$residual_effect <- resid(lm_model)
+result_residual <- rma(residual_effect, vSMD, data = datag1, method = "REML")
+print(result_residual)
+funnel(result_residual, main = "Funnel Plot of Residual Effect Sizes")
+regtest(result_residual, model = "lm")
+res.tf <- trimfill(result_residual)
+res.tf
+funnel(res.tf)
+
+###########################multilevel meta-analysis and funnel plots for publication bias of conditional residual#################
+result_fe <- rma(SMD, vSMD, data = datag1, method = "FE")
+result_re <- rma(SMD, vSMD, data = datag1, method = "REML")
+pred_re <- predict(result_re)$pred
+datag1$conditional_residuals <- datag1$SMD - pred_re
+funnel(result_re, main = "Funnel Plot of Conditional Residuals (Fixed and Between-Study Effects Removed)")
+result_re
+print(result_re)
+res.tf <- trimfill(result_re)
+res.tf
+funnel(res.tf)
+#######################funnel plot of conditional residuals with all effects apart from sampling errors removed######################
+
+result_re_all_removed <- rma(SMD, vSMD, data = datag1, method = "REML")
+pred_re_all_removed <- predict(result_re_all_removed)$pred
+datag1$conditional_residuals_all_removed <- datag1$SMD - pred_re_all_removed
+funnel(result_re_all_removed, 
+       main = "Funnel Plot of Conditional Residuals (All Effects Apart from Sampling Errors Removed)", 
+       xlab = "Effect Size", 
+       ylab = "Standard Error")
+result_re_all_removed
+res.tf <- trimfill(result_re_all_removed)
+res.tf
+funnel(res.tf)
+
+######################time-lag effects##########################
+View(X2Effect_size_cal_GROWTH)
+datag<-X2Effect_size_cal_GROWTH
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MA <- rma.mv(yi = SMD, V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
+summary(datag1_MA)
+datag1[,'Year']<-as.numeric(datag$Year)
+model<-metafor::rma.mv(yi = SMD, V = vSMD, mods = ~method * Year, random = list(~1 | Author, ~1 | 
+                                                                                  ID), data = datag1)
+
+datag1_bubble <- orchaRd::mod_results(model, mod = "Year", group = "ID", weights = "prop",by = "method")
+orchaRd::bubble_plot(datag1_bubble, group = "ID", mod = "Year", xlab = "Year",legend.pos = "top.left")
+
+
+
+
+
+
+
+
+#--------------disease  overall---------------------------------
+View(X3Effect_size_cal_DISEASE_RESISTANCE)
+datag<-X3Effect_size_cal_DISEASE_RESISTANCE
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MA <- rma.mv(yi = SMD , V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
+summary(datag1_MA)
+model_results <- orchaRd::mod_results(datag1_MA, mod = "1", at = NULL, group = "Author")
+model_results
+orchaRd::orchard_plot(datag1_MA, mod = "1", group = "Author", xlab = "Effect Size (SMD)",transfm = "none", twig.size = 0.5, trunk.size = 1)
+I2 <- orchaRd::i2_ml(datag1_MA)
+I2
+pp<-orchaRd::orchard_plot(model_results, mod = "1", xlab = "Effect Size (SMD)") +annotate(geom = "text", x = 0.8, y = 1.25, label = paste0("italic(I)^{2} == ", round(I2[1],2), "*\"%\""),
+                                                                                          color = "black", parse = TRUE, size = 5)
+pp
+ggsave('disease_overall.pdf',width = 15,height = 12,pp)
+
+
+
+
+
+
+
+
+
+#######################sensitive analysis#################
+
+##########leave_one_study##############################
+datag1$Author <- as.factor(datag1$Author)
+result1 <- rma(SMD, vSMD, data = datag1, method="REML")
+leave_one_out_results <- list()
+for (author in unique(datag1$Author)) {
+  subset_data <- datag1[datag1$Author != author, ]
+  result_author <- rma(SMD, vSMD, data = subset_data, method = "REML")
+  leave_one_out_results[[author]] <- result_author
+}
+
+print(leave_one_out_results[["Author1"]])
+smd_estimates <- sapply(leave_one_out_results, function(model) model$b)
+plot(smd_estimates, type = "b", xlab = "Author", ylab = "Effect Size (SMD)", 
+     main = "Leave-One-Out Estimates for Each Author")
+leave_one_out_summary <- lapply(leave_one_out_results, function(model) {
+  data.frame(estimate = model$b, se = model$se, zval = model$zval, pval = model$pval)
+})
+leave_one_out_df <- do.call(rbind, leave_one_out_summary)
+leave_one_out_df$Author <- rep(names(leave_one_out_summary), each = 1)
+print(leave_one_out_df)
+
+###################multilevel meta-analysis and funnel plots for publication bias of residual #########################
+
+lm_model <- lm(SMD ~ ID + Author, data = datag1)
+used_rows <- as.numeric(rownames(lm_model$model))
+datag1$residual_effect <- NA
+datag1$residual_effect[used_rows] <- resid(lm_model)
+result_residual <- rma(residual_effect, vSMD, data = datag1, method = "REML")
+print(result_residual)
+funnel(result_residual, main = "Funnel Plot of Residual Effect Sizes")
+regtest(result_residual, model = "lm")
+res.tf <- trimfill(result_residual)
+print(res.tf)
+funnel(res.tf, main = "Trim and Fill Funnel Plot")
+
+
+###########################multilevel meta-analysis and funnel plots for publication bias of conditional residual#################
+result_fe <- rma(SMD, vSMD, data = datag1, method = "FE")
+result_re <- rma(SMD, vSMD, data = datag1, method = "REML")
+pred_re <- predict(result_re)$pred
+datag1$conditional_residuals <- datag1$SMD - pred_re
+funnel(result_re, main = "Funnel Plot of Conditional Residuals (Fixed and Between-Study Effects Removed)")
+result_re
+print(result_re)
+res.tf <- trimfill(result_re)
+res.tf
+funnel(res.tf, main = "Trim and Fill Funnel Plot")
+#######################funnel plot of conditional residuals with all effects apart from sampling errors removed######################
+
+result_re_all_removed <- rma(SMD, vSMD, data = datag1, method = "REML")
+pred_re_all_removed <- predict(result_re_all_removed)$pred
+datag1$conditional_residuals_all_removed <- datag1$SMD - pred_re_all_removed
+funnel(result_re_all_removed, 
+       main = "Funnel Plot of Conditional Residuals (All Effects Apart from Sampling Errors Removed)", 
+       xlab = "Effect Size", 
+       ylab = "Standard Error")
+result_re_all_removed
+res.tf <- trimfill(result_re_all_removed)
+res.tf
+funnel(res.tf, main = "Trim and Fill Funnel Plot")
+
+######################time-lag effects##########################
+View(X3Effect_size_cal_DISEASE_RESISTANCE)
+datag<-X3Effect_size_cal_DISEASE_RESISTANCE
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MA <- rma.mv(yi = SMD, V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
+summary(datag1_MA)
+datag1[,'Year']<-as.numeric(datag$Year)
+model<-metafor::rma.mv(yi = SMD, V = vSMD, mods = ~method * Year, random = list(~1 | Author, ~1 | 
+                                                                                  ID), data = datag1)
+
+datag1_bubble <- orchaRd::mod_results(model, mod = "Year", group = "ID", weights = "prop",by = "method")
+orchaRd::bubble_plot(datag1_bubble, group = "ID", mod = "Year", xlab = "Year",legend.pos = "top.left")
+
+
+
+
+
+
+
+
+#--------------fatty acid  overall---------------------------------
+View(X4Effect_size_cal_FATTY_ACID)
+datag<-X4Effect_size_cal_FATTY_ACID
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MA <- rma.mv(yi = SMD , V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
+summary(datag1_MA)
+model_results <- orchaRd::mod_results(datag1_MA, mod = "1", at = NULL, group = "Author")
+model_results
+orchaRd::orchard_plot(datag1_MA, mod = "1", group = "Author", xlab = "Effect Size (SMD)",transfm = "none", twig.size = 0.5, trunk.size = 1)
+I2 <- orchaRd::i2_ml(datag1_MA)
+I2
+pp<-orchaRd::orchard_plot(model_results, mod = "1", xlab = "Effect Size (SMD)") +annotate(geom = "text", x = 0.8, y = 1.25, label = paste0("italic(I)^{2} == ", round(I2[1],2), "*\"%\""),
+                                                                                          color = "black", parse = TRUE, size = 5)
+pp
+ggsave('disease_overall.pdf',width = 15,height = 12,pp)
+
+
+
+
+
+
+
+
+
+#######################sensitive analysis#################
+
+##########leave_one_study##############################
+datag1$Author <- as.factor(datag1$Author)
+result1 <- rma(SMD, vSMD, data = datag1, method="REML")
+leave_one_out_results <- list()
+for (author in unique(datag1$Author)) {
+  subset_data <- datag1[datag1$Author != author, ]
+  result_author <- rma(SMD, vSMD, data = subset_data, method = "REML")
+  leave_one_out_results[[author]] <- result_author
+}
+
+print(leave_one_out_results[["Author1"]])
+smd_estimates <- sapply(leave_one_out_results, function(model) model$b)
+plot(smd_estimates, type = "b", xlab = "Author", ylab = "Effect Size (SMD)", 
+     main = "Leave-One-Out Estimates for Each Author")
+leave_one_out_summary <- lapply(leave_one_out_results, function(model) {
+  data.frame(estimate = model$b, se = model$se, zval = model$zval, pval = model$pval)
+})
+leave_one_out_df <- do.call(rbind, leave_one_out_summary)
+leave_one_out_df$Author <- rep(names(leave_one_out_summary), each = 1)
+print(leave_one_out_df)
+
+
+###################multilevel meta-analysis and funnel plots for publication bias of residual #########################
+
+lm_model <- lm(SMD ~ ID + Author, data = datag1)
+used_rows <- as.numeric(rownames(lm_model$model))
+datag1$residual_effect <- NA
+datag1$residual_effect[used_rows] <- resid(lm_model)
+result_residual <- rma(residual_effect, vSMD, data = datag1, method = "REML")
+print(result_residual)
+funnel(result_residual, main = "Funnel Plot of Residual Effect Sizes")
+regtest(result_residual, model = "lm")
+res.tf <- trimfill(result_residual)
+print(res.tf)
+funnel(res.tf, main = "Trim and Fill Funnel Plot")
+
+
+###########################multilevel meta-analysis and funnel plots for publication bias of conditional residual#################
+result_fe <- rma(SMD, vSMD, data = datag1, method = "FE")
+result_re <- rma(SMD, vSMD, data = datag1, method = "REML")
+pred_re <- predict(result_re)$pred
+datag1$conditional_residuals <- datag1$SMD - pred_re
+funnel(result_re, main = "Funnel Plot of Conditional Residuals (Fixed and Between-Study Effects Removed)")
+result_re
+print(result_re)
+res.tf <- trimfill(result_re)
+res.tf
+funnel(res.tf, main = "Trim and Fill Funnel Plot")
+#######################funnel plot of conditional residuals with all effects apart from sampling errors removed######################
+
+result_re_all_removed <- rma(SMD, vSMD, data = datag1, method = "REML")
+pred_re_all_removed <- predict(result_re_all_removed)$pred
+datag1$conditional_residuals_all_removed <- datag1$SMD - pred_re_all_removed
+funnel(result_re_all_removed, 
+       main = "Funnel Plot of Conditional Residuals (All Effects Apart from Sampling Errors Removed)", 
+       xlab = "Effect Size", 
+       ylab = "Standard Error")
+result_re_all_removed
+res.tf <- trimfill(result_re_all_removed)
+res.tf
+funnel(res.tf, main = "Trim and Fill Funnel Plot")
+
+######################time-lag effects##########################
+View(X4Effect_size_cal_FATTY_ACID)
+datag<-X4Effect_size_cal_FATTY_ACID
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MA <- rma.mv(yi = SMD, V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
+summary(datag1_MA)
+datag1[,'Year']<-as.numeric(datag$Year)
+model<-metafor::rma.mv(yi = SMD, V = vSMD, mods = ~generation * Year, random = list(~1 | Author, ~1 | 
+                                                                                  ID), data = datag1)
+
+datag1_bubble <- orchaRd::mod_results(model, mod = "Year", group = "ID", weights = "prop",by = "generation")
+orchaRd::bubble_plot(datag1_bubble, group = "ID", mod = "Year", xlab = "Year",legend.pos = "top.left")
+
+
+
+
+
+
+
+
+########################-------MODERATOR----#############################
+
+#---------------GENE AND PROTEIN EXPRESISON-------------------------
+View(X1Effect_size_cal_gene_protein_expression)
+datag<-X1Effect_size_cal_gene_protein_expression
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MA <- rma.mv(yi = SMD , V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
+summary(datag1_MA)
+model_results <- orchaRd::mod_results(datap1_MA, mod = "1", at = NULL, group = "Author")
+model_results
+orchaRd::orchard_plot(datap1_MA, mod = "1", group = "Author", xlab = "Standardised mean difference",transfm = "none", twig.size = 0.5, trunk.size = 1)
+# use i2_sn function to obtain the total I^2
+I2 <- orchaRd::i2_ml(datap1_MA)
+I2
+setwd("C:/Users/v1lliu34/Downloads")
+pp<-orchaRd::orchard_plot(model_results, mod = "1", xlab = "Standardised mean difference") +annotate(geom = "text", x = 0.8, y = 0.25, label = paste0("italic(I)^{2} == ", round(I2[1],2), "*\"%\""), color = "black", parse = TRUE, size = 5) + scale_fill_manual(values = "#00b3b0") +
+  scale_colour_manual(values = "#00b3b0")
+pp
+ggsave('production_overall.pdf',width = 15,height = 12,pp)
+
+
+
+
+
+########################  meta-regression based moderator analysis#####################
+
+##############################--------gene and protein expression-------###############
+
+View(X1Effect_size_cal_gene_protein_expression)
+datag<-X1Effect_size_cal_gene_protein_expression
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~method - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
+summary(datag1_MR)
+# Plot the meta-regression model
+orchaRd::orchard_plot(datag1_MR, mod = "method", group = "Author", xlab = "Correlation coefficient",
+                      alpha = 0.5, transfm = "tanh", angle = 45, N = "ID", cb = T)
+R2 <- orchaRd::r2_ml(datag1_MR)
+R2
+
+# species as a moderator (transgenesis)
+View(X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2)
+datag<-X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2
+
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~species, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "species", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "species", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+# category as a moderator (transgenesis)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "category", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "category", group = "Author", xlab = "Standardised mean difference")
+p1
+
+# trait as a moderator (transgenesis)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~trait, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "trait", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "trait", group = "Author", xlab = "Standardised mean difference")
+p1
+
+# tissue as a moderator (transgenesis)
+View(X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2)
+datag<-X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2
+
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~tissue, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "tissue", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "tissue", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+# promoter as a moderator (transgenesis)
+View(X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2)
+datag<-X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2
+
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~promoter, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "promoter", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "promoter", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+# generation as a moderator (transgenesis)
+View(X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2)
+datag<-X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2
+
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~generation, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "generation", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "generation", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+
+# parameter as a moderator (transgenesis)
+View(X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2)
+datag<-X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2
+
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~parameter, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "parameter", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "parameter", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+# gene as a moderator (transgenesis)
+View(X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2)
+datag<-X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2
+
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "gene", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "gene", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+
+
+# species as a moderator (gene editing)
+View(X1_3gene_editing_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2)
+datag<-X1_3gene_editing_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2
+
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~species, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "species", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "species", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+# category as a moderator (gene editing)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "category", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "category", group = "Author", xlab = "Standardised mean difference")
+p1
+
+# trait as a moderator (gene editing)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~trait, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "trait", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "trait", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+# parameter as a moderator (gene editing)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~parameter, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "parameter", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "parameter", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+# gene as a moderator (gene editing)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "gene", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "gene", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+# tissue as a moderator (gene editing)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~tissue, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "tissue", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "tissue", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+# generation as a moderator (gene editing)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~generation, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "generation", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "generation", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+# gene (IGF2, LEPR) as a moderator (gene editing)
+View(X1_4Effect_size_cal_gene_protein_expression_only_IGF2_LepR)
+datag<-X1_4Effect_size_cal_gene_protein_expression_only_IGF2_LepR
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "gene", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "gene", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+
+
+##############################--------growth-------###############
+
+View(X2Effect_size_cal_GROWTH)
+datag<-X2Effect_size_cal_GROWTH
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~method - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
+summary(datag1_MR)
+# Plot the meta-regression model for transgenesis
+orchaRd::orchard_plot(datag1_MR, mod = "method", group = "Author", xlab = "Correlation coefficient",
+                      alpha = 0.5, transfm = "tanh", angle = 45, N = "ID", cb = T)
+R2 <- orchaRd::r2_ml(datag1_MR)
+R2
+
+
+datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~generation - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
+summary(datag1_MR)
+orchaRd::orchard_plot(datag1_MR, mod = "generation", group = "Author", xlab = "Correlation coefficient",
+                      alpha = 0.5, transfm = "tanh", angle = 45, N = "ID", cb = T)
+R2 <- orchaRd::r2_ml(datag1_MR)
+R2
+
+
+
+#  parameter as a moderator (transgenesis)
+View(X2_1Effect_size_cal_GROWTH_transgenesis)
+datag<-X2_1Effect_size_cal_GROWTH_transgenesis
+
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~parameter, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "parameter", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "parameter", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+# category as a moderator (transgenesis)
+View(X2_1Effect_size_cal_GROWTH_transgenesis)
+datag<-X2_1Effect_size_cal_GROWTH_transgenesis
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "category", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "category", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+
+# gene as a moderator (transgenesis)
+View(X2_1Effect_size_cal_GROWTH_transgenesis)
+datag<-X2_1Effect_size_cal_GROWTH_transgenesis
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+res2 <- orchaRd::mod_results(datag_MR0, mod = "gene", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "gene", group = "Author", xlab = "Standardised mean difference")
+p1
+
+#  parameter as a moderator (gene editing)
+
+View(X2_2Effect_size_cal_GROWTH_gene_editing)
+datag<-X2_2Effect_size_cal_GROWTH_gene_editing
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~parameter - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
+R2 <- orchaRd::r2_ml(datag1_MR)
+R2
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~parameter, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "parameter", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "parameter", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+# category as a moderator (gene editing)
+View(X2_2Effect_size_cal_GROWTH_gene_editing)
+datag<-X2_2Effect_size_cal_GROWTH_gene_editing
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "category", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "category", group = "Author", xlab = "Standardised mean difference")
+p1
+
+# gene as a moderator (gene editing)
+View(X2_2Effect_size_cal_GROWTH_gene_editing)
+datag<-X2_2Effect_size_cal_GROWTH_gene_editing
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+res2 <- orchaRd::mod_results(datag_MR0, mod = "gene", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "gene", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+# generation as a moderator (gene editing)
+View(X2_2Effect_size_cal_GROWTH_gene_editing)
+datag<-X2_2Effect_size_cal_GROWTH_gene_editing
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~generation, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+res2 <- orchaRd::mod_results(datag_MR0, mod = "generation", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "generation", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+
+##############################-------disease-------###############
+
+
+View(X3Effect_size_cal_DISEASE_RESISTANCE)
+datag<-X3Effect_size_cal_DISEASE_RESISTANCE
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~method - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
+summary(datag1_MR)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~method, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+res2 <- orchaRd::mod_results(datag_MR0, mod = "method", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "method", group = "Author", xlab = "Standardised mean difference")
+p1
+
+orchaRd::orchard_plot(datag1_MR, mod = "method", group = "Author", xlab = "Correlation coefficient",
+                      alpha = 0.5, transfm = "tanh", angle = 45, N = "ID", cb = T)
+R2 <- orchaRd::r2_ml(datag1_MR)
+R2
+
+
+
+
+
+#  parameter as a moderator (transgenesis)
+View(X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis)
+datag<-X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis
+
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~parameter, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "parameter", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "parameter", group = "Author", xlab = "Standardised mean difference")
+p1
+
+datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~parameter - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
+summary(datag1_MR)
+orchaRd::orchard_plot(datag1_MR, mod = "parameter", group = "Author", xlab = "Correlation coefficient",
+                      alpha = 0.5, transfm = "tanh", angle = 45, N = "ID", cb = T)
+R2 <- orchaRd::r2_ml(datag1_MR)
+R2
+
+
+# category as a moderator (transgenesis)
+View(X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis)
+datag<-X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "category", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "category", group = "Author", xlab = "Standardised mean difference")
+p1
+
+#  gene as a moderator (transgenesis)
+View(X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis)
+datag<-X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis
+
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "gene", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "gene", group = "Author", xlab = "Standardised mean difference")
+p1
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+#  pathogen as a moderator (transgenesis)
+View(X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis)
+datag<-X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis
+
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~pathogen - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
+summary(datag1_MR)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~pathogen, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+res2 <- orchaRd::mod_results(datag_MR0, mod = "pathogen", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "pathogen", group = "Author", xlab = "Standardised mean difference")
+p1
+
+orchaRd::orchard_plot(datag1_MR, mod = "pathogen", group = "Author", xlab = "Correlation coefficient",
+                      alpha = 0.5, transfm = "tanh", angle = 45, N = "ID", cb = T)
+R2 <- orchaRd::r2_ml(datag1_MR)
+R2
+
+# generation as a moderator (transgenesis)
+View(X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis)
+datag<-X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis
+
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~generation - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
+summary(datag1_MR)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~generation, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+res2 <- orchaRd::mod_results(datag_MR0, mod = "generation", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "generation", group = "Author", xlab = "Standardised mean difference")
+p1
+
+orchaRd::orchard_plot(datag1_MR, mod = "generation", group = "Author", xlab = "Correlation coefficient",
+                      alpha = 0.5, transfm = "tanh", angle = 45, N = "ID", cb = T)
+R2 <- orchaRd::r2_ml(datag1_MR)
+R2
+
+
+# category as a moderator (transgenesis)
+View(X3_3Effect_size_cal_DISEASE_RESISTANCE_transgenesis_CSR)
+datag<-X3_3Effect_size_cal_DISEASE_RESISTANCE_transgenesis_CSR
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "category", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "category", group = "Author", xlab = "Standardised mean difference")
+p1
+
+# category as a moderator (transgenesis)
+View(X3_6Effect_size_cal_DISEASE_RESISTANCE_transgenesis_virus_RNA)
+datag<-X3_6Effect_size_cal_DISEASE_RESISTANCE_transgenesis_virus_RNA
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "category", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "category", group = "Author", xlab = "Standardised mean difference")
+p1
+
+# category as a moderator (transgenesis)
+View(X3_4Effect_size_cal_DISEASE_RESISTANCE_transgenesis_pathogen_load)
+datag<-X3_4Effect_size_cal_DISEASE_RESISTANCE_transgenesis_pathogen_load
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "category", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "category", group = "Author", xlab = "Standardised mean difference")
+p1
+
+# category as a moderator (transgenesis)
+View(X3_7Effect_size_cal_DISEASE_RESISTANCE_transgenesis_virus_titer)
+datag<-X3_7Effect_size_cal_DISEASE_RESISTANCE_transgenesis_virus_titer
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "category", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "category", group = "Author", xlab = "Standardised mean difference")
+p1
+
+#  gene as a moderator (transgenesis)
+View(X3_3Effect_size_cal_DISEASE_RESISTANCE_transgenesis_CSR)
+datag<-X3_3Effect_size_cal_DISEASE_RESISTANCE_transgenesis_CSR
+
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "gene", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "gene", group = "Author", xlab = "Standardised mean difference")
+p1
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+
+#  gene as a moderator (transgenesis)
+View(X3_4Effect_size_cal_DISEASE_RESISTANCE_transgenesis_pathogen_load)
+datag<-X3_4Effect_size_cal_DISEASE_RESISTANCE_transgenesis_pathogen_load
+
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "gene", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "gene", group = "Author", xlab = "Standardised mean difference")
+p1
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+
+
+#  promoter as a moderator (transgenesis)
+View(X3_3Effect_size_cal_DISEASE_RESISTANCE_transgenesis_CSR)
+datag<-X3_3Effect_size_cal_DISEASE_RESISTANCE_transgenesis_CSR
+
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~promoter, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "promoter", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "promoter", group = "Author", xlab = "Standardised mean difference")
+p1
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+
+#  promoter as a moderator (transgenesis)
+View(X3_4Effect_size_cal_DISEASE_RESISTANCE_transgenesis_pathogen_load)
+datag<-X3_4Effect_size_cal_DISEASE_RESISTANCE_transgenesis_pathogen_load
+
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~promoter, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "promoter", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "promoter", group = "Author", xlab = "Standardised mean difference")
+p1
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+
+#  pathogen as a moderator (gene editing)
+
+View(X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing)
+datag<-X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~pathogen - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
+R2 <- orchaRd::r2_ml(datag1_MR)
+R2
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~pathogen, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "pathogen", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "pathogen", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+
+#  generation as a moderator (gene editing)
+
+View(X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing)
+datag<-X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~generation - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
+R2 <- orchaRd::r2_ml(datag1_MR)
+R2
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~generation, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "generation", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "generation", group = "Author", xlab = "Standardised mean difference")
+p1
+
+#  parameter as a moderator (gene editing)
+
+View(X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing)
+datag<-X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~parameter - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
+R2 <- orchaRd::r2_ml(datag1_MR)
+R2
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~parameter, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "parameter", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "parameter", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+# category as a moderator (gene editing)
+View(X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing)
+datag<-X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "category", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "category", group = "Author", xlab = "Standardised mean difference")
+p1
+
+# gene as a moderator (gene editing)
+View(X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing)
+datag<-X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "gene", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "gene", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+# category as a moderator (gene editing)
+View(X3_10Effect_size_cal_DISEASE_RESISTANCE_gene_editing_virus_RNA)
+datag<-X3_10Effect_size_cal_DISEASE_RESISTANCE_gene_editing_virus_RNA
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "category", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "category", group = "Author", xlab = "Standardised mean difference")
+p1
+
+# gene as a moderator (gene editing)
+View(X3_10Effect_size_cal_DISEASE_RESISTANCE_gene_editing_virus_RNA)
+datag<-X3_10Effect_size_cal_DISEASE_RESISTANCE_gene_editing_virus_RNA
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "gene", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "gene", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+##############################-------fatty acid-------###############
+
+View(X4_1Effect_size_cal_FATTY_ACID_transgenesis)
+datag<-X4_1Effect_size_cal_FATTY_ACID_transgenesis
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~parameter - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
+summary(datag1_MR)
+# Plot the meta-regression model for transgenesis
+orchaRd::orchard_plot(datag1_MR, mod = "parameter", group = "Author", xlab = "Correlation coefficient",
+                      alpha = 0.5, transfm = "tanh", angle = 45, N = "ID", cb = T)
+R2 <- orchaRd::r2_ml(datag1_MR)
+R2
+
+#  parameter as a moderator (transgenesis)
+View(X4_1Effect_size_cal_FATTY_ACID_transgenesis)
+datag<-X4_1Effect_size_cal_FATTY_ACID_transgenesis
+
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~parameter, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "parameter", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "parameter", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+
+# category as a moderator (transgenesis)
+View(X4_1Effect_size_cal_FATTY_ACID_transgenesis)
+datag<-X4_1Effect_size_cal_FATTY_ACID_transgenesis
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "category", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "category", group = "Author", xlab = "Standardised mean difference")
+p1
+
+#######################################
+
+# category as a moderator (transgenesis)
+View(X4_3Effect_size_cal_FATTY_ACID_transgenesis_n_3)
+datag<-X4_3Effect_size_cal_FATTY_ACID_transgenesis_n_3
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "category", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "category", group = "Author", xlab = "Standardised mean difference")
+p1
+
+# gene as a moderator (transgenesis)
+View(X4_3Effect_size_cal_FATTY_ACID_transgenesis_n_3)
+datag<-X4_3Effect_size_cal_FATTY_ACID_transgenesis_n_3
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "gene", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "gene", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+
+# category as a moderator (transgenesis)
+View(X4_4Effect_size_cal_FATTY_ACID_transgenesis_n_6)
+datag<-X4_4Effect_size_cal_FATTY_ACID_transgenesis_n_6
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "category", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "category", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+# gene as a moderator (transgenesis)
+View(X4_4Effect_size_cal_FATTY_ACID_transgenesis_n_6)
+datag<-X4_4Effect_size_cal_FATTY_ACID_transgenesis_n_6
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "gene", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "gene", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+
+# category as a moderator (transgenesis)
+View(X4_7Effect_size_cal_FATTY_ACID_transgenesis_n_6_n_3)
+datag<-X4_7Effect_size_cal_FATTY_ACID_transgenesis_n_6_n_3
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "category", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "category", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+# gene as a moderator (transgenesis)
+View(X4_7Effect_size_cal_FATTY_ACID_transgenesis_n_6_n_3)
+datag<-X4_7Effect_size_cal_FATTY_ACID_transgenesis_n_6_n_3
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "gene", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "gene", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+
+# category as a moderator (transgenesis)
+View(X4_5Effect_size_cal_FATTY_ACID_transgenesis_DHA)
+datag<-X4_5Effect_size_cal_FATTY_ACID_transgenesis_DHA
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "category", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "category", group = "Author", xlab = "Standardised mean difference")
+p1
+
+# gene as a moderator (transgenesis)
+View(X4_5Effect_size_cal_FATTY_ACID_transgenesis_DHA)
+datag<-X4_5Effect_size_cal_FATTY_ACID_transgenesis_DHA
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "gene", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "gene", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+# category as a moderator (transgenesis)
+View(X4_6Effect_size_cal_FATTY_ACID_transgenesis_EPA)
+datag<-X4_6Effect_size_cal_FATTY_ACID_transgenesis_EPA
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "category", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "category", group = "Author", xlab = "Standardised mean difference")
+p1
+
+# gene as a moderator (transgenesis)
+View(X4_6Effect_size_cal_FATTY_ACID_transgenesis_EPA)
+datag<-X4_6Effect_size_cal_FATTY_ACID_transgenesis_EPA
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "gene", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "gene", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+#  gene as a moderator (transgenesis)
+View(X4_1Effect_size_cal_FATTY_ACID_transgenesis)
+datag<-X4_1Effect_size_cal_FATTY_ACID_transgenesis
+
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "gene", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "gene", group = "Author", xlab = "Standardised mean difference")
+p1
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+
+#  generation as a moderator (transgenesis)
+View(X4_1Effect_size_cal_FATTY_ACID_transgenesis)
+datag<-X4_1Effect_size_cal_FATTY_ACID_transgenesis
+
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~generation, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "generation", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "generation", group = "Author", xlab = "Standardised mean difference")
+p1
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+#  parameter as a moderator (gene editing)
+
+View(X4_2Effect_size_cal_FATTY_ACID_gene_editing)
+datag<-X4_2Effect_size_cal_FATTY_ACID_gene_editing
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~parameter - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
+R2 <- orchaRd::r2_ml(datag1_MR)
+R2
+
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~parameter, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "parameter", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "parameter", group = "Author", xlab = "Standardised mean difference")
+p1
+
+
+# category as a moderator (gene editing)
+View(X4_2Effect_size_cal_FATTY_ACID_gene_editing)
+datag<-X4_2Effect_size_cal_FATTY_ACID_gene_editing
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "category", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "category", group = "Author", xlab = "Standardised mean difference")
+p1
+
+# gene as a moderator (gene editing)
+View(X4_2Effect_size_cal_FATTY_ACID_gene_editing)
+datag<-X4_2Effect_size_cal_FATTY_ACID_gene_editing
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
+datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
+summary(datag_MR0)
+
+R2 <- orchaRd::r2_ml(datag_MR0)
+R2
+
+res2 <- orchaRd::mod_results(datag_MR0, mod = "gene", group = "Author")
+res2
+p1<- orchaRd::orchard_plot(res2, mod = "gene", group = "Author", xlab = "Standardised mean difference")
+p1
+
 
 
 ################################
