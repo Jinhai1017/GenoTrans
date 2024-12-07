@@ -1,0 +1,320 @@
+ID,Author,category,species,gene,method,promoter,parameter,generation,age,treat_n,treat_mean,treat_sd,control_n,control_mean,control_sd
+117,"Mosher et al., 2007",dog,whippet dog,mstn,gene_editing,NA,body_weight,P1,0,5,0.45,0.07,22,0.23,0.06
+128,"Boman et al., 2009",sheep,Norwegian White,mstn,gene_editing,NA,body_weight,P1,150,7,24.2,4.8,395,19.2,6.1
+129,"Boman et al., 2009",sheep,Norwegian White,mstn,gene_editing,NA,body_weight,P1,150,17,23.4,3.3,395,19.2,6.1
+130,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,49,489,545.87,4.97,126,538.31,7.48
+131,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,49,415,550.35,5.22,126,538.31,7.48
+132,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,63,489,661.42,7.96,126,646.19,14.3
+133,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,63,415,654.43,8.57,126,646.19,14.3
+134,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,77,489,721.52,10.11,126,700.37,16.21
+135,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,77,415,745.24,10.72,126,700.37,16.21
+136,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,91,489,991.41,9.32,126,971.84,13.84
+137,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,91,415,1003.47,9.77,126,971.84,13.84
+138,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,119,489,1295.19,11.15,126,1252.45,17.08
+139,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,119,415,1298.43,11.74,126,1252.45,17.08
+140,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,49,356,535.18,5.45,648,553.5,4.75
+141,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,49,27,535.8,13.43,648,553.5,4.75
+142,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,63,356,646.69,9.15,648,661.33,7.21
+143,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,63,27,675.25,28.69,648,661.33,7.21
+144,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,77,356,712.2,11.38,648,738.68,9.61
+145,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,77,27,690.82,30.57,648,738.68,9.61
+146,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,91,356,978.04,10.24,648,1003.05,8.97
+147,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,91,27,973.31,24.85,648,1003.05,8.97
+148,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,119,356,1276.46,12.34,648,1302.55,10.65
+149,"Tang et al., 2010",chicken,Beijing You,TGF?2,gene_editing,NA,body_weight,F1,119,27,1211.65,31.31,648,1302.55,10.65
+175,"Qian et al., 2015",pig,Meishan,mstn,gene_editing,NA,body_weight,P1,240,3,47.07,1.4,6,38.03,0.54
+186,"Crispo et al., 2015",sheep,Helsinki ,mstn,gene_editing,NA,body_weight,P1,15,5,8.086,0.756,12,4.332,0.378
+187,"Crispo et al., 2015",sheep,Helsinki ,mstn,gene_editing,NA,body_weight,P1,15,5,9.824,0.907,12,4.332,0.378
+188,"Crispo et al., 2015",sheep,Helsinki ,mstn,gene_editing,NA,body_weight,P1,30,5,12.594,1.411,12,7.053,0.353
+189,"Crispo et al., 2015",sheep,Helsinki ,mstn,gene_editing,NA,body_weight,P1,30,5,11.662,0.655,12,7.053,0.353
+190,"Crispo et al., 2015",sheep,Helsinki ,mstn,gene_editing,NA,body_weight,P1,60,5,15.416,1.108,12,8.438,0.605
+191,"Crispo et al., 2015",sheep,Helsinki ,mstn,gene_editing,NA,body_weight,P1,60,5,12.544,0.504,12,8.438,0.605
+195,"Lv et al., 2015",rabbit,New Zealand,mstn,gene_editing,NA,body_weight,F1,14,4,0.241,0.072,4,0.179,0
+196,"Lv et al., 2015",rabbit,New Zealand,mstn,gene_editing,NA,body_weight,F1,28,4,0.604,0.179,4,0.469,0
+197,"Lv et al., 2015",rabbit,New Zealand,mstn,gene_editing,NA,body_weight,F1,42,4,1.39,0.107,4,1.127,0
+198,"Lv et al., 2015",rabbit,New Zealand,mstn,gene_editing,NA,body_weight,F1,49,4,1.873,0.179,4,1.484,0.094
+199,"Lv et al., 2015",rabbit,New Zealand,mstn,gene_editing,NA,body_weight,F1,56,4,2.222,0.179,4,1.663,0.098
+200,"Zhong et al., 2016",fish,Common carp,mstn,gene_editing,NA,body_weight,P1,30,20,0.151,0.015,20,0.118,0.023
+201,"Zhong et al., 2016",fish,Common carp,mstn,gene_editing,NA,body_weight,P1,60,20,0.602,0.023,20,0.482,0.028
+202,"Zhong et al., 2016",fish,Common carp,mstn,gene_editing,NA,body_weight,P1,90,20,1.144,0.028,20,0.991,0.063
+208,"Bi et al., 2016",pig,Hubei white,mstn,gene_editing,NA,body_weight,P1,30,3,6.338,0,3,7.042,0
+209,"Bi et al., 2016",pig,Hubei white,mstn,gene_editing,NA,body_weight,P1,60,3,20.246,2.113,3,20.07,0
+210,"Bi et al., 2016",pig,Hubei white,mstn,gene_editing,NA,body_weight,P1,90,3,33.099,3.345,3,28.873,0
+211,"Bi et al., 2016",pig,Hubei white,mstn,gene_editing,NA,body_weight,P1,120,3,49.824,2.465,3,43.838,2.113
+212,"Bi et al., 2016",pig,Hubei white,mstn,gene_editing,NA,body_weight,P1,150,3,66.901,2.465,3,58.979,0
+213,"Bi et al., 2016",pig,Hubei white,mstn,gene_editing,NA,body_weight,P1,180,3,87.324,0,3,81.338,2.641
+215,"Rao et al., 2016",pig,Crossbred,mstn,gene_editing,NA,body_weight,P1,30,1,4.4,0,3,2.46,0.73
+216,"Rao et al., 2016",pig,Crossbred,mstn,gene_editing,NA,body_weight,P1,30,1,2.4,0,3,1.66,0.09
+217,"Rao et al., 2016",pig,Crossbred,mstn,gene_editing,NA,body_weight,P1,30,1,2.5,0,3,1.62,0.15
+218,"Guo et al., 2016",rabbit,Jiangsu,mstn,gene_editing,NA,body_weight,P1,0,8,2.1,0.59,10,1.19,0.16
+219,"Guo et al., 2016",rabbit,Jiangsu,mstn,gene_editing,NA,body_weight,P1,0,8,1.01,0.27,10,0.67,0.13
+220,"Guo et al., 2016",rabbit,Jiangsu,mstn,gene_editing,NA,body_weight,P1,0,8,0.86,0.21,10,0.43,0.059
+221,"Guo et al., 2016",rabbit,Jiangsu,mstn,gene_editing,NA,body_weight,P1,0,31,61.1,14.87,42,51.24,7.97
+222,"Guo et al., 2016",goat,Haimen,mstn,gene_editing,NA,body_weight,P1,4,4,3.072,0.483,17,2.488,0.28
+223,"Guo et al., 2016",goat,Haimen,mstn,gene_editing,NA,body_weight,P1,120,4,15.619,0,17,12.216,0.361
+233,"Wang et al., 2017",pig,Erhualian,mstn,gene_editing,NA,body_weight,P1,0,23,823.009,50.147,75,628.319,135.693
+237,"Khalil et al., 2017",fish,channel catfish,mstn,gene_editing,NA,body_weight,P1,40,115,234.3,6.9,115,180.6,2.77
+238,"Zou et al., 2018",pig,Large white,FBXO40,gene_editing,NA,body_weight,F1,150,5,58.772,1.574,5,54.63,0.517
+239,"Zou et al., 2018",pig,Large white,FBXO40,gene_editing,NA,body_weight,F1,150,5,7.015,0.315,5,7.054,0.591
+240,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,NA,body_weight,P1,120,4,15.87,1.706,4,11.007,1.024
+241,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,NA,body_weight,P1,150,4,18.089,1.706,4,13.14,1.621
+242,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,NA,body_weight,P1,180,4,21.16,2.133,4,14.164,1.706
+243,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,NA,body_weight,P1,120,4,21.875,0.833,5,13.333,0.729
+244,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,NA,body_weight,P1,150,4,23.438,1.354,5,16.667,1.146
+245,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,NA,body_weight,P1,180,4,28.229,1.562,5,19.792,1.354
+246,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,NA,body_weight,F1,0,6,0.65,0.04,5,0.7,0.03
+247,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,NA,body_weight,F1,0,8,0.68,0.03,4,0.66,0.05
+248,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,NA,body_weight,F1,45,6,5.82,0.27,5,5.29,0.17
+249,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,NA,body_weight,F1,45,8,6.59,0.2,4,5.64,0.18
+250,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,NA,body_weight,F1,150,6,35.39,3.03,5,27.58,1.18
+251,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,NA,body_weight,F1,150,8,38.87,0.9,4,30.27,2.9
+259,"Kishimoto et al., 2018",fish,red sea bream,mstn,gene_editing,NA,body_weight,F1,559,4,770.5,78.5,5,859.1,163.2
+260,"Kishimoto et al., 2018",fish,red sea bream,mstn,gene_editing,NA,body_weight,F1,559,3,771.9,90.4,5,859.1,163.2
+262,"He et al., 2018",goat,Yangtze River Delta white,mstn,gene_editing,NA,body_weight,P1,0,6,3.25,0.94,12,3.36,0.48
+263,"He et al., 2018",goat,Yangtze River Delta white,mstn,gene_editing,NA,body_weight,P1,20,6,7.09,1.3,12,7.6,1.25
+264,"He et al., 2018",goat,Yangtze River Delta white,mstn,gene_editing,NA,body_weight,P1,36,6,9.63,2.06,12,10.46,1.07
+265,"He et al., 2018",goat,Yangtze River Delta white,mstn,gene_editing,NA,body_weight,P1,60,6,13.07,2.22,12,13.69,1.65
+266,"He et al., 2018",goat,Yangtze River Delta white,mstn,gene_editing,NA,body_weight,P1,90,6,17.32,2.62,12,15.17,2.35
+267,"He et al., 2018",goat,Yangtze River Delta white,mstn,gene_editing,NA,body_weight,P1,120,6,20.31,3.48,12,17.35,1.91
+268,"He et al., 2018",goat,Yangtze River Delta white,mstn,gene_editing,NA,body_weight,P1,210,6,31.21,4.09,12,25.09,2.33
+271,"Wang et al., 2018",goat,Cashmere,mstn,gene_editing,NA,body_weight,P1,0,10,3.383,0,20,2.707,0
+272,"Wang et al., 2018",goat,Cashmere,mstn,gene_editing,NA,body_weight,P1,30,10,8.571,2.03,20,6.09,0
+273,"Wang et al., 2018",goat,Cashmere,mstn,gene_editing,NA,body_weight,P1,60,10,13.083,4.511,20,8.12,1.805
+274,"Wang et al., 2018",goat,Cashmere,mstn,gene_editing,NA,body_weight,P1,90,10,17.594,4.962,20,12.406,2.481
+275,"Wang et al., 2018",goat,Cashmere,mstn,gene_editing,NA,body_weight,P1,120,10,24.812,7.218,20,17.82,3.158
+276,"Wang et al., 2018",goat,Cashmere,mstn,gene_editing,NA,body_weight,P1,150,10,28.195,6.992,20,19.173,4.511
+277,"Wang et al., 2018",goat,Cashmere,mstn,gene_editing,NA,body_weight,P1,180,10,31.353,5.865,20,24.361,2.707
+278,"Wang et al., 2018",goat,Cashmere,mstn,gene_editing,NA,body_weight,P1,210,10,35.865,4.962,20,27.97,2.707
+279,"Wang et al., 2018",goat,Cashmere,mstn,gene_editing,NA,body_weight,P1,240,10,41.729,5.188,20,29.774,2.932
+280,"Wang et al., 2018",goat,Cashmere,mstn,gene_editing,NA,body_weight,P1,270,10,45.113,6.767,20,33.383,3.609
+281,"Wang et al., 2018",goat,Cashmere,mstn,gene_editing,NA,body_weight,P1,300,10,48.271,5.188,20,35.188,3.158
+282,"Wang et al., 2018",goat,Cashmere,mstn,gene_editing,NA,body_weight,P1,330,10,54.135,6.767,20,36.09,4.06
+283,"Wang et al., 2018",goat,Cashmere,mstn,gene_editing,NA,body_weight,P1,360,10,56.842,6.541,20,40.602,5.414
+291,"Liu et al., 2019",pig,Liang Guang Small Spotted ,IGF2,gene_editing,NA,body_weight,P1,175,1,44.384,0,45,37.808,1.151
+292,"Liu et al., 2019",pig,Liang Guang Small Spotted ,IGF2,gene_editing,NA,body_weight,P1,338,1,86.294,0,7,53.735,4.765
+293,"Kim et al., 2019",fish,olive flounder,mstn,gene_editing,NA,body_weight,P1,159,3,77.419,0,3,64.516,10.753
+294,"Kim et al., 2019",fish,olive flounder,mstn,gene_editing,NA,body_weight,P1,188,3,115.054,10.753,3,106.452,22.581
+295,"Kim et al., 2019",fish,olive flounder,mstn,gene_editing,NA,body_weight,P1,226,3,205.376,43.011,3,189.247,11.828
+296,"Kim et al., 2019",fish,olive flounder,mstn,gene_editing,NA,body_weight,P1,251,3,286.022,69.892,3,250.538,26.882
+301,"Yin et al., 2019",pig,Chinese Experimental Mini,mc3r,gene_editing,NA,body_weight,F1,114,6,57.358,3.27,6,50.818,3.019
+302,"Zhang et al., 2019",rabbit,New Zealand,mstn,gene_editing,NA,body_weight,P1,63,5,489.796,0,5,306.122,183.673
+303,"Zhang et al., 2019",rabbit,New Zealand,mstn,gene_editing,NA,body_weight,P1,63,3,326.633,150.754,5,326.633,138.191
+304,"Zhang et al., 2019",rabbit,New Zealand,mstn,gene_editing,NA,body_weight,P1,70,5,887.755,0,5,596.939,122.449
+305,"Zhang et al., 2019",rabbit,New Zealand,mstn,gene_editing,NA,body_weight,P1,70,3,690.955,175.879,5,628.141,125.628
+306,"Zhang et al., 2019",rabbit,New Zealand,mstn,gene_editing,NA,body_weight,P1,77,5,1178.571,0,5,795.918,168.367
+307,"Zhang et al., 2019",rabbit,New Zealand,mstn,gene_editing,NA,body_weight,P1,77,3,1067.839,175.879,5,904.523,125.628
+308,"Zhang et al., 2019",rabbit,New Zealand,mstn,gene_editing,NA,body_weight,P1,84,5,1637.755,61.224,5,1163.265,137.755
+309,"Zhang et al., 2019",rabbit,New Zealand,mstn,gene_editing,NA,body_weight,P1,84,3,1469.849,138.191,5,1130.653,175.879
+310,"Zhang et al., 2019",rabbit,New Zealand,mstn,gene_editing,NA,body_weight,P1,91,5,2020.408,0,5,1392.857,244.898
+311,"Zhang et al., 2019",rabbit,New Zealand,mstn,gene_editing,NA,body_weight,P1,91,3,1884.422,188.442,5,1369.347,138.191
+312,"Zhang et al., 2019",rabbit,New Zealand,mstn,gene_editing,NA,body_weight,P1,98,5,2318.4,183.15,5,1966.2,225.56
+313,"Zhang et al., 2019",rabbit,New Zealand,mstn,gene_editing,NA,body_weight,P1,98,3,2579.33,67.99,5,2063.33,186.47
+318,"Ohama et al., 2020",fish,red sea bream,mstn,gene_editing,NA,body_weight,F1,134,51,42.7,7.6,51,41.1,10.3
+319,"Ohama et al., 2020",fish,red sea bream,mstn,gene_editing,NA,body_weight,F1,190,49,94.7,12.2,50,86.2,15.8
+329,"Sun et al., 2020a",fish,blunt snout bream,mstn,gene_editing,NA,body_weight,P1,180,30,135.25,3.15,30,125.25,2.64
+330,"Sun et al., 2020a",fish,blunt snout bream,mstn,gene_editing,NA,body_weight,P1,180,30,133.75,2.35,30,125.25,2.64
+331,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,body_weight,P1,0,11,5.882,0.35,11,6.863,0
+332,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,body_weight,P1,7,11,24.02,1.26,11,21.078,0
+333,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,body_weight,P1,14,11,42.647,3.431,11,43.137,0
+334,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,body_weight,P1,21,11,71.569,2.451,11,63.235,0
+335,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,body_weight,P1,28,11,92.157,4.412,11,83.824,0
+336,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,body_weight,P1,35,11,112.745,1.961,11,99.02,0
+337,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,body_weight,P1,42,11,132.843,4.412,11,116.176,0
+338,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,body_weight,P1,7,10,6.667,12.3,10,5.714,0
+339,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,body_weight,P1,14,10,23.333,1.6,10,20,0
+340,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,body_weight,P1,21,10,41.905,4.31,10,38.571,0
+341,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,body_weight,P1,28,10,64.762,2.381,10,58.095,0
+342,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,body_weight,P1,35,10,86.667,3.333,10,77.619,0
+343,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,body_weight,P1,42,10,105.714,10.21,10,91.905,0
+344,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,body_weight,P1,49,10,112.857,11.2,10,99.048,0
+345,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,body_weight,P1,56,10,120,10.3,10,101.905,0
+354,"Li et al., 2020",pig,Duroc Meishan,mstn,gene_editing,NA,body_weight,F1,210,13,101.25,10.98,8,102.29,14.3
+355,"Li et al., 2020",pig,Duroc Meishan,mstn,gene_editing,NA,body_weight,F1,210,15,99.65,7.4,7,103.57,11.1
+358,"Kim et al., 2020",chicken,White Leghorn,mstn,gene_editing,NA,body_weight,F1,84,14,1183.007,55.556,16,1205.882,42.484
+359,"Kim et al., 2020",chicken,White Leghorn,mstn,gene_editing,NA,body_weight,F1,91,14,1333.333,62.092,16,1307.19,68.627
+360,"Kim et al., 2020",chicken,White Leghorn,mstn,gene_editing,NA,body_weight,F1,98,14,1437.908,65.359,16,1388.889,81.699
+361,"Kim et al., 2020",chicken,White Leghorn,mstn,gene_editing,NA,body_weight,F1,105,14,1558.824,71.895,16,1500,75.163
+362,"Kim et al., 2020",chicken,White Leghorn,mstn,gene_editing,NA,body_weight,F1,112,14,1643.791,71.895,16,1555.556,71.895
+363,"Kim et al., 2020",chicken,White Leghorn,mstn,gene_editing,NA,body_weight,F1,119,14,1728.758,58.824,16,1630.719,84.967
+364,"Kim et al., 2020",chicken,White Leghorn,mstn,gene_editing,NA,body_weight,F1,126,14,1816.993,75.163,16,1669.935,88.235
+384,"Zhang et al., 2020",fish,yellow catfish,mstn,gene_editing,NA,body_weight,F1,80,34,16.48,3.4,14,14.26,3.23
+385,"Zhang et al., 2020",fish,yellow catfish,mstn,gene_editing,NA,body_weight,F1,80,18,18.28,5.54,14,14.26,3.23
+386,"Zhang et al., 2020",fish,yellow catfish,mstn,gene_editing,NA,body_weight,F1,80,28,8.87,1.79,15,7.42,1.75
+387,"Zhang et al., 2020",fish,yellow catfish,mstn,gene_editing,NA,body_weight,F1,80,19,9.46,1.57,15,7.42,1.75
+388,"Zhang et al., 2020",fish,yellow catfish,mstn,gene_editing,NA,body_weight,F1,210,17,84.94,18.27,19,62.14,14.71
+389,"Zhang et al., 2020",fish,yellow catfish,mstn,gene_editing,NA,body_weight,F1,210,52,69.06,18.47,19,62.14,14.71
+390,"Zhang et al., 2020",fish,yellow catfish,mstn,gene_editing,NA,body_weight,F1,210,24,26.15,4.53,22,23.37,4.38
+391,"Zhang et al., 2020",fish,yellow catfish,mstn,gene_editing,NA,body_weight,F1,210,46,24.92,5.4,22,23.37,4.38
+398,"Tao et al., 2021",fish,Pond loach,mstn,gene_editing,NA,body_weight,P1,30,50,0.026,0.001,50,0.02,0.001
+399,"Tao et al., 2021",fish,Pond loach,mstn,gene_editing,NA,body_weight,P1,60,50,0.134,0.006,50,0.116,0.005
+400,"Tao et al., 2021",fish,Pond loach,mstn,gene_editing,NA,body_weight,P1,90,50,0.387,0.025,50,0.303,0.021
+428,"Mankiewicz et al., 2022",fish,rainbow trout,LepR,gene_editing,NA,body_weight,P1,21,16,219.16,9.11,18,205.69,6.51
+429,"Mankiewicz et al., 2022",fish,rainbow trout,LepR,gene_editing,NA,body_weight,P1,42,15,306.41,16.1,15,267.17,13.76
+436,"Coogan et al., 2022a",fish,channel catfish,mc4r,gene_editing,NA,body_weight,P1,360,2,55.8,13.8,27,46.9,23.5
+437,"Coogan et al., 2022a",fish,channel catfish,mc4r,gene_editing,NA,body_weight,P1,540,6,616.7,281.5,29,417.6,217.5
+438,"Coogan et al., 2022a",fish,channel catfish,mc4r,gene_editing,NA,body_weight,P1,810,5,1044,346.8,16,917.5,212.8
+439,"Coogan et al., 2022a",fish,channel catfish,mc4r,gene_editing,NA,body_weight,P1,990,6,1600,629.3,15,1412,368.9
+440,"Coogan et al., 2022a",fish,channel catfish,mc4r,gene_editing,NA,body_weight,P1,1080,5,2120,556.1,8,1820,305.8
+441,"Coogan et al., 2022a",fish,channel catfish,mc4r,gene_editing,NA,body_weight,F1,180,21,17.8,5.4,20,16.6,4.4
+442,"Coogan et al., 2022a",fish,channel catfish,mc4r,gene_editing,NA,body_weight,F1,360,18,35.9,9.5,18,32.7,7.3
+443,"Coogan et al., 2022a",fish,channel catfish,mc4r,gene_editing,NA,body_weight,F1,450,6,194,35.5,7,204.1,37.8
+444,"Coogan et al., 2022a",fish,channel catfish,mc4r,gene_editing,NA,body_weight,F1,630,8,572.5,154.2,12,578.3,149.8
+445,"Coogan et al., 2022a",fish,channel catfish,mc4r,gene_editing,NA,body_weight,F1,720,5,822,182.3,7,754.3,114.1
+446,"Coogan et al., 2022a",fish,channel catfish,mc4r,gene_editing,NA,body_weight,F1,840,7,1322.9,364.3,10,1044,304.9
+447,"Coogan et al., 2022a",fish,channel catfish,mc4r,gene_editing,NA,body_weight,F1,360,112,37.6,10.1,109,28.8,22.7
+448,"Coogan et al., 2022a",fish,channel catfish,mc4r,gene_editing,NA,body_weight,F1,540,41,55.4,21.2,38,39.7,26.8
+449,"Du et al., 2022",sheep,Ningxia Tianyuan,mstn,gene_editing,NA,body_weight,P1,540,8,70.51,3.25,8,60.15,1.73
+450,"Du et al., 2022",sheep,Ningxia Tianyuan,mstn,gene_editing,NA,body_weight,P1,540,8,39.25,1.04,8,30.02,2.15
+451,"Shahi et al., 2022",fish,Common carp,mstn,gene_editing,NA,body_weight,P1,90,12,480.7,52.6,12,382.3,55.7
+452,"Shahi et al., 2022",fish,Common carp,mstn,gene_editing,NA,body_weight,P1,6,12,38.9,2.9,12,38.5,3.4
+453,"Shahi et al., 2022",fish,Common carp,mstn,gene_editing,NA,body_weight,P1,24,12,110.7,23.7,12,69.5,11.4
+457,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,NA,body_weight,P1,360,8,58.26,24.71,29,46.9,23.45
+458,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,NA,body_weight,P1,540,8,600,169.79,29,417.59,217.48
+459,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,NA,body_weight,P1,720,3,1166.67,299.56,16,917.5,212.78
+460,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,NA,body_weight,P1,930,5,1770,177.2,15,1412,368.9
+461,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,NA,body_weight,P1,1080,5,1996,473.79,8,1820,305.75
+462,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,NA,body_weight,P1,180,104,17.26,6.35,22,13.23,3.47
+463,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,NA,body_weight,P1,360,104,123.53,59.07,22,118.27,42.13
+464,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,NA,body_weight,P1,540,97,457.76,183,20,451.1,156.23
+465,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,NA,body_weight,F1,180,71,19.88,6.95,60,12.03,4.55
+466,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,NA,body_weight,F1,270,70,23.66,8.28,59,13.68,5.5
+467,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,NA,body_weight,F1,360,65,113.1,38.9,60,35.53,28
+468,"Zhao et al., 2022",cattle,yellow cattle,mstn,gene_editing,NA,body_weight,P1,0,6,33.2,1.23,6,30.67,2.85
+469,"Zhao et al., 2022",cattle,yellow cattle,mstn,gene_editing,NA,body_weight,P1,90,6,111.4,6.45,6,99.05,7.46
+470,"Zhao et al., 2022",cattle,yellow cattle,mstn,gene_editing,NA,body_weight,P1,180,6,184.71,12.16,6,167.2,16.32
+471,"Zhao et al., 2022",cattle,yellow cattle,mstn,gene_editing,NA,body_weight,P1,270,6,252.82,15.05,6,213.37,20.05
+472,"Zhao et al., 2022",cattle,yellow cattle,mstn,gene_editing,NA,body_weight,P1,360,6,335.67,16.27,6,280.13,19.75
+473,"Zhao et al., 2022",cattle,yellow cattle,mstn,gene_editing,NA,body_weight,P1,450,6,412.76,19.56,6,328.56,24.05
+474,"Zhao et al., 2022",cattle,yellow cattle,mstn,gene_editing,NA,body_weight,P1,540,6,482.51,18.94,6,402.25,24.58
+475,"Zhao et al., 2022",cattle,yellow cattle,mstn,gene_editing,NA,body_weight,P1,720,6,593.59,21.64,6,485.73,28.17
+476,"Zhou et al., 2022",sheep,Ningxia Tianyuan,mstn,gene_editing,NA,body_weight,P1,0,8,4.23,0.8,8,3.74,0.56
+477,"Zhou et al., 2022",sheep,Ningxia Tianyuan,mstn,gene_editing,NA,body_weight,P1,30,8,10.61,1.77,8,8.58,1.79
+478,"Zhou et al., 2022",sheep,Ningxia Tianyuan,mstn,gene_editing,NA,body_weight,P1,60,8,15.88,2.92,8,12.78,2.41
+479,"Zhou et al., 2022",sheep,Ningxia Tianyuan,mstn,gene_editing,NA,body_weight,P1,90,8,21.56,2.47,8,17.23,1.73
+482,"Zheng et al., 2022",rabbit,Gluteus maximus,mstn,gene_editing,NA,body_weight,P1,20,5,409.704,86.486,5,474.394,10.811
+483,"Zheng et al., 2022",rabbit,Gluteus maximus,mstn,gene_editing,NA,body_weight,P1,40,5,1229.111,86.486,5,1164.42,43.243
+484,"Zheng et al., 2022",rabbit,Gluteus maximus,mstn,gene_editing,NA,body_weight,P1,60,5,1919.137,75.676,5,1897.574,162.162
+485,"Zheng et al., 2022",rabbit,Gluteus maximus,mstn,gene_editing,NA,body_weight,P1,80,5,2447.439,118.919,5,2415.094,194.595
+486,"Zheng et al., 2022",rabbit,Gluteus maximus,mstn,gene_editing,NA,body_weight,P1,100,5,2867.925,205.405,5,2652.291,356.757
+487,"Zheng et al., 2022",rabbit,Gluteus maximus,mstn,gene_editing,NA,body_weight,P1,120,5,3148.248,248.649,5,2814.016,270.27
+488,"Zheng et al., 2022",rabbit,Gluteus maximus,mstn,gene_editing,NA,body_weight,P1,140,5,3320.755,270.27,5,2921.833,172.973
+489,"Zheng et al., 2022",rabbit,Gluteus maximus,mstn,gene_editing,NA,body_weight,P1,160,5,3579.515,64.865,5,3072.776,129.73
+490,"Zheng et al., 2022",rabbit,Gluteus maximus,mstn,gene_editing,NA,body_weight,P1,180,5,3708.895,97.297,5,3212.938,108.108
+492,"Zheng et al., 2022",rabbit,Gluteus maximus,mstn,gene_editing,NA,body_weight,F1,20,5,413.105,85.47,5,427.35,0
+493,"Zheng et al., 2022",rabbit,Gluteus maximus,mstn,gene_editing,NA,body_weight,F1,40,5,1125.356,242.165,5,1153.846,85.47
+494,"Zheng et al., 2022",rabbit,Gluteus maximus,mstn,gene_editing,NA,body_weight,F1,60,5,1794.872,213.675,5,1794.872,56.98
+495,"Zheng et al., 2022",rabbit,Gluteus maximus,mstn,gene_editing,NA,body_weight,F1,80,5,2222.222,185.185,5,2122.507,156.695
+496,"Zheng et al., 2022",rabbit,Gluteus maximus,mstn,gene_editing,NA,body_weight,F1,100,5,2706.553,398.86,5,2393.162,213.675
+497,"Zheng et al., 2022",rabbit,Gluteus maximus,mstn,gene_editing,NA,body_weight,F1,120,5,3162.393,356.125,5,2735.043,156.695
+498,"Zheng et al., 2022",rabbit,Gluteus maximus,mstn,gene_editing,NA,body_weight,F1,140,5,3575.499,213.675,5,3119.658,142.45
+499,"Zheng et al., 2022",rabbit,Gluteus maximus,mstn,gene_editing,NA,body_weight,F1,160,5,3917.379,156.695,5,3333.333,170.94
+500,"Zheng et al., 2022",rabbit,Gluteus maximus,mstn,gene_editing,NA,body_weight,F1,180,5,4145.299,99.715,5,3561.254,185.185
+501,"Hai et al., 2023",cattle,Luxi Cattle,mstn,gene_editing,NA,body_weight,F1,360,30,285.8,184.1,45,252.9,150.7
+502,"Khalil et al., 2023",fish,channel catfish,mc4r,gene_editing,NA,body_weight,F1,300,16,73.7,4.48,16,49.3,1.792
+503,"Khalil et al., 2023",fish,channel catfish,mc4r,gene_editing,NA,body_weight,F1,360,16,162,13.441,16,126.8,6.272
+504,"Khalil et al., 2023",fish,channel catfish,mc4r,gene_editing,NA,body_weight,F1,390,16,233.5,16.129,16,203.2,8.065
+505,"Khalil et al., 2023",fish,channel catfish,mc4r,gene_editing,NA,body_weight,F1,480,16,375.3,29.57,16,291.6,13.441
+506,"Khalil et al., 2023",fish,channel catfish,mc4r,gene_editing,NA,body_weight,F1,540,16,421.9,36.738,16,304.9,16.129
+514,"Zheng et al., 2023",fish,Culter alburnus,mstn,gene_editing,NA,body_weight,F1,60,20,8.85,1.54,20,6.6,1.24
+516,"Cuellar et al., 2024",cattle,Angus,PRLR,gene_editing,NA,body_weight,P1,0,4,44.164,0,5,33.123,3.527
+517,"Cuellar et al., 2024",cattle,Angus,PRLR,gene_editing,NA,body_weight,P1,0,3,41.009,4.732,3,34.7,0
+518,"Cuellar et al., 2024",cattle,Angus,PRLR,gene_editing,NA,body_weight,P1,221,4,301.262,26.814,5,208.202,20.505
+519,"Cuellar et al., 2024",cattle,Angus,PRLR,gene_editing,NA,body_weight,P1,221,3,317.898,31.546,3,236.593,18.927
+520,"Cuellar et al., 2024",cattle,Angus,PRLR,gene_editing,NA,body_weight,P1,374,4,444.795,41.009,5,345.426,18.927
+521,"Cuellar et al., 2024",cattle,Angus,PRLR,gene_editing,NA,body_weight,P1,374,3,397.476,22.082,3,339.117,12.618
+522,"Kim et al., 2024",fish,olive flounder,mstn,gene_editing,NA,body_weight,F1,180,3,2876.6,206.9,3,2039,285.5
+523,"Kim et al., 2024",fish,olive flounder,mstn,gene_editing,NA,body_weight,F1,180,3,2316,382.1,3,1726.5,158
+526,"Huang et al., 2024",fish,Red crucian carp,mc4r,gene_editing,NA,body_weight,P1,180,8,15.22,6.93,8,10.91,2.6
+527,"Wang et al., 2024",fish,channel catfish,mstn,gene_editing,NA,body_weight,P1,90,8,30.6,8.3,19,16.1,5.4
+528,"Wang et al., 2024",fish,channel catfish,mstn,gene_editing,NA,body_weight,P1,720,8,752.3,104.6,14,518.8,184.7
+529,"Wang et al., 2024",fish,channel catfish,mc4r,gene_editing,NA,body_weight,P1,90,15,28.4,9,19,16.1,5.4
+530,"Wang et al., 2024",fish,channel catfish,mc4r,gene_editing,NA,body_weight,P1,720,12,680.9,139.3,14,518.8,184.7
+5,"Zhang et al., 1990",fish,Common carp,rtGH,transgenesis,RSV,body_weight,P1,90,7,143.4,31,64,116.1,40
+6,"Zhang et al., 1990",fish,Common carp,rtGH,transgenesis,RSV,body_weight,F1,90,28,120.6,17.4,38,99.3,14.7
+7,"Zhang et al., 1990",fish,Common carp,rtGH,transgenesis,RSV,body_weight,F1,90,11,206,45.2,15,147,48
+9,"Du et al., 1992",fish,Atlantic salmon,csGH,transgenesis,opAFP,body_weight,P1,330,6,20.9,5.13,43,7.4,0.26
+10,"Du et al., 1992",fish,Atlantic salmon,csGH,transgenesis,opAFP,body_weight,P1,720,6,47.3,9.5,43,9.48,0.6
+14,"Gross et al., 1992",fish,Northern pike,csGH,transgenesis,RSV,body_weight,P1,180,9,63.897,0,34,65.515,3.235
+15,"Gross et al., 1992",fish,Northern pike,csGH,transgenesis,RSV,body_weight,P1,180,9,77.647,4.044,34,69.559,3.235
+16,"Gross et al., 1992",fish,Northern pike,csGH,transgenesis,RSV,body_weight,P1,260,9,99.485,2.426,34,102.721,4.853
+17,"Gross et al., 1992",fish,Northern pike,csGH,transgenesis,RSV,body_weight,P1,260,9,130.221,11.324,34,108.382,6.471
+18,"Gross et al., 1992",fish,Northern pike,csGH,transgenesis,RSV,body_weight,P1,400,9,186.838,10.515,34,189.265,11.324
+19,"Gross et al., 1992",fish,Northern pike,csGH,transgenesis,RSV,body_weight,P1,400,9,186.838,5.662,34,161.765,9.706
+20,"Devlin et al., 1995",fish,Coho salmon,csGH,transgenesis,opAFP,body_weight,P1,150,6,14,1.1,25,3.9,0.4
+21,"Devlin et al., 1995",fish,Coho salmon,csGH,transgenesis,opAFP,body_weight,P1,450,15,278.2,61.3,370,26.1,1.7
+26,"Devlin et al., 1995",fish,Rainbow trout,csGH,transgenesis,opAFP,body_weight,P1,300,18,119.5,12.4,29,37.9,9.4
+29,"Martínez et al., 1996",fish,Hybrid tilapia,tiGH,transgenesis,CMV,body_weight,F1,270,18,399.1,94.1,20,219.5,49.1
+49,"Pitkanen et al., 1999",fish,Arctic charr,ssGH,transgenesis,CMV,body_weight,P1,150,14,14.151,0,105,2.83,0
+50,"Pitkanen et al., 1999",fish,Arctic charr,ssGH,transgenesis,OnMT,body_weight,P1,150,14,68.868,6.604,105,2.83,0
+51,"Pitkanen et al., 1999",fish,Arctic charr,ssGH,transgenesis,OnH3,body_weight,P1,150,14,200.943,16.981,105,2.83,0
+52,"Pitkanen et al., 1999",fish,Arctic charr,ssGH,transgenesis,CMV,body_weight,P1,240,13,15.094,0,100,3.774,0
+53,"Pitkanen et al., 1999",fish,Arctic charr,ssGH,transgenesis,OnMT,body_weight,P1,240,13,65.094,5.66,100,3.774,0
+54,"Pitkanen et al., 1999",fish,Arctic charr,ssGH,transgenesis,OnH3,body_weight,P1,240,13,227.358,18.868,100,3.774,0
+55,"Pitkanen et al., 1999",fish,Arctic charr,ssGH,transgenesis,CMV,body_weight,P1,300,9,11.321,2.83,95,13.208,0
+56,"Pitkanen et al., 1999",fish,Arctic charr,ssGH,transgenesis,OnMT,body_weight,P1,300,9,50,7.547,95,13.208,0
+57,"Pitkanen et al., 1999",fish,Arctic charr,ssGH,transgenesis,OnH3,body_weight,P1,300,9,209.434,34.906,95,13.208,0
+64,"Martínez et al., 1999",fish,Wami tilapia,tiGH,transgenesis,CMV,body_weight,F1,120,6,213.3,33.2,11,156.4,64.2
+65,"Martínez et al., 1999",fish,Wami tilapia,tiGH,transgenesis,CMV,body_weight,F1,120,8,263.7,31,11,156.4,64.2
+74,"Wang et al., 2001",fish,Common carp,gcGH,transgenesis,?-actin,body_weight,P1,120,324,863,62,359,1203,124
+78,"Nam et al., 2001",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,P1,90,110,87.181,12.758,110,6.379,0
+79,"Nam et al., 2001",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,P1,120,110,141.616,22.965,110,6.379,0
+80,"Nam et al., 2001",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,P1,150,110,210.51,29.344,110,8.931,0
+81,"Nam et al., 2001",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,P1,180,110,263.67,34.022,110,9.356,3.402
+82,"Nam et al., 2001",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,P1,210,110,304.07,37.424,110,13.609,2.977
+83,"Nam et al., 2001",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,P1,240,110,320.656,35.723,110,16.586,4.253
+84,"Adams et al., 2002",sheep,Merino,ovGH,transgenesis,SpMT,body_weight,F1,0,22,4.33,1.2,55,4.14,0.9
+85,"Adams et al., 2002",sheep,Poll Dorset,ovGH,transgenesis,SpMT,body_weight,F1,0,13,3.36,0.6,42,3.78,1.2
+101,"Adams et al., 2002",sheep,Merino,ovGH,transgenesis,SpMT,body_weight,F1,180,3,27.926,5.832,3,21.273,5.996
+102,"Adams et al., 2002",sheep,Merino,ovGH,transgenesis,SpMT,body_weight,F1,180,3,36.797,2.382,3,28.008,1.971
+103,"Adams et al., 2002",sheep,Merino,ovGH,transgenesis,SpMT,body_weight,F1,180,3,28.747,2.3,3,27.187,2.218
+104,"Pursel et al., 2004",pig,DeKalb,IGF-I,transgenesis,?-actin,body_weight,P1,0,34,1.45,0.1,40,1.53,0.05
+105,"Pursel et al., 2004",pig,DeKalb,IGF-I,transgenesis,?-actin,body_weight,P1,30,34,1.51,0.09,40,1.6,0.08
+110,"Adams and Briegel, 2005",sheep,Merino,ovGH,transgenesis,SpMT,body_weight,F1,360,7,62.5,1.3,9,54.4,1.2
+111,"Adams and Briegel, 2005",sheep,Merino,ovGH,transgenesis,SpMT,body_weight,F1,720,7,82.2,2.3,9,71.4,1.6
+112,"Adams et al, 2006",sheep,Merino,ovGH,transgenesis,SpMT,body_weight,F1,600,6,69.9,1.6,6,59.4,1.6
+113,"Bee et al., 2007",pig,DeKalb,IGF-I,transgenesis,?-actin,body_weight,F1,0,23,462,13.5,34,441,12.7
+114,"Bee et al., 2007",pig,DeKalb,IGF-I,transgenesis,?-actin,body_weight,F1,0,11,444,15.6,27,427,10.9
+118,"Kobayashi et al., 2007",fish,Nile tilapia,tiGH,transgenesis,?-actin,body_weight,F1,30,10,3.26,0.56,10,0.82,0.2
+119,"Kobayashi et al., 2007",fish,Nile tilapia,tiGH,transgenesis,?-actin,body_weight,F1,120,10,230,29.5,10,32.8,9.3
+120,"Kobayashi et al., 2007",fish,Nile tilapia,tiGH,transgenesis,?-actin,body_weight,F1,480,10,2296.4,871.7,10,683.2,153.7
+121,"Kobayashi et al., 2007",fish,Nile tilapia,tiGH,transgenesis,?-actin,body_weight,F1,480,10,2509.4,783.2,10,379.7,117.8
+127,"Arenal et al., 2008",shrimp,Southern white shrimp,tiGH,transgenesis,CMV,body_weight,P1,10,17,1.9,0.1,33,1.5,0.2
+150,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,30,22,4.034,0,48,1.513,0
+151,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,30,22,12.101,1.513,48,1.513,0
+152,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,30,22,8.067,0,48,1.513,0
+153,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,30,22,8.824,0,48,1.513,0
+154,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,60,22,5.546,0,48,4.034,0
+155,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,60,22,22.185,2.017,48,4.034,0
+156,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,60,22,15.378,0,48,4.034,0
+157,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,60,22,15.882,0,48,4.034,0
+158,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,90,22,10.84,1.765,48,4.286,0
+159,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,90,22,28.235,1.765,48,4.286,0
+160,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,90,22,29.244,3.025,48,4.286,0
+161,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,90,22,29.748,3.025,48,4.286,0
+162,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,120,22,13.613,2.269,48,6.303,0
+163,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,120,22,32.521,3.277,48,6.303,0
+164,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,120,22,41.092,3.782,48,6.303,0
+165,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,120,22,43.109,4.034,48,6.303,0
+166,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,150,22,19.412,2.269,48,8.319,1.261
+167,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,150,22,36.807,4.034,48,8.319,1.261
+168,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,150,22,51.176,5.546,48,8.319,1.261
+169,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,150,22,58.739,6.05,48,8.319,1.261
+170,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,180,22,22.185,3.025,48,10.084,2.269
+171,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,180,22,40.84,4.286,48,10.084,2.269
+172,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,180,22,68.824,6.555,48,10.084,2.269
+173,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,180,22,74.622,7.815,48,10.084,2.269
+231,"Jiang et al., 2017",fish,blunt snout bream,gcFST,transgenesis,Mylz2,body_weight,F1,510,8,15.811,1.351,8,10.405,0.946
+285,"Buwono et al., 2019",fish,mutiara catfish,cgGH,transgenesis,?-actin,body_weight,F1,65,3,70.94,2.12,3,16.771,5.205
+286,"Buwono et al., 2019",fish,mutiara catfish,cgGH,transgenesis,?-actin,body_weight,F1,65,3,53.398,10.41,3,16.771,5.205
+287,"Buwono et al., 2019",fish,mutiara catfish,cgGH,transgenesis,?-actin,body_weight,F1,65,3,62.843,6.554,3,16.771,5.205
+326,"Gaffney et al., 2020",fish,Coho salmon,csGH,transgenesis,OnMT,body_weight,F1,270,30,205.7,80.6,30,111.2,49.3
+404,"Abass et al., 2021a",fish,channel catfish,ccGH,transgenesis,opAFP,body_weight,F1,112,14,8.86,3.2,56,6.3,1.75
+405,"Abass et al., 2021a",fish,channel catfish,ccGH,transgenesis,opAFP,body_weight,F1,112,10,12.45,4.51,60,7.71,3.24
+406,"Abass et al., 2021a",fish,channel catfish,ccGH,transgenesis,opAFP,body_weight,F1,112,22,8.77,1.39,74,5.45,1.55
+407,"Abass et al., 2021a",fish,channel catfish,ccGH,transgenesis,rtMT,body_weight,F1,112,7,7.79,4.03,63,4.37,1.75
+408,"Abass et al., 2021a",fish,channel catfish,ccGH,transgenesis,rtMT,body_weight,F1,112,34,10.94,3.49,60,8.09,2.41
+409,"Abass et al., 2021a",fish,channel catfish,ccGH,transgenesis,rtMT,body_weight,F1,112,16,9.63,3.4,54,7.81,2.33
+416,"Abass et al., 2021b",fish,channel catfish,ccGH,transgenesis,opAFP,body_weight,F1,480,50,713,360.7,120,473.8,237.3
+417,"Abass et al., 2021b",fish,channel catfish,ccGH,transgenesis,rtMT,body_weight,F1,480,41,680.5,251,120,473.8,237.3
+418,"Abass et al., 2021b",fish,channel catfish,ccGH,transgenesis,opAFP,body_weight,F1,1440,24,1876.3,827.5,103,726.6,395.2
+419,"Abass et al., 2021b",fish,channel catfish,ccGH,transgenesis,rtMT,body_weight,F1,1440,30,2173.3,588,103,726.6,395.2

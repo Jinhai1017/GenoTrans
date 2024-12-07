@@ -1,0 +1,16 @@
+ID,Author,category,species,gene,method,promoter,parameter,generation,age,treat_n,treat_mean,treat_sd,control_n,control_mean,control_sd
+1,"Vize et al., 1988",pig,Large white,pGH,transgenesis,HMT,weight_gain,P1,50,6,817,234,6,781,44
+37,"Rahman et al., 1998",fish,Nile tilapia,csGH,transgenesis,opAFP,weight_gain,F1,180,12,97.87,11.67,13,22.67,3.71
+39,"Hinits and Moav, 1999",fish,Common carp,csGH,transgenesis,?-actin,weight_gain,F1,180,80,454.6,41.2,80,378.2,18.3
+40,"Hinits and Moav, 2000",fish,Common carp,csGH,transgenesis,?-actin,weight_gain,F1,180,80,416.6,33,80,378.2,18.3
+41,"Hinits and Moav, 2001",fish,Common carp,csGH,transgenesis,?-actin,weight_gain,F1,180,80,410.5,25.5,80,378.2,18.3
+45,"Hinits and Moav, 2004",fish,Common carp,csGH,transgenesis,?-actin,weight_gain,F1,90,51,27.8,12.2,80,9.5,2.6
+46,"Hinits and Moav, 2004",fish,Common carp,csGH,transgenesis,?-actin,weight_gain,F1,90,80,34.8,11.8,80,9.5,2.6
+124,"Oakes et al., 2007",fish,Coho salmon,csGH,transgenesis,opAFP,weight_gain,F1,60,6,65.7,2.43,12,24.9,1.43
+323,"Ohama et al., 2020",fish,red sea bream,mstn,gene_editing,NA,weight_gain,F1,56,3,122.3,4.3,3,108.4,4.8
+420,"Abass et al., 2021b",fish,channel catfish,ccGH,transgenesis,opAFP,weight_gain,F1,960,24,164.8,80.8,103,67.4,56
+421,"Abass et al., 2021b",fish,channel catfish,ccGH,transgenesis,rtMT,weight_gain,F1,960,30,221,94.6,103,67.4,56
+422,"Buwono et al., 2021",fish,mutiara catfish,cgGH,transgenesis,CMV,weight_gain,F1,72,45,99.75,1.75,15,34.3,0
+423,"Buwono et al., 2021",fish,mutiara catfish,cgGH,transgenesis,CMV,weight_gain,F1,72,45,122.85,1.4,15,34.3,0
+424,"Buwono et al., 2021",fish,mutiara catfish,cgGH,transgenesis,CMV,weight_gain,F1,72,45,80.5,5.6,15,34.3,0
+508,"Wu et al., 2023",fish,Nile tilapia,mstn,gene_editing,NA,weight_gain,P1,150,21,796.24,116.65,19,400.13,212.16

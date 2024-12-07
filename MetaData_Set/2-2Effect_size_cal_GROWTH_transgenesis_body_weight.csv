@@ -1,0 +1,90 @@
+ID,Author,category,species,gene,method,promoter,parameter,generation,age,treat_n,treat_mean,treat_sd,control_n,control_mean,control_sd
+5,"Zhang et al., 1990",fish,Common carp,rtGH,transgenesis,RSV,body_weight,P1,90,7,143.4,31,64,116.1,40
+6,"Zhang et al., 1990",fish,Common carp,rtGH,transgenesis,RSV,body_weight,F1,90,28,120.6,17.4,38,99.3,14.7
+7,"Zhang et al., 1990",fish,Common carp,rtGH,transgenesis,RSV,body_weight,F1,90,11,206,45.2,15,147,48
+9,"Du et al., 1992",fish,Atlantic salmon,csGH,transgenesis,opAFP,body_weight,P1,330,6,20.9,5.13,43,7.4,0.26
+10,"Du et al., 1992",fish,Atlantic salmon,csGH,transgenesis,opAFP,body_weight,P1,720,6,47.3,9.5,43,9.48,0.6
+14,"Gross et al., 1992",fish,Northern pike,csGH,transgenesis,RSV,body_weight,P1,180,9,63.897,0,34,65.515,3.235
+15,"Gross et al., 1992",fish,Northern pike,csGH,transgenesis,RSV,body_weight,P1,180,9,77.647,4.044,34,69.559,3.235
+16,"Gross et al., 1992",fish,Northern pike,csGH,transgenesis,RSV,body_weight,P1,260,9,99.485,2.426,34,102.721,4.853
+17,"Gross et al., 1992",fish,Northern pike,csGH,transgenesis,RSV,body_weight,P1,260,9,130.221,11.324,34,108.382,6.471
+18,"Gross et al., 1992",fish,Northern pike,csGH,transgenesis,RSV,body_weight,P1,400,9,186.838,10.515,34,189.265,11.324
+19,"Gross et al., 1992",fish,Northern pike,csGH,transgenesis,RSV,body_weight,P1,400,9,186.838,5.662,34,161.765,9.706
+20,"Devlin et al., 1995",fish,Coho salmon,csGH,transgenesis,opAFP,body_weight,P1,150,6,14,1.1,25,3.9,0.4
+21,"Devlin et al., 1995",fish,Coho salmon,csGH,transgenesis,opAFP,body_weight,P1,450,15,278.2,61.3,370,26.1,1.7
+26,"Devlin et al., 1995",fish,Rainbow trout,csGH,transgenesis,opAFP,body_weight,P1,300,18,119.5,12.4,29,37.9,9.4
+29,"Martínez et al., 1996",fish,Hybrid tilapia,tiGH,transgenesis,CMV,body_weight,F1,270,18,399.1,94.1,20,219.5,49.1
+49,"Pitkanen et al., 1999",fish,Arctic charr,ssGH,transgenesis,CMV,body_weight,P1,150,14,14.151,0,105,2.83,0
+50,"Pitkanen et al., 1999",fish,Arctic charr,ssGH,transgenesis,OnMT,body_weight,P1,150,14,68.868,6.604,105,2.83,0
+51,"Pitkanen et al., 1999",fish,Arctic charr,ssGH,transgenesis,OnH3,body_weight,P1,150,14,200.943,16.981,105,2.83,0
+52,"Pitkanen et al., 1999",fish,Arctic charr,ssGH,transgenesis,CMV,body_weight,P1,240,13,15.094,0,100,3.774,0
+53,"Pitkanen et al., 1999",fish,Arctic charr,ssGH,transgenesis,OnMT,body_weight,P1,240,13,65.094,5.66,100,3.774,0
+54,"Pitkanen et al., 1999",fish,Arctic charr,ssGH,transgenesis,OnH3,body_weight,P1,240,13,227.358,18.868,100,3.774,0
+55,"Pitkanen et al., 1999",fish,Arctic charr,ssGH,transgenesis,CMV,body_weight,P1,300,9,11.321,2.83,95,13.208,0
+56,"Pitkanen et al., 1999",fish,Arctic charr,ssGH,transgenesis,OnMT,body_weight,P1,300,9,50,7.547,95,13.208,0
+57,"Pitkanen et al., 1999",fish,Arctic charr,ssGH,transgenesis,OnH3,body_weight,P1,300,9,209.434,34.906,95,13.208,0
+64,"Martínez et al., 1999",fish,Wami tilapia,tiGH,transgenesis,CMV,body_weight,F1,120,6,213.3,33.2,11,156.4,64.2
+65,"Martínez et al., 1999",fish,Wami tilapia,tiGH,transgenesis,CMV,body_weight,F1,120,8,263.7,31,11,156.4,64.2
+74,"Wang et al., 2001",fish,Common carp,gcGH,transgenesis,?-actin,body_weight,P1,120,324,863,62,359,1203,124
+78,"Nam et al., 2001",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,P1,90,110,87.181,12.758,110,6.379,0
+79,"Nam et al., 2001",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,P1,120,110,141.616,22.965,110,6.379,0
+80,"Nam et al., 2001",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,P1,150,110,210.51,29.344,110,8.931,0
+81,"Nam et al., 2001",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,P1,180,110,263.67,34.022,110,9.356,3.402
+82,"Nam et al., 2001",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,P1,210,110,304.07,37.424,110,13.609,2.977
+83,"Nam et al., 2001",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,P1,240,110,320.656,35.723,110,16.586,4.253
+84,"Adams et al., 2002",sheep,Merino,ovGH,transgenesis,SpMT,body_weight,F1,0,22,4.33,1.2,55,4.14,0.9
+85,"Adams et al., 2002",sheep,Poll Dorset,ovGH,transgenesis,SpMT,body_weight,F1,0,13,3.36,0.6,42,3.78,1.2
+101,"Adams et al., 2002",sheep,Merino,ovGH,transgenesis,SpMT,body_weight,F1,180,3,27.926,5.832,3,21.273,5.996
+102,"Adams et al., 2002",sheep,Merino,ovGH,transgenesis,SpMT,body_weight,F1,180,3,36.797,2.382,3,28.008,1.971
+103,"Adams et al., 2002",sheep,Merino,ovGH,transgenesis,SpMT,body_weight,F1,180,3,28.747,2.3,3,27.187,2.218
+104,"Pursel et al., 2004",pig,DeKalb,IGF-I,transgenesis,?-actin,body_weight,P1,0,34,1.45,0.1,40,1.53,0.05
+105,"Pursel et al., 2004",pig,DeKalb,IGF-I,transgenesis,?-actin,body_weight,P1,30,34,1.51,0.09,40,1.6,0.08
+110,"Adams and Briegel, 2005",sheep,Merino,ovGH,transgenesis,SpMT,body_weight,F1,360,7,62.5,1.3,9,54.4,1.2
+111,"Adams and Briegel, 2005",sheep,Merino,ovGH,transgenesis,SpMT,body_weight,F1,720,7,82.2,2.3,9,71.4,1.6
+112,"Adams et al, 2006",sheep,Merino,ovGH,transgenesis,SpMT,body_weight,F1,600,6,69.9,1.6,6,59.4,1.6
+113,"Bee et al., 2007",pig,DeKalb,IGF-I,transgenesis,?-actin,body_weight,F1,0,23,462,13.5,34,441,12.7
+114,"Bee et al., 2007",pig,DeKalb,IGF-I,transgenesis,?-actin,body_weight,F1,0,11,444,15.6,27,427,10.9
+118,"Kobayashi et al., 2007",fish,Nile tilapia,tiGH,transgenesis,?-actin,body_weight,F1,30,10,3.26,0.56,10,0.82,0.2
+119,"Kobayashi et al., 2007",fish,Nile tilapia,tiGH,transgenesis,?-actin,body_weight,F1,120,10,230,29.5,10,32.8,9.3
+120,"Kobayashi et al., 2007",fish,Nile tilapia,tiGH,transgenesis,?-actin,body_weight,F1,480,10,2296.4,871.7,10,683.2,153.7
+121,"Kobayashi et al., 2007",fish,Nile tilapia,tiGH,transgenesis,?-actin,body_weight,F1,480,10,2509.4,783.2,10,379.7,117.8
+127,"Arenal et al., 2008",shrimp,Southern white shrimp,tiGH,transgenesis,CMV,body_weight,P1,10,17,1.9,0.1,33,1.5,0.2
+150,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,30,22,4.034,0,48,1.513,0
+151,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,30,22,12.101,1.513,48,1.513,0
+152,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,30,22,8.067,0,48,1.513,0
+153,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,30,22,8.824,0,48,1.513,0
+154,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,60,22,5.546,0,48,4.034,0
+155,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,60,22,22.185,2.017,48,4.034,0
+156,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,60,22,15.378,0,48,4.034,0
+157,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,60,22,15.882,0,48,4.034,0
+158,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,90,22,10.84,1.765,48,4.286,0
+159,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,90,22,28.235,1.765,48,4.286,0
+160,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,90,22,29.244,3.025,48,4.286,0
+161,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,90,22,29.748,3.025,48,4.286,0
+162,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,120,22,13.613,2.269,48,6.303,0
+163,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,120,22,32.521,3.277,48,6.303,0
+164,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,120,22,41.092,3.782,48,6.303,0
+165,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,120,22,43.109,4.034,48,6.303,0
+166,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,150,22,19.412,2.269,48,8.319,1.261
+167,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,150,22,36.807,4.034,48,8.319,1.261
+168,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,150,22,51.176,5.546,48,8.319,1.261
+169,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,150,22,58.739,6.05,48,8.319,1.261
+170,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,180,22,22.185,3.025,48,10.084,2.269
+171,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,180,22,40.84,4.286,48,10.084,2.269
+172,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,180,22,68.824,6.555,48,10.084,2.269
+173,"Song and Kim, 2012",fish,Mud loach,mlGH,transgenesis,?-actin,body_weight,F1,180,22,74.622,7.815,48,10.084,2.269
+231,"Jiang et al., 2017",fish,blunt snout bream,gcFST,transgenesis,Mylz2,body_weight,F1,510,8,15.811,1.351,8,10.405,0.946
+285,"Buwono et al., 2019",fish,mutiara catfish,cgGH,transgenesis,?-actin,body_weight,F1,65,3,70.94,2.12,3,16.771,5.205
+286,"Buwono et al., 2019",fish,mutiara catfish,cgGH,transgenesis,?-actin,body_weight,F1,65,3,53.398,10.41,3,16.771,5.205
+287,"Buwono et al., 2019",fish,mutiara catfish,cgGH,transgenesis,?-actin,body_weight,F1,65,3,62.843,6.554,3,16.771,5.205
+326,"Gaffney et al., 2020",fish,Coho salmon,csGH,transgenesis,OnMT,body_weight,F1,270,30,205.7,80.6,30,111.2,49.3
+404,"Abass et al., 2021a",fish,channel catfish,ccGH,transgenesis,opAFP,body_weight,F1,112,14,8.86,3.2,56,6.3,1.75
+405,"Abass et al., 2021a",fish,channel catfish,ccGH,transgenesis,opAFP,body_weight,F1,112,10,12.45,4.51,60,7.71,3.24
+406,"Abass et al., 2021a",fish,channel catfish,ccGH,transgenesis,opAFP,body_weight,F1,112,22,8.77,1.39,74,5.45,1.55
+407,"Abass et al., 2021a",fish,channel catfish,ccGH,transgenesis,rtMT,body_weight,F1,112,7,7.79,4.03,63,4.37,1.75
+408,"Abass et al., 2021a",fish,channel catfish,ccGH,transgenesis,rtMT,body_weight,F1,112,34,10.94,3.49,60,8.09,2.41
+409,"Abass et al., 2021a",fish,channel catfish,ccGH,transgenesis,rtMT,body_weight,F1,112,16,9.63,3.4,54,7.81,2.33
+416,"Abass et al., 2021b",fish,channel catfish,ccGH,transgenesis,opAFP,body_weight,F1,480,50,713,360.7,120,473.8,237.3
+417,"Abass et al., 2021b",fish,channel catfish,ccGH,transgenesis,rtMT,body_weight,F1,480,41,680.5,251,120,473.8,237.3
+418,"Abass et al., 2021b",fish,channel catfish,ccGH,transgenesis,opAFP,body_weight,F1,1440,24,1876.3,827.5,103,726.6,395.2
+419,"Abass et al., 2021b",fish,channel catfish,ccGH,transgenesis,rtMT,body_weight,F1,1440,30,2173.3,588,103,726.6,395.2

@@ -1,0 +1,27 @@
+ID,Author,category,species,gene,method,promoter,generation,age,source,parameter,treat_n,treat_mean,treat_sd,control_n,control_mean,control_sd
+1,"Saeki et al., 2004",pig,Duroc_Landrace ,fat2,transgenesis,aP2,P1,150,in vitro,?-6,3,20.3,2.1,3,1.9,0.4
+4,"Saeki et al., 2004",pig,Duroc_Landrace ,fat2,transgenesis,aP2,P1,150,white adipose,?-6,3,11.8,0.5,5,9.4,0.5
+7,"Saeki et al., 2004",pig,Duroc_Landrace ,fat2,transgenesis,aP2,P1,150,white adipose,?-6,3,11.8,0.4,5,10,0.3
+10,"Saeki et al., 2004",pig,Duroc_Landrace ,fat2,transgenesis,aP2,P1,150,blood,?-6,2,45.5,0.2121,3,40.7,1.1
+16,"Lai et al., 2006",pig,unknown,fat1,transgenesis,?-actin,P1,2,tail,?-6,8,14.28,1.31,8,18.46,1.41
+21,"Wu et al., 2012",cattle,Holstein,fat1,transgenesis,?-actin,P1,90,ear,?-6,3,9.23,1.3,3,16.7,2.2
+26,"Wu et al., 2012",cattle,Holstein,fat1,transgenesis,?-actin,P1,90,ear,?-6,3,9.23,1.3,3,25.4,3.7
+31,"Wu et al., 2012",cattle,Holstein,fat1,transgenesis,?-actin,P1,281,milk,?-6,3,2.11,0.35,3,2.89,0.6
+36,"Zhang et al., 2012",pig,Danish Landrace,fat1,transgenesis,?-actin,P1,281,in vitro,?-6,2,12.53,1.046518036,1,23.42,0
+61,"Cheng et al., 2014",fish,common carp,D5D,transgenesis,?-actin,P1,270,muscle,?-6,13,5.39,0.480832611,20,5.28,0.494974747
+65,"Cheng et al., 2014",fish,common carp,D5D,transgenesis,?-actin,P1,270,muscle,?-6,13,8.745,1.237436867,20,8.735,1.025304833
+94,"Kabeya et al., 2016",fish,nibe croaker,elovl2,transgenesis,Apo-14,F1,50,whole body,?-6,4,154.1,4.2,4,149.8,1.4
+95,"Kabeya et al., 2016",fish,nibe croaker,elovl2,transgenesis,Apo-14,F1,50,whole body,?-6,4,137,6,4,133.9,4.6
+96,"Kabeya et al., 2016",fish,nibe croaker,elovl2,transgenesis,Apo-14,F1,50,whole body,?-6,4,153.8,1.9,4,149.7,4
+100,"Liu et al., 2016",pig,Song-liao black,fat1,transgenesis,?-actin,P1,90,ear,?-6,5,10.25,2.28,3,13.59,0.24
+105,"Bugg, 2017",fish,common carp,D5D,transgenesis,?-actin,F1,180,muscle,?-6,5,1.26,0.33,2,1.53,0.46
+109,"Bugg, 2017",fish,channel catfish,D5D,transgenesis,?-actin,F1,180,muscle,?-6,3,14.6,1.1,2,16.41,2.6
+111,"Liu et al., 2017",cattle,Holstein,fat1,transgenesis,?-actin,P1,90,ear,?-6,6,5.63,1.217,6,23.739,4.565
+119,"Zhang et al., 2018",goat,Arbas cashmere,fat2,transgenesis,?-actin,P1,40,in vitro,?-6,3,3.861,0.295,3,6.944,0.885
+122,"Park et al., 2019",chicken,White Leghorn,G0S2,gene editing,NA,P1,70,blood,?-6,3,40.44,1.74,3,35.25,0.61
+126,"Huang et al., 2021",fish,channel catfish,D5D,transgenesis,?-actin,F1,360,muscle,?-6,2,10.28,0.13,10,10.97,0.95
+130,"Huang et al., 2021",fish,channel catfish,D5D,transgenesis,?-actin,F1,360,muscle,?-6,8,9.56,1.04,17,11.58,1.19
+134,"Xing et al., 2022a",fish,channel catfish,elovl2,transgenesis,?-actin,P1,300,muscle,?-6,3,14.91,1.76,3,9.94,2.27
+138,"Xing et al., 2022b",fish,channel catfish,elovl2,transgenesis,?-actin,P1,270,muscle,?-6,3,10.89,0.8,3,9.41,3.49
+142,"Xing et al., 2023",fish,channel catfish,fat1,transgenesis,?-actin,P1,210,muscle,?-6,5,15.02,0.38,5,15.72,0.49
+147,"Xing et al., 2023",fish,channel catfish,fat2,transgenesis,?-actin,P1,210,muscle,?-6,5,16.45,0.58,5,15.72,0.49

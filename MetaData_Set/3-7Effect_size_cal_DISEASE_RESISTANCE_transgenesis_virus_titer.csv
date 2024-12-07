@@ -1,0 +1,10 @@
+ID,Author,category,species,gene,method,promoter,pathogen,generation,parameter,treat_n,treat_mean,treat_sd,control_n,control_mean,control_sd
+213,"Hu et al., 2021",pig,unknown,FMDV-shRNA,transgenesis,U6,FMDV,P1,virus titer,9,1.456,0.169,6,2.174,0.19
+214,"Hu et al., 2021",pig,unknown,FMDV-shRNA,transgenesis,U6,FMDV,P1,virus titer,9,2.195,0.211,6,5.34,0.106
+215,"Hu et al., 2021",pig,unknown,FMDV-shRNA,transgenesis,U6,FMDV,P1,virus titer,9,4.517,0.127,6,6.522,0.106
+216,"Hu et al., 2021",pig,unknown,FMDV-shRNA,transgenesis,U6,FMDV,P1,virus titer,9,5.615,0.106,6,7.346,0.106
+217,"Hu et al., 2021",pig,unknown,FMDV-shRNA,transgenesis,U6,FMDV,P1,virus titer,9,2.271,0.062,6,4.646,0.029
+218,"Hu et al., 2021",pig,unknown,FMDV-shRNA,transgenesis,U6,FMDV,P1,virus titer,9,4.688,0.333,6,5.438,0.029
+219,"Hu et al., 2021",pig,unknown,FMDV-shRNA,transgenesis,U6,FMDV,P1,virus titer,9,5.979,0.083,6,6.5,0.229
+220,"Hu et al., 2021",pig,unknown,FMDV-shRNA,transgenesis,U6,FMDV,P1,virus titer,9,6.188,0.229,6,7.458,0.146
+257,"Rohaim et al., 2024",chicken,unknown,chIFITM3,transgenesis,?-actin,HPAIV,P1,virus titer,3,11.831,1.69,3,30.704,1.831

@@ -1,0 +1,67 @@
+ID,Author,category,species,gene,method,promoter,parameter,generation,age,treat_n,treat_mean,treat_sd,control_n,control_mean,control_sd
+69,"Hill et al., 2000",fish,Coho salmon,csGH,transgenesis,OnMT,myofiber_size,F1,60,5,170,4,3,176,8
+115,"Bee et al., 2007",pig,DeKalb,IGF-I,transgenesis,?-actin,myofiber_number,F1,0,23,8.6,0.9,34,10.1,1.1
+116,"Bee et al., 2007",pig,DeKalb,IGF-I,transgenesis,?-actin,myofiber_number,F1,0,11,10.38,0.85,27,11.1,2
+174,"Luo et al., 2014",cattle,Yellow cattle,mstn,gene_editing,NA,myofiber_size,P1,30,3,346,12.9,3,234.8,9.7
+176,"Qian et al., 2015",pig,Meishan,mstn,gene_editing,NA,myofiber_size,P1,240,3,1286.01,77.36,3,1975.51,111.2
+177,"Qian et al., 2015",pig,Meishan,mstn,gene_editing,NA,myofiber_size,P1,240,3,2837.31,214.41,3,1975.51,111.2
+178,"Qian et al., 2015",pig,Meishan,mstn,gene_editing,NA,myofiber_number,P1,240,3,475.25,18.13,3,396.35,10.51
+179,"Qian et al., 2015",pig,Meishan,mstn,gene_editing,NA,myofiber_number,P1,240,3,348.88,15.57,3,396.35,10.51
+180,"Qian et al., 2015",pig,Meishan,mstn,gene_editing,NA,myofiber_number,P1,240,3,1508,93.33,3,1954,34.99
+181,"Qian et al., 2015",pig,Meishan,mstn,gene_editing,NA,myofiber_number,P1,240,3,514.8,39.47,3,412.9,4.36
+182,"Qian et al., 2015",pig,Meishan,mstn,gene_editing,NA,myofiber_number,P1,240,3,15.7,2.2,3,7.79,0.76
+183,"Qian et al., 2015",pig,Meishan,mstn,gene_editing,NA,myofiber_number,P1,240,3,8.54,0.35,3,7.79,0.76
+184,"Wang et al., 2015",pig,Landrace,mstn,gene_editing,NA,myofiber_number,P1,0,5,208410.351,5083.179,5,161275.416,13401.109
+185,"Wang et al., 2015",pig,Landrace,mstn,gene_editing,NA,myofiber_number,P1,0,5,207486.137,9242.144,5,150184.843,7855.823
+192,"Lv et al., 2015",rabbit,New Zealand,mstn,gene_editing,NA,myofiber_size,F1,60,4,1539.2,132.52,4,1055.81,257.57
+193,"Lv et al., 2015",rabbit,New Zealand,mstn,gene_editing,NA,myofiber_size,F1,60,4,2011.01,169.79,4,1318.51,261.48
+194,"Lv et al., 2015",rabbit,New Zealand,mstn,gene_editing,NA,myofiber_number,F1,60,4,327.79,21.12,4,211.37,19.89
+203,"Zhong et al., 2016",fish,Common carp,mstn,gene_editing,NA,myofiber_number,P1,150,24,438.073,29.817,24,367.546,16.055
+206,"Bi et al., 2016",pig,Hubei white,mstn,gene_editing,NA,myofiber_size,P1,180,2,43.01,4.724,3,25.23,1.766
+207,"Bi et al., 2016",pig,Hubei white,mstn,gene_editing,NA,myofiber_size,P1,180,2,43.77,4.562,3,25.23,1.766
+214,"Rao et al., 2016",pig,Crossbred,mstn,gene_editing,NA,myofiber_number,P1,30,10,1435789,78200,30,681073,28994
+224,"Yu et al., 2016",goat,Delta,mstn,gene_editing,NA,myofiber_size,P1,0,338,3475,124,374,3194,159
+225,"Kang et al., 2017",pig,Uknown,mstn,gene_editing,NA,myofiber_size,P1,30,3,67.669,0,3,25.376,25.376
+226,"Kang et al., 2017",pig,Uknown,mstn,gene_editing,NA,myofiber_size,P1,60,3,972.744,338.346,3,465.226,211.466
+227,"Kang et al., 2017",pig,Uknown,mstn,gene_editing,NA,myofiber_size,P1,180,3,3442.669,778.195,3,2359.962,668.233
+228,"Kang et al., 2017",pig,Uknown,mstn,gene_editing,NA,myofiber_size,P1,30,3,147.826,24.595,3,86.957,0
+229,"Kang et al., 2017",pig,Uknown,mstn,gene_editing,NA,myofiber_size,P1,60,3,747.826,200,3,469.565,156.522
+230,"Kang et al., 2017",pig,Uknown,mstn,gene_editing,NA,myofiber_size,P1,180,3,3017.391,547.826,3,2086.957,426.087
+232,"Jiang et al., 2017",fish,blunt snout bream,gcFST,transgenesis,Mylz2,myofiber_size,F1,510,8,1.62,0.84,8,1.32,0.81
+234,"Khalil et al., 2017",fish,channel catfish,mstn,gene_editing,NA,myofiber_size,P1,30,32,30.4,0.2,32,29.8,0.2
+235,"Khalil et al., 2017",fish,channel catfish,mstn,gene_editing,NA,myofiber_size,P1,30,32,24668.6,394.8,32,18109.7,467.4
+256,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,NA,myofiber_number,F1,180,3,49.655,2.452,2,67.433,7.356
+261,"Kishimoto et al., 2018",fish,red sea bream,mstn,gene_editing,NA,myofiber_size,F1,449,7,235.79,35.64,7,203.03,17.42
+269,"He et al., 2018",goat,Yangtze River Delta white,mstn,gene_editing,NA,myofiber_size,P1,210,6,980,23,12,719.76,12
+314,"Zhang et al., 2019",rabbit,New Zealand,mstn,gene_editing,NA,myofiber_size,P1,180,5,3512.2,439.17,5,1274.76,327.3
+315,"Zhang et al., 2019",rabbit,New Zealand,mstn,gene_editing,NA,myofiber_size,P1,180,5,2610.37,604.44,5,1274.76,327.3
+316,"Zhang et al., 2019",rabbit,New Zealand,mstn,gene_editing,NA,myofiber_size,P1,180,5,2109.22,206.75,5,989.39,239.27
+317,"Zhang et al., 2019",rabbit,New Zealand,mstn,gene_editing,NA,myofiber_size,P1,180,5,1677.24,247.5,5,989.39,239.27
+327,"Sun et al., 2020a",fish,blunt snout bream,mstn,gene_editing,NA,myofiber_size,P1,180,3,1.64,0.85,3,1.31,0.71
+328,"Sun et al., 2020a",fish,blunt snout bream,mstn,gene_editing,NA,myofiber_size,P1,180,3,1.67,0.9,3,1.31,0.71
+346,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,myofiber_size,P1,84,5,645.059,66.403,5,619.763,44.269
+347,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,myofiber_size,P1,84,5,578.656,47.431,5,619.763,44.269
+348,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,myofiber_size,P1,84,5,2220,132,5,2304,96
+349,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,myofiber_size,P1,84,5,1956,108,5,2304,96
+350,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,myofiber_number,P1,84,5,390.323,35.484,5,380.645,32.258
+351,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,myofiber_number,P1,84,5,564.516,41.935,5,380.645,32.258
+352,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,myofiber_number,P1,84,5,5.574,0.41,5,5.328,0.205
+353,"Lee et al., 2020",bird,Japanese quail,mstn,gene_editing,NA,myofiber_number,P1,84,5,8.033,0.41,5,5.328,0.205
+380,"Kim et al., 2020",chicken,White Leghorn,mstn,gene_editing,NA,myofiber_size,F1,126,12,197.248,9.939,12,107.798,5.352
+381,"Kim et al., 2020",chicken,White Leghorn,mstn,gene_editing,NA,myofiber_size,F1,126,12,87.329,8.562,12,63.356,3.425
+382,"Kim et al., 2020",chicken,White Leghorn,mstn,gene_editing,NA,myofiber_number,F1,126,12,55.706,2.733,12,32.162,2.733
+383,"Kim et al., 2020",chicken,White Leghorn,mstn,gene_editing,NA,myofiber_number,F1,126,12,24.878,3.201,12,23.963,2.287
+392,"Zhang et al., 2020",fish,yellow catfish,mstn,gene_editing,NA,myofiber_size,F1,80,3,19.01,1.423,3,17.11,0.472
+393,"Zhang et al., 2020",fish,yellow catfish,mstn,gene_editing,NA,myofiber_size,F1,80,3,17.73,0.993,3,15.61,1.219
+394,"Zhang et al., 2020",fish,yellow catfish,mstn,gene_editing,NA,myofiber_size,F1,80,3,19.95,0.678,3,17.2,1.077
+395,"Zhang et al., 2020",fish,yellow catfish,mstn,gene_editing,NA,myofiber_number,F1,80,3,928.3,162,3,610.3,17.24
+396,"Zhang et al., 2020",fish,yellow catfish,mstn,gene_editing,NA,myofiber_number,F1,80,3,4105,344.9,3,2422,415.1
+397,"Zhang et al., 2020",fish,yellow catfish,mstn,gene_editing,NA,myofiber_number,F1,80,3,3332,796.3,3,2119,179.3
+401,"Tao et al., 2021",fish,Pond loach,mstn,gene_editing,NA,myofiber_number,P1,90,5,472.8,33.52,5,368,26.15
+402,"Tao et al., 2021",fish,Pond loach,mstn,gene_editing,NA,myofiber_size,P1,90,5,319.6,22.73,5,301.8,13.08
+403,"Tao et al., 2021",fish,Pond loach,mstn,gene_editing,NA,myofiber_size,P1,90,5,148822,7362,5,111143,9640
+456,"Shahi et al., 2022",fish,common carp,mstn,gene_editing,NA,myofiber_size,P1,90,5,49.5,2.1,5,28.7,3.6
+511,"Wu et al., 2023",fish,Nile tilapia,mstn,gene_editing,NA,myofiber_size,P1,210,3,19.529,3.059,3,9.882,0.706
+512,"Wu et al., 2023",fish,Nile tilapia,mstn,gene_editing,NA,myofiber_size,P1,210,3,23.412,4.471,3,11.412,0
+513,"Wu et al., 2023",fish,Nile tilapia,mstn,gene_editing,NA,myofiber_size,P1,210,3,3.529,0.824,3,2,0.588
+515,"Zheng et al., 2023",fish,Culter alburnus,mstn,gene_editing,NA,myofiber_size,F1,60,3,1.98,0.65,3,1.63,0.48

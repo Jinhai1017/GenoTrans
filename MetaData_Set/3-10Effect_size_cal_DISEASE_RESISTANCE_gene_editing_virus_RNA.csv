@@ -1,0 +1,49 @@
+ID,Author,category,species,gene,method,promoter,pathogen,generation,parameter,treat_n,treat_mean,treat_sd,control_n,control_mean,control_sd
+85,"Whitworth et al., 2016",pig,unknown,CD163,gene editing,NA,PRRSV,F1,virus RNA,3,0,0,7,5.805,0.606
+86,"Whitworth et al., 2016",pig,unknown,CD163,gene editing,NA,PRRSV,F1,virus RNA,3,0,0,7,6.412,0.491
+87,"Whitworth et al., 2016",pig,unknown,CD163,gene editing,NA,PRRSV,F1,virus RNA,3,0,0,7,6.7,0.404
+88,"Whitworth et al., 2016",pig,unknown,CD163,gene editing,NA,PRRSV,F1,virus RNA,3,0,0,7,6.296,0.231
+89,"Whitworth et al., 2016",pig,unknown,CD163,gene editing,NA,PRRSV,F1,virus RNA,3,0,0,7,5.545,0.838
+90,"Whitworth et al., 2016",pig,unknown,CD163,gene editing,NA,PRRSV,F1,virus RNA,3,0,0,7,3.379,1.531
+91,"Whitworth et al., 2016",pig,unknown,CD163,gene editing,NA,PRRSV,F1,virus RNA,3,0,0,7,2.224,1.213
+123,"Yang et al., 2018",pig,Durocs,CD163,gene editing,NA,PRRSV,P1,virus RNA,3,0,0,11,7.559,0.717
+124,"Yang et al., 2018",pig,Durocs,CD163,gene editing,NA,PRRSV,P1,virus RNA,3,0,0,11,8.414,0.497
+125,"Yang et al., 2018",pig,Durocs,CD163,gene editing,NA,PRRSV,P1,virus RNA,3,0,0,11,8.469,0.221
+135,"Guo et al., 2019",pig,Large White,CD163,gene editing,NA,PRRSV,P1,virus RNA,3,0,0,3,8.842,0.367
+136,"Guo et al., 2019",pig,Large White,CD163,gene editing,NA,PRRSV,P1,virus RNA,3,0,0,3,9.209,0.452
+137,"Guo et al., 2019",pig,Large White,CD163,gene editing,NA,PRRSV,P1,virus RNA,3,0,0,3,6.158,0.96
+138,"Guo et al., 2019",pig,Large White,CD163,gene editing,NA,PRRSV,P1,virus RNA,3,0,0,3,6.469,0.254
+139,"Guo et al., 2019",pig,Large White,CD163,gene editing,NA,PRRSV,P1,virus RNA,3,0,0,3,5.339,0.48
+140,"Guo et al., 2019",pig,Large White,CD163,gene editing,NA,PRRSV,P1,virus RNA,3,0,0,3,4.746,0.254
+141,"Guo et al., 2019",pig,Large White,CD163,gene editing,NA,PRRSV,P1,virus RNA,3,0,0,3,4.435,0.452
+152,"Chen et al., 2019",pig,Landrace,CD163,gene editing,NA,PRRSV,P1,virus RNA,3,1.079,0.315,3,4.427,0.404
+153,"Chen et al., 2019",pig,Landrace,CD163,gene editing,NA,PRRSV,P1,virus RNA,3,1.258,0.225,3,4.562,0.18
+154,"Chen et al., 2019",pig,Landrace,CD163,gene editing,NA,PRRSV,P1,virus RNA,3,1.258,0.247,3,4.854,0.112
+155,"Chen et al., 2019",pig,Landrace,CD163,gene editing,NA,PRRSV,P1,virus RNA,3,1.303,0,3,4.742,0.337
+156,"Chen et al., 2019",pig,Landrace,CD163,gene editing,NA,PRRSV,P1,virus RNA,3,3.528,0,3,4.921,0.225
+169,"Koslová et al., 2020",chicken,White Leghorn,NHE1,gene editing,NA,ALV,F1,virus RNA,7,6925025.329,1134883.689,1,6170212.766,0
+221,"Kheimar et al., 2021",chicken,White Leghorn,NHE1,gene editing,NA,ALV,P1,virus RNA,8,4.7,0.125,7,7.55,0.7
+222,"Kheimar et al., 2021",chicken,White Leghorn,NHE1,gene editing,NA,ALV,P1,virus RNA,8,4.425,0.35,7,6.7,0.65
+223,"Kheimar et al., 2021",chicken,White Leghorn,NHE1,gene editing,NA,ALV,P1,virus RNA,8,2.15,0.8,7,5.35,0.475
+224,"Kheimar et al., 2021",chicken,White Leghorn,NHE1,gene editing,NA,ALV,P1,virus RNA,8,1.775,0.6,7,4.9,0.125
+225,"Kheimar et al., 2021",chicken,White Leghorn,NHE1,gene editing,NA,ALV,P1,virus RNA,8,0.825,0.775,7,5,0.525
+226,"Kheimar et al., 2021",chicken,White Leghorn,NHE1,gene editing,NA,ALV,P1,virus RNA,8,0.6,0.375,7,5,0.85
+227,"Kheimar et al., 2021",chicken,White Leghorn,NHE1,gene editing,NA,ALV,P1,virus RNA,8,0.2,0.125,7,4.95,2.6
+228,"Kheimar et al., 2021",chicken,White Leghorn,NHE1,gene editing,NA,ALV,P1,virus RNA,8,0.2,0.325,7,4.275,1.6
+231,"Qi et al., 2022",pig,unknown,PCBP1,gene editing,NA,CSFV,P1,virus RNA,3,0.574,0.016,3,0.982,0.044
+232,"Qi et al., 2022",pig,unknown,PCBP1,gene editing,NA,CSFV,P1,virus RNA,3,0.463,0.02,3,0.989,0.024
+233,"Qi et al., 2022",pig,unknown,PCBP1,gene editing,NA,CSFV,P1,virus RNA,3,0.103,0.016,3,0.985,0.02
+239,"Xu et al., 2023",pig,Large White,CD163,gene editing,NA,PRRSV,P1,virus RNA,3,42.173,3.067,3,99.297,2.3
+243,"Workman et al., 2023",cattle,Bos indicus,CD46,gene editing,NA,BVDV,P1,virus RNA,3,0,0,3,765.625,62.5
+244,"Workman et al., 2023",cattle,Bos indicus,CD46,gene editing,NA,BVDV,P1,virus RNA,3,0,0,3,1296.875,218.75
+245,"Workman et al., 2023",cattle,Bos indicus,CD46,gene editing,NA,BVDV,P1,virus RNA,3,0,0,3,1437.5,578.125
+246,"Workman et al., 2023",cattle,Bos indicus,CD46,gene editing,NA,BVDV,P1,virus RNA,3,0,0,3,578.125,234.375
+247,"Workman et al., 2023",cattle,Bos indicus,CD46,gene editing,NA,BVDV,P1,virus RNA,3,0,0,3,859.375,171.875
+248,"Workman et al., 2023",cattle,Bos indicus,CD46,gene editing,NA,BVDV,P1,virus RNA,3,0,0,3,671.875,125
+249,"Workman et al., 2023",cattle,Bos indicus,CD46,gene editing,NA,BVDV,P1,virus RNA,3,0,0,3,1875,218.75
+250,"Workman et al., 2023",cattle,Bos indicus,CD46,gene editing,NA,BVDV,P1,virus RNA,3,0,0,3,1796.875,921.875
+251,"Workman et al., 2023",cattle,Bos indicus,CD46,gene editing,NA,BVDV,P1,virus RNA,3,0,0,3,1187.5,265.625
+252,"Workman et al., 2023",cattle,Bos indicus,CD46,gene editing,NA,BVDV,P1,virus RNA,3,0,0,3,703.125,234.375
+253,"Workman et al., 2023",cattle,Bos indicus,CD46,gene editing,NA,BVDV,P1,virus RNA,3,0,0,3,1109.375,421.875
+254,"Salgado et al., 2024",pig,unknown,CD163,gene editing,NA,PRRSV,F1,virus RNA,8,0,0,2,5.818,0.242
+255,"Salgado et al., 2024",pig,unknown,CD163,gene editing,NA,PRRSV,F1,virus RNA,8,0,0,2,4.747,0.263

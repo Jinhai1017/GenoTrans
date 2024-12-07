@@ -1,0 +1,14 @@
+ID,Author,category,species,gene,method,trait,promoter,tissue,parameter,generation,age,treat_n,treat_mean,treat_sd,control_n,control_mean,control_sd
+27,"Mankiewicz et al., 2022",fish,rainbow trout,LepR,gene_editing,growth,NA,liver,mRNA,P1,21,6,1.573,0.171,8,1,0.162
+28,"Mankiewicz et al., 2022",fish,rainbow trout,LepR,gene_editing,growth,NA,liver,mRNA,P1,42,6,1.051,0.128,8,1.299,0.197
+29,"Mankiewicz et al., 2022",fish,rainbow trout,LepR,gene_editing,growth,NA,liver,protein,P1,21,6,144.681,29.787,8,49.362,30.638
+30,"Mankiewicz et al., 2022",fish,rainbow trout,LepR,gene_editing,growth,NA,liver,protein,P1,42,6,157.447,22.979,8,117.447,24.681
+53,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,growth,NA,muscle,mRNA,P1,60,3,3.612,0.119,3,0.985,0.03
+54,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,growth,NA,muscle,mRNA,P1,60,3,5.373,0.448,3,0.985,0.03
+55,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,growth,NA,muscle,mRNA,P1,60,3,5.105,0.299,3,0.985,0.03
+56,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,growth,NA,muscle,mRNA,P1,60,3,4.06,0.119,3,0.985,0.03
+57,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,growth,NA,muscle,mRNA,P1,120,3,2.507,0.239,3,1.075,0.269
+58,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,growth,NA,muscle,mRNA,P1,120,3,2.925,0.09,3,1.075,0.269
+59,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,growth,NA,muscle,mRNA,P1,120,3,4,0.119,3,1.075,0.269
+60,"Wang et al., 2018",pig,Bama,IGF2,gene_editing,growth,NA,muscle,mRNA,P1,120,3,2.09,0.507,3,1.075,0.269
+61,"Liu et al., 2019",pig,Liang Guang Small Spotted ,IGF2,gene_editing,growth,NA,in vitro,mRNA,NA,NA,3,461.538,75,3,1.059,0.178

@@ -1,0 +1,30 @@
+ID,Author,category,species,gene,method,promoter,generation,age,source,parameter,treat_n,treat_mean,treat_sd,control_n,control_mean,control_sd
+3,"Saeki et al., 2004",pig,Duroc_Landrace ,fat2,transgenesis,aP2,P1,150,in vitro,?-6/?-3,3,5.6,0.6,3,2.5,1.7
+6,"Saeki et al., 2004",pig,Duroc_Landrace ,fat2,transgenesis,aP2,P1,150,white adipose,?-6/?-3,3,24.2,9.1,5,10.3,2.3
+9,"Saeki et al., 2004",pig,Duroc_Landrace ,fat2,transgenesis,aP2,P1,150,white adipose,?-6/?-3,3,8.3,0.4,5,7.3,0.4
+18,"Lai et al., 2006",pig,unknown,fat1,transgenesis,?-actin,P1,2,tail,?-6/?-3,8,1.69,0.3,8,8.52,0.62
+23,"Wu et al., 2012",cattle,Holstein,fat1,transgenesis,?-actin,P1,90,ear,?-6/?-3,3,0.5122,0.034,3,3.4937,0.656
+28,"Wu et al., 2012",cattle,Holstein,fat1,transgenesis,?-actin,P1,90,ear,?-6/?-3,3,0.5122,0.034,3,7.6737,2.12
+33,"Wu et al., 2012",cattle,Holstein,fat1,transgenesis,?-actin,P1,281,milk,?-6/?-3,3,1.04,0.3,3,4.25,0.98
+38,"Zhang et al., 2012",pig,Danish Landrace,fat1,transgenesis,?-actin,P1,281,in vitro,?-6/?-3,2,1.545,0.544472222,1,11.48,0
+39,"Zhang et al., 2012",pig,Danish Landrace,fat1,transgenesis,?-actin,P1,281,heart,?-6/?-3,3,17.48,0.16,3,19.06,0.15
+40,"Zhang et al., 2012",pig,Danish Landrace,fat1,transgenesis,?-actin,P1,281,liver,?-6/?-3,3,6.01,0.01,3,7.36,0.12
+41,"Zhang et al., 2012",pig,Danish Landrace,fat1,transgenesis,?-actin,P1,281,spleen,?-6/?-3,3,12.07,0.47,3,15.63,0.07
+42,"Zhang et al., 2012",pig,Danish Landrace,fat1,transgenesis,?-actin,P1,281,lung,?-6/?-3,3,13.45,0.41,3,18.18,1.02
+43,"Zhang et al., 2012",pig,Danish Landrace,fat1,transgenesis,?-actin,P1,281,kidney,?-6/?-3,3,12.02,0.25,3,13.1,0.09
+47,"Zhang et al., 2012",pig,Danish Landrace,fat1,transgenesis,?-actin,P1,281,brain,?-6/?-3,3,0.96,0.09,3,1.94,0.13
+48,"Zhang et al., 2012",pig,Danish Landrace,fat1,transgenesis,?-actin,P1,281,testis,?-6/?-3,3,1.93,0.08,3,2.7,0.14
+50,"Zhang et al., 2013",sheep,Xinjiang,fat1,transgenesis,?-actin,P1,3,liver,?-6/?-3,3,0.66,0.04,3,1.56,0.05
+51,"Zhang et al., 2013",sheep,Xinjiang,fat1,transgenesis,?-actin,P1,3,spleen,?-6/?-3,3,1.5,0.16,3,3.04,0.23
+52,"Zhang et al., 2013",sheep,Xinjiang,fat1,transgenesis,?-actin,P1,3,lung,?-6/?-3,3,1.4,0.12,3,2.66,0.46
+53,"Zhang et al., 2013",sheep,Xinjiang,fat1,transgenesis,?-actin,P1,3,kidney,?-6/?-3,3,1.36,0.15,3,2.45,0.05
+54,"Zhang et al., 2013",sheep,Xinjiang,fat1,transgenesis,?-actin,P1,3,brain,?-6/?-3,3,0.32,0.01,3,0.42,0.01
+55,"Zhang et al., 2013",sheep,Xinjiang,fat1,transgenesis,?-actin,P1,3,ear,?-6/?-3,3,1.18,0.25,3,2.89,0.02
+56,"Zhang et al., 2013",sheep,Xinjiang,fat1,transgenesis,?-actin,P1,3,tongue,?-6/?-3,3,1.25,0.02,3,1.66,0.13
+57,"Zhang et al., 2013",sheep,Xinjiang,fat1,transgenesis,?-actin,P1,3,tail,?-6/?-3,3,2.08,0.63,3,4.6,1.14
+58,"Zhang et al., 2013",sheep,Xinjiang,fat1,transgenesis,?-actin,P1,3,muscle,?-6/?-3,3,1.24,0.06,3,2.63,0.05
+101,"Liu et al., 2016",pig,Song-liao black,fat1,transgenesis,?-actin,P1,90,ear,?-6/?-3,5,1.81,0.41,3,4.38,0.64
+112,"Liu et al., 2017",cattle,Holstein,fat1,transgenesis,?-actin,P1,90,ear,?-6/?-3,6,1.217,0.457,6,5.63,0.304
+120,"Zhang et al., 2018",goat,Arbas cashmere,fat2,transgenesis,?-actin,P1,40,in vitro,?-6/?-3,3,1.501,0.107,3,2.949,0.268
+143,"Xing et al., 2023",fish,channel catfish,fat1,transgenesis,?-actin,P1,210,muscle,?-6/?-3,5,0.6944,0.08,5,0.869,0.09
+148,"Xing et al., 2023",fish,channel catfish,fat2,transgenesis,?-actin,P1,210,muscle,?-6/?-3,5,0.86206,0.11,5,0.869,0.09

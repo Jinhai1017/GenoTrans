@@ -1,0 +1,21 @@
+ID,Author,category,species,gene,method,promoter,pathogen,generation,parameter,treat_n,treat_mean,treat_sd,control_n,control_mean,control_sd
+187,"Sun et al., 2020b",shrimp,Exopalaemon carinicauda,EcBCO2,gene editing,NA,Vibrio,P1,CSR,10,15.395,1.897,10,4.012,1.186
+188,"Sun et al., 2020b",shrimp,Exopalaemon carinicauda,EcBCO2,gene editing,NA,Vibrio,P1,CSR,10,45.632,4.387,10,5.079,1.542
+189,"Sun et al., 2020b",shrimp,Exopalaemon carinicauda,EcBCO2,gene editing,NA,Vibrio,P1,CSR,10,45.87,2.727,10,7.332,2.609
+190,"Sun et al., 2020b",shrimp,Exopalaemon carinicauda,EcBCO2,gene editing,NA,Vibrio,P1,CSR,10,47.53,1.897,10,8.755,3.202
+191,"Sun et al., 2020b",shrimp,Exopalaemon carinicauda,EcBCO2,gene editing,NA,Vibrio,P1,CSR,10,48.36,2.134,10,10.771,1.779
+192,"Sun et al., 2020b",shrimp,Exopalaemon carinicauda,EcBCO2,gene editing,NA,Aeromonas,P1,CSR,10,50.754,3.656,10,4.797,1.393
+193,"Sun et al., 2020b",shrimp,Exopalaemon carinicauda,EcBCO2,gene editing,NA,Aeromonas,P1,CSR,10,63.985,3.83,10,5.319,2.263
+194,"Sun et al., 2020b",shrimp,Exopalaemon carinicauda,EcBCO2,gene editing,NA,Aeromonas,P1,CSR,10,68.162,1.915,10,8.627,2.611
+195,"Sun et al., 2020b",shrimp,Exopalaemon carinicauda,EcBCO2,gene editing,NA,Aeromonas,P1,CSR,10,69.033,2.785,10,10.019,3.482
+196,"Sun et al., 2020b",shrimp,Exopalaemon carinicauda,EcBCO2,gene editing,NA,Aeromonas,P1,CSR,10,70.251,2.785,10,12.282,1.741
+197,"Sun et al., 2020c",shrimp,Exopalaemon carinicauda,EcNinaB,gene editing,NA,Vibrio,P1,CSR,10,22.222,2.02,10,21.212,2.273
+198,"Sun et al., 2020c",shrimp,Exopalaemon carinicauda,EcNinaB,gene editing,NA,Vibrio,P1,CSR,10,55.555,4.545,10,23.737,2.778
+199,"Sun et al., 2020c",shrimp,Exopalaemon carinicauda,EcNinaB,gene editing,NA,Vibrio,P1,CSR,10,55.807,2.525,10,28.789,2.02
+200,"Sun et al., 2020c",shrimp,Exopalaemon carinicauda,EcNinaB,gene editing,NA,Vibrio,P1,CSR,10,56.818,1.768,10,30.304,2.525
+201,"Sun et al., 2020c",shrimp,Exopalaemon carinicauda,EcNinaB,gene editing,NA,Vibrio,P1,CSR,10,58.338,2.273,10,30.555,2.273
+202,"Sun et al., 2020c",shrimp,Exopalaemon carinicauda,EcNinaB,gene editing,NA,Aeromonas,P1,CSR,10,61.415,4.409,10,31.501,3.15
+203,"Sun et al., 2020c",shrimp,Exopalaemon carinicauda,EcNinaB,gene editing,NA,Aeromonas,P1,CSR,10,74.329,2.835,10,32.441,4.094
+204,"Sun et al., 2020c",shrimp,Exopalaemon carinicauda,EcNinaB,gene editing,NA,Aeromonas,P1,CSR,10,77.793,2.205,10,34.96,2.835
+205,"Sun et al., 2020c",shrimp,Exopalaemon carinicauda,EcNinaB,gene editing,NA,Aeromonas,P1,CSR,10,79.368,2.835,10,36.849,3.779
+206,"Sun et al., 2020c",shrimp,Exopalaemon carinicauda,EcNinaB,gene editing,NA,Aeromonas,P1,CSR,10,80.627,2.52,10,37.795,2.835

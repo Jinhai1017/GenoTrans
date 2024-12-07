@@ -1,0 +1,33 @@
+ID,Author,category,species,gene,method,trait,promoter,tissue,parameter,generation,age,treat_n,treat_mean,treat_sd,control_n,control_mean,control_sd
+13,"Qian et al., 2015",pig,Meishan,mstn,gene_editing,growth,NA,muscle,mRNA,P1,240,3,0.485,0.204,3,1.35,0.187
+14,"Qian et al., 2015",pig,Meishan,mstn,gene_editing,growth,NA,muscle,mRNA,P1,240,3,0,0,3,1.35,0.187
+15,"Qian et al., 2015",pig,Meishan,mstn,gene_editing,growth,NA,muscle,protein,P1,240,3,7.119,1.136,3,8.587,0.831
+16,"Qian et al., 2015",pig,Meishan,mstn,gene_editing,growth,NA,muscle,protein,P1,240,3,0,0,3,8.587,0.831
+17,"Rao et al., 2016",pig,Crossbred,mstn,gene_editing,growth,NA,in vitro,protein,NA,NA,3,9.184,0.702,3,19.196,1.276
+18,"Rao et al., 2016",pig,Crossbred,mstn,gene_editing,growth,NA,in vitro,protein,NA,NA,3,9.694,0.638,3,19.196,1.276
+19,"Guo et al., 2016",rabbit,Jiangsu,mstn,gene_editing,growth,NA,muscle,protein,P1,0,6,2577.031,268.908,3,6319.328,694.678
+22,"Wang et al., 2018",goat,Cashmere,mstn,gene_editing,growth,NA,muscle,mRNA,P1,0,3,0.574,0.235,3,2.162,0.412
+23,"Li et al., 2020",pig,Duroc Meishan,mstn,gene_editing,growth,NA,muscle,mRNA,F1,210,3,0.677,0.106,3,1.019,0.041
+24,"Tao et al., 2021",fish,Pond loach,mstn,gene_editing,growth,NA,muscle,mRNA,P1,3,3,0.491,0.092,3,1.039,0.206
+25,"Tao et al., 2021",fish,Pond loach,mstn,gene_editing,growth,NA,muscle,mRNA,P1,30,3,0.399,0.096,3,1.004,0.101
+26,"Tao et al., 2021",fish,Pond loach,mstn,gene_editing,growth,NA,muscle,protein,P1,90,3,0.436,0.168,3,1,0
+27,"Zhou et al., 2022",sheep,Ningxia Tianyuan,mstn,gene_editing,growth,NA,muscle,mRNA,P1,60,2,0.02,0.015,3,1.01,0.152
+28,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,growth,NA,muscle,mRNA,P1,270,3,1,0,3,6.305,0.203
+29,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,growth,NA,muscle,mRNA,F1,270,3,1,0,3,3.61,0.356
+30,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,growth,NA,muscle,mRNA,F1,270,3,1,0,3,3.864,0.203
+31,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,growth,NA,spleen,mRNA,P1,270,3,1,0,3,1.525,0.864
+32,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,growth,NA,spleen,mRNA,F1,270,3,1,0,3,5.085,0.203
+33,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,growth,NA,spleen,mRNA,F1,270,3,1,0,3,2.339,0.203
+34,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,growth,NA,heart,mRNA,P1,270,3,1,0,3,5.797,0.203
+35,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,growth,NA,heart,mRNA,F1,270,3,1,0,3,4.475,0.102
+36,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,growth,NA,liver,mRNA,P1,270,3,1,0,3,1.068,0.305
+37,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,growth,NA,liver,mRNA,F1,270,3,1,0,3,2.136,0.814
+38,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,growth,NA,liver,mRNA,F1,270,3,1,0,3,1.831,0.254
+39,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,growth,NA,brain,mRNA,P1,270,3,1,0,3,1.119,0.203
+40,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,growth,NA,brain,mRNA,F1,270,3,1,0,3,2.542,0.153
+41,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,growth,NA,brain,mRNA,F1,270,3,1,0,3,1.017,0.305
+42,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,growth,NA,gonad,mRNA,P1,270,3,1,0,3,3.254,2.136
+43,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,growth,NA,gonad,mRNA,F1,270,3,1,0,3,1.22,0.661
+44,"Coogan et al., 2022b",fish,channel catfish,mstn,gene_editing,growth,NA,gonad,mRNA,F1,270,3,1,0,3,2.542,0.356
+48,"Zheng et al., 2023",fish,Culter alburnus,mstn,gene_editing,growth,NA,muscle,mRNA,F1,60,3,0.391,0.06,3,1.003,0.04
+85,"Guo et al., 2019",pig,Large White ,CD163,gene_editing,disease resistance,NA,in vitro,mRNA,NA,unknown,3,4.978,0.277,3,6.17,0.294

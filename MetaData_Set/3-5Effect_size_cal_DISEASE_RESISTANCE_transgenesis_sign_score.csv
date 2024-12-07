@@ -1,0 +1,10 @@
+ID,Author,category,species,gene,method,promoter,pathogen,generation,parameter,treat_n,treat_mean,treat_sd,control_n,control_mean,control_sd
+172,"Huang et al., 2020a",pig,Hubei,PBD-2,transgenesis,?-actin,Glaesserella,P1,sign score,5,2,0.647,6,2.308,0.806
+173,"Huang et al., 2020a",pig,Hubei,PBD-2,transgenesis,?-actin,Glaesserella,P1,sign score,5,1.791,0.448,6,2.478,0.567
+174,"Huang et al., 2020a",pig,Hubei,PBD-2,transgenesis,?-actin,Glaesserella,P1,sign score,5,0.607,0.547,6,1.284,0.507
+175,"Huang et al., 2020a",pig,Hubei,PBD-2,transgenesis,?-actin,Glaesserella,P1,sign score,5,0.388,0.577,6,0.657,0.517
+176,"Huang et al., 2020a",pig,Hubei,PBD-2,transgenesis,?-actin,Glaesserella,P1,sign score,5,1.945,0.684,6,3.252,0.547
+177,"Huang et al., 2020a",pig,Hubei,PBD-2,transgenesis,?-actin,Glaesserella,P1,sign score,5,1.594,1.125,6,3.406,0.844
+178,"Huang et al., 2020a",pig,Hubei,PBD-2,transgenesis,?-actin,Glaesserella,P1,sign score,5,2.188,0.875,6,3.328,0.875
+179,"Huang et al., 2020a",pig,Hubei,PBD-2,transgenesis,?-actin,Glaesserella,P1,sign score,5,1.21,0.256,6,2.193,0.551
+180,"Huang et al., 2020a",pig,Hubei,PBD-2,transgenesis,?-actin,Glaesserella,P1,sign score,5,1.885,0.475,6,3.098,0.852

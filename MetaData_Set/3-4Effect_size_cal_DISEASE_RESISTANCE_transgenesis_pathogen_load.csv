@@ -1,0 +1,35 @@
+ID,Author,category,species,gene,method,promoter,pathogen,generation,parameter,treat_n,treat_mean,treat_sd,control_n,control_mean,control_sd
+22,"Lyall et al., 2011",chicken,unknown,AIV-shRNA,transgenesis,U6,AIV,F1,pathogen load,8,29.016,15.337,2,100.725,18.653
+57,"Yan et al., 2014",pig,Tibetan miniature,mx1,transgenesis,CMV,CSFV,P1,pathogen load,5,4.225,0,1,88.263,6.573
+58,"Yan et al., 2014",pig,Tibetan miniature,mx1,transgenesis,CMV,CSFV,P1,pathogen load,5,8.92,0,1,88.263,6.573
+59,"Yan et al., 2014",pig,Tibetan miniature,mx1,transgenesis,CMV,CSFV,P1,pathogen load,5,30.986,1.878,1,88.263,6.573
+60,"Yan et al., 2014",pig,Tibetan miniature,mx1,transgenesis,CMV,CSFV,P1,pathogen load,5,5.164,0,1,88.263,6.573
+61,"Yan et al., 2014",pig,Tibetan miniature,mx1,transgenesis,CMV,CSFV,P1,pathogen load,5,23.474,1.878,1,88.263,6.573
+70,"Wu et al., 2015",cattle,Holstein_Friesian,SP110,transgenesis,PGK1,Mycobacterium,P1,pathogen load,9,149.3,15.6,9,268,19.2
+71,"Wu et al., 2015",cattle,Holstein_Friesian,SP110,transgenesis,PGK1,Mycobacterium,P1,pathogen load,9,136.4,23.7,9,289,17.3
+72,"Wu et al., 2015",cattle,Holstein_Friesian,SP110,transgenesis,PGK1,Mycobacterium,P1,pathogen load,9,0.29,0.062,9,0.75,0.056
+73,"Wu et al., 2015",cattle,Holstein_Friesian,SP110,transgenesis,PGK1,Mycobacterium,P1,pathogen load,9,0.21,0.071,9,0.45,0.03
+74,"Wu et al., 2015",cattle,Holstein_Friesian,SP110,transgenesis,PGK1,Mycobacterium,P1,pathogen load,9,0.33,0.087,9,1.67,0.26
+75,"Wu et al., 2015",cattle,Holstein_Friesian,SP110,transgenesis,PGK1,Mycobacterium,P1,pathogen load,9,4.7,2.1,9,17.8,4.8
+96,"Byun et al., 2017",chicken,Lohmann brown,3D8,transgenesis,?-actin,H9N2AIV,F1,pathogen load,10,3.8915,0.472430789,10,3.4251,0.422345226
+97,"Byun et al., 2017",chicken,Lohmann brown,3D8,transgenesis,?-actin,H9N2AIV,F1,pathogen load,10,2.5943,0.493655963,10,2.2919,0.734822761
+98,"Byun et al., 2017",chicken,Lohmann brown,3D8,transgenesis,?-actin,H9N2AIV,F1,pathogen load,10,0.5232,0.419327748,10,0.8809,0.547136628
+99,"Byun et al., 2017",chicken,Lohmann brown,3D8,transgenesis,?-actin,H9N2AIV,F1,pathogen load,10,0.3326,0.422290706,10,0.5919,0.35147815
+100,"Byun et al., 2017",chicken,Lohmann brown,3D8,transgenesis,?-actin,H9N2AIV,F1,pathogen load,10,0.3022,0.9066,10,0.1899,0.298413287
+101,"Byun et al., 2017",chicken,Lohmann brown,3D8,transgenesis,?-actin,H9N2AIV,F1,pathogen load,10,0.8482,0.907243936,10,2.2274,0.99094795
+102,"Byun et al., 2017",chicken,Lohmann brown,3D8,transgenesis,?-actin,H9N2AIV,F1,pathogen load,10,1.062,0.710815447,10,2.741,1.014407315
+103,"Byun et al., 2017",chicken,Lohmann brown,3D8,transgenesis,?-actin,H9N2AIV,F1,pathogen load,10,0.798555556,0.682553069,10,2.3741,0.616637892
+112,"Gao et al., 2017",cattle,Lanzhou,NRAMP1,transgenesis,U6,Mycobacterium,P1,pathogen load,6,0.4,0.13,6,1.29,0.12
+113,"Gao et al., 2017",cattle,Lanzhou,NRAMP1,transgenesis,U6,Mycobacterium,P1,pathogen load,6,0.36,0.14,6,1.45,0.09
+181,"Huang et al., 2020a",pig,Hubei,PBD-2,transgenesis,?-actin,Glaesserella,P1,pathogen load,5,1.451,0.11,6,1.979,0.308
+182,"Huang et al., 2020a",pig,Hubei,PBD-2,transgenesis,?-actin,Glaesserella,P1,pathogen load,5,3.367,1.089,6,5.671,1.19
+183,"Huang et al., 2020b",pig,Hubei,PBD-2,transgenesis,?-actin,Actinobacillus,P1,pathogen load,3,4.976,0.21,3,5.657,0.314
+184,"Huang et al., 2020b",pig,Hubei,PBD-2,transgenesis,?-actin,Streptococcus,P1,pathogen load,3,2.5,0.333,3,3.583,0.542
+185,"Huang et al., 2020b",pig,Hubei,PBD-2,transgenesis,?-actin,Actinobacillus,P1,pathogen load,3,4.88,0.451,3,5.675,0.769
+186,"Huang et al., 2020b",pig,Hubei,PBD-2,transgenesis,?-actin,Streptococcus,P1,pathogen load,3,2.362,0.371,3,3.242,0.556
+207,"Challagulla et al., 2021",chicken,Hy-Line brown,ICP4,transgenesis,CMV,MDV,F1,pathogen load,18,0.537,0.031,10,0.997,0
+208,"Challagulla et al., 2021",chicken,Hy-Line brown,ICP4,transgenesis,CMV,MDV,F1,pathogen load,4,23.977,2.924,9,58.48,5.653
+209,"Challagulla et al., 2021",chicken,Hy-Line brown,ICP4,transgenesis,CMV,MDV,F1,pathogen load,3,23.195,3.939,3,71.991,5.033
+210,"Challagulla et al., 2021",chicken,Hy-Line brown,ICP4,transgenesis,CMV,MDV,F1,pathogen load,9,13.421,4.474,9,36.842,10.789
+211,"Challagulla et al., 2021",chicken,Hy-Line brown,ICP4,transgenesis,CMV,MDV,F1,pathogen load,6,5.077,1.692,3,33.846,13.846
+212,"Challagulla et al., 2021",chicken,Hy-Line brown,ICP4,transgenesis,CMV,MDV,F1,pathogen load,13,11.825,1.767,6,29.903,4.621

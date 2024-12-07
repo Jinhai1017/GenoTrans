@@ -1,0 +1,31 @@
+ID,Author,category,species,gene,method,promoter,generation,age,source,parameter,treat_n,treat_mean,treat_sd,control_n,control_mean,control_sd
+12,"Saeki et al., 2004",pig,Duroc_Landrace ,fat2,transgenesis,aP2,P1,150,blood,EPA,2,0.2,0.1414,3,0.3,0.1
+14,"Lai et al., 2006",pig,unknown,fat1,transgenesis,?-actin,P1,2,tail,EPA,8,4.21,0.6,8,0.26,0.07
+19,"Wu et al., 2012",cattle,Holstein,fat1,transgenesis,?-actin,P1,90,ear,EPA,3,4.9,0.4,3,1.1,0.3
+24,"Wu et al., 2012",cattle,Holstein,fat1,transgenesis,?-actin,P1,90,ear,EPA,3,4.9,0.4,3,0,0
+29,"Wu et al., 2012",cattle,Holstein,fat1,transgenesis,?-actin,P1,281,milk,EPA,3,0.16,0.04,3,0.03,0.4
+34,"Zhang et al., 2012",pig,Danish Landrace,fat1,transgenesis,?-actin,P1,281,in vitro,EPA,2,2.8,0.565685425,1,0.03,0
+59,"Cheng et al., 2014",fish,common carp,D5D,transgenesis,?-actin,P1,270,muscle,EPA,13,3.2,0.565685425,20,3.115,0.360624458
+63,"Cheng et al., 2014",fish,common carp,D5D,transgenesis,?-actin,P1,270,muscle,EPA,13,5.155,0.6151829,20,5.14,0.45254834
+67,"Kabeya et al., 2014",fish,nibe croaker,elovl2,transgenesis,Apo-14,P1,180,brain,EPA,3,4.3,0.13,3,4.83,0.45
+68,"Kabeya et al., 2014",fish,nibe croaker,elovl2,transgenesis,Apo-14,P1,180,eye,EPA,3,3.62,0.43,3,5.34,0.87
+69,"Kabeya et al., 2014",fish,nibe croaker,elovl2,transgenesis,Apo-14,P1,180,heart,EPA,3,7.53,0.49,3,8.09,0.54
+70,"Kabeya et al., 2014",fish,nibe croaker,elovl2,transgenesis,Apo-14,P1,180,liver,EPA,3,2.45,0.44,3,6.6,0.61
+71,"Kabeya et al., 2014",fish,nibe croaker,elovl2,transgenesis,Apo-14,P1,180,kidney,EPA,3,6.57,0.47,3,6.8,0.76
+72,"Kabeya et al., 2014",fish,nibe croaker,elovl2,transgenesis,Apo-14,P1,180,muscle,EPA,3,7.05,0.88,3,5.49,0.57
+73,"Kabeya et al., 2014",fish,nibe croaker,elovl2,transgenesis,Apo-14,P1,180,stomach,EPA,3,7.84,0.91,3,6.74,0.89
+74,"Kabeya et al., 2014",fish,nibe croaker,elovl2,transgenesis,Apo-14,P1,180,intestine,EPA,3,5.35,0.24,3,4.82,0.84
+75,"Kabeya et al., 2014",fish,nibe croaker,elovl2,transgenesis,Apo-14,P1,180,testis,EPA,3,4.66,0.53,3,5.12,0.43
+85,"Kabeya et al., 2016",fish,nibe croaker,elovl2,transgenesis,Apo-14,F1,50,whole body,EPA,4,41.7,1.5,4,43.6,0.9
+86,"Kabeya et al., 2016",fish,nibe croaker,elovl2,transgenesis,Apo-14,F1,50,whole body,EPA,4,45,3,4,46.9,1.1
+87,"Kabeya et al., 2016",fish,nibe croaker,elovl2,transgenesis,Apo-14,F1,50,whole body,EPA,4,26.3,0.3,4,26.3,1.2
+97,"Liu et al., 2016",pig,Song-liao black,fat1,transgenesis,?-actin,P1,90,ear,EPA,5,2.71,0.72,3,1.09,0.12
+102,"Bugg, 2017",fish,common carp,D5D,transgenesis,?-actin,F1,180,muscle,EPA,5,0.65,0.04,2,0.72,0.1
+106,"Bugg, 2017",fish,channel catfish,D5D,transgenesis,?-actin,F1,180,muscle,EPA,3,8.2,1.2,2,8.28,2.1
+123,"Huang et al., 2021",fish,channel catfish,D5D,transgenesis,?-actin,F1,360,muscle,EPA,2,8.52,0.06,10,6.95,0.85
+127,"Huang et al., 2021",fish,channel catfish,D5D,transgenesis,?-actin,F1,360,muscle,EPA,8,9.43,1.13,17,7.24,0.69
+131,"Xing et al., 2022a",fish,channel catfish,elovl2,transgenesis,?-actin,P1,300,muscle,EPA,3,5.09,0.43,3,4.32,0.32
+135,"Xing et al., 2022b",fish,channel catfish,elovl2,transgenesis,?-actin,P1,270,muscle,EPA,3,5.18,0.08,3,5.27,0.28
+139,"Xing et al., 2023",fish,channel catfish,fat1,transgenesis,?-actin,P1,210,muscle,EPA,5,4.91,0.34,5,4.43,0.36
+144,"Xing et al., 2023",fish,channel catfish,fat2,transgenesis,?-actin,P1,210,muscle,EPA,5,4.52,0.6,5,4.43,0.36
+149,"Coogan et al., 2023",fish,channel catfish,elovl2,transgenesis,?-actin,P1,180,muscle,EPA,3,1.13,0.7,3,0.51,0.33
