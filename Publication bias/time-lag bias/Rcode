@@ -1,1 +1,74 @@
+####Here are codes for time-lag bias detection#############
+###################################### Evidence that genome editing is superior to transgenesis for enhancing animal traits#############################
+######################################################################################################################################################
+#########################R CODES: META-ANAYLSIS###############################################
+
+install.packages('pacman')
+rm(list = ls())
+pacman::p_load(devtools, tidyverse, metafor, patchwork, R.rsp, orchaRd, emmeans,ape, phytools, flextable)
+install.packages("metafor")
+#??????
+devtools::install_github("daniel1noble/orchaRd")
+
+library(pacman)
+library(ggplot2)
+library(metafor)
+library(viridis)
+install.packages("gt")  
+library(gt) 
+setwd("C:/Users/v1lliu34/Downloads")
+
+#####################time-lag effects for gene/protein expression##########################
+View(X1Effect_size_cal_gene_protein_expression)
+datag<-X1Effect_size_cal_gene_protein_expression
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MA <- rma.mv(yi = SMD, V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
+summary(datag1_MA)
+datag1[,'Year']<-as.numeric(datag$Year)
+model<-metafor::rma.mv(yi = SMD, V = vSMD, mods = ~method * Year, random = list(~1 | Author, ~1 | 
+                                                                                 ID), data = datag1)
+
+datag1_bubble <- orchaRd::mod_results(model, mod = "Year", group = "ID", weights = "prop",by = "method")
+orchaRd::bubble_plot(datag1_bubble, group = "ID", mod = "Year", xlab = "Year",legend.pos = "top.left")
+
+######################time-lag effects for growth##########################
+View(X2Effect_size_cal_GROWTH)
+datag<-X2Effect_size_cal_GROWTH
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MA <- rma.mv(yi = SMD, V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
+summary(datag1_MA)
+datag1[,'Year']<-as.numeric(datag$Year)
+model<-metafor::rma.mv(yi = SMD, V = vSMD, mods = ~method * Year, random = list(~1 | Author, ~1 | 
+                                                                                  ID), data = datag1)
+
+datag1_bubble <- orchaRd::mod_results(model, mod = "Year", group = "ID", weights = "prop",by = "method")
+orchaRd::bubble_plot(datag1_bubble, group = "ID", mod = "Year", xlab = "Year",legend.pos = "top.left")
+
+
+######################time-lag effects for disease resistance##########################
+View(X3Effect_size_cal_DISEASE_RESISTANCE)
+datag<-X3Effect_size_cal_DISEASE_RESISTANCE
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MA <- rma.mv(yi = SMD, V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
+summary(datag1_MA)
+datag1[,'Year']<-as.numeric(datag$Year)
+model<-metafor::rma.mv(yi = SMD, V = vSMD, mods = ~method * Year, random = list(~1 | Author, ~1 | 
+                                                                                  ID), data = datag1)
+
+datag1_bubble <- orchaRd::mod_results(model, mod = "Year", group = "ID", weights = "prop",by = "method")
+orchaRd::bubble_plot(datag1_bubble, group = "ID", mod = "Year", xlab = "Year",legend.pos = "top.left")
+
+
+######################time-lag effects for fatty acid##########################
+View(X4Effect_size_cal_FATTY_ACID)
+datag<-X4Effect_size_cal_FATTY_ACID
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_MA <- rma.mv(yi = SMD, V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
+summary(datag1_MA)
+datag1[,'Year']<-as.numeric(datag$Year)
+model<-metafor::rma.mv(yi = SMD, V = vSMD, mods = ~generation * Year, random = list(~1 | Author, ~1 | 
+                                                                                  ID), data = datag1)
+
+datag1_bubble <- orchaRd::mod_results(model, mod = "Year", group = "ID", weights = "prop",by = "generation")
+orchaRd::bubble_plot(datag1_bubble, group = "ID", mod = "Year", xlab = "Year",legend.pos = "top.left")
 
