@@ -1,1 +1,105 @@
+#######################sensitive analysis#################
+#--------------gene_protein ---------------------------------
+View(X1Effect_size_cal_gene_protein_expression)
+datag<-X1Effect_size_cal_gene_protein_expression
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+##########leave_one_study##############################
+datag1$Author <- as.factor(datag1$Author)
+result1 <- rma(SMD, vSMD, data = datag1, method="REML")
+leave_one_out_results <- list()
+for (author in unique(datag1$Author)) {
+  subset_data <- datag1[datag1$Author != author, ]
+  result_author <- rma(SMD, vSMD, data = subset_data, method = "REML")
+  leave_one_out_results[[author]] <- result_author
+}
+
+print(leave_one_out_results[["Author1"]])
+smd_estimates <- sapply(leave_one_out_results, function(model) model$b)
+plot(smd_estimates, type = "b", xlab = "Author", ylab = "Effect Size (SMD)", 
+     main = "Leave-One-Out Estimates for Each Author")
+leave_one_out_summary <- lapply(leave_one_out_results, function(model) {
+  data.frame(estimate = model$b, se = model$se, zval = model$zval, pval = model$pval)
+})
+leave_one_out_df <- do.call(rbind, leave_one_out_summary)
+leave_one_out_df$Author <- rep(names(leave_one_out_summary), each = 1)
+print(leave_one_out_df)
+
+#--------------growth ---------------------------------
+View(X2Effect_size_cal_GROWTH)
+datag<-X2Effect_size_cal_GROWTH
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+##########leave_one_study##############################
+datag1$Author <- as.factor(datag1$Author)
+result1 <- rma(SMD, vSMD, data = datag1, method="REML")
+leave_one_out_results <- list()
+for (author in unique(datag1$Author)) {
+  subset_data <- datag1[datag1$Author != author, ]
+  result_author <- rma(SMD, vSMD, data = subset_data, method = "REML")
+  leave_one_out_results[[author]] <- result_author
+}
+
+print(leave_one_out_results[["Author1"]])
+smd_estimates <- sapply(leave_one_out_results, function(model) model$b)
+plot(smd_estimates, type = "b", xlab = "Author", ylab = "Effect Size (SMD)", 
+     main = "Leave-One-Out Estimates for Each Author")
+leave_one_out_summary <- lapply(leave_one_out_results, function(model) {
+  data.frame(estimate = model$b, se = model$se, zval = model$zval, pval = model$pval)
+})
+leave_one_out_df <- do.call(rbind, leave_one_out_summary)
+leave_one_out_df$Author <- rep(names(leave_one_out_summary), each = 1)
+print(leave_one_out_df)
+
+#--------------disease resistance ---------------------------------
+View(X3Effect_size_cal_DISEASE_RESISTANCE)
+datag<-X3Effect_size_cal_DISEASE_RESISTANCE
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+##########leave_one_study##############################
+datag1$Author <- as.factor(datag1$Author)
+result1 <- rma(SMD, vSMD, data = datag1, method="REML")
+leave_one_out_results <- list()
+for (author in unique(datag1$Author)) {
+  subset_data <- datag1[datag1$Author != author, ]
+  result_author <- rma(SMD, vSMD, data = subset_data, method = "REML")
+  leave_one_out_results[[author]] <- result_author
+}
+
+print(leave_one_out_results[["Author1"]])
+smd_estimates <- sapply(leave_one_out_results, function(model) model$b)
+plot(smd_estimates, type = "b", xlab = "Author", ylab = "Effect Size (SMD)", 
+     main = "Leave-One-Out Estimates for Each Author")
+leave_one_out_summary <- lapply(leave_one_out_results, function(model) {
+  data.frame(estimate = model$b, se = model$se, zval = model$zval, pval = model$pval)
+})
+leave_one_out_df <- do.call(rbind, leave_one_out_summary)
+leave_one_out_df$Author <- rep(names(leave_one_out_summary), each = 1)
+print(leave_one_out_df)
+
+#--------------fatty acid ---------------------------------
+View(X4Effect_size_cal_FATTY_ACID)
+datag<-X4Effect_size_cal_FATTY_ACID
+datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+
+##########leave_one_study##############################
+datag1$Author <- as.factor(datag1$Author)
+result1 <- rma(SMD, vSMD, data = datag1, method="REML")
+leave_one_out_results <- list()
+for (author in unique(datag1$Author)) {
+  subset_data <- datag1[datag1$Author != author, ]
+  result_author <- rma(SMD, vSMD, data = subset_data, method = "REML")
+  leave_one_out_results[[author]] <- result_author
+}
+
+print(leave_one_out_results[["Author1"]])
+smd_estimates <- sapply(leave_one_out_results, function(model) model$b)
+plot(smd_estimates, type = "b", xlab = "Author", ylab = "Effect Size (SMD)", 
+     main = "Leave-One-Out Estimates for Each Author")
+leave_one_out_summary <- lapply(leave_one_out_results, function(model) {
+  data.frame(estimate = model$b, se = model$se, zval = model$zval, pval = model$pval)
+})
+leave_one_out_df <- do.call(rbind, leave_one_out_summary)
+leave_one_out_df$Author <- rep(names(leave_one_out_summary), each = 1)
+print(leave_one_out_df)
 
