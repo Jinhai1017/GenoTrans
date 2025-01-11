@@ -23,7 +23,7 @@ setwd("C:/Users/v1lliu34/Downloads")
 View(X1Effect_size_cal_gene_protein_expression)
 datag<-X1Effect_size_cal_gene_protein_expression
 datag1_ROM<-escalc(measure = "ROM", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnRR", "vlnRR"), data = datag)
-datag1_SMD<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1_SMD<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag_combined <- merge(datag1_ROM, datag1_SMD, by = "ID", all = TRUE)
 
 
@@ -262,11 +262,10 @@ dev.off()
 
 
 
-
 #--------------gene_protein  overall---------------------------------
 View(X1Effect_size_cal_gene_protein_expression)
 datag<-X1Effect_size_cal_gene_protein_expression
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag1_MA <- rma.mv(yi = SMD , V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
 summary(datag1_MA)
 model_results <- orchaRd::mod_results(datag1_MA, mod = "1", at = NULL, group = "Author")
@@ -286,7 +285,7 @@ ggsave('GENE_PROTEIN_overall.pdf',width = 15,height = 12,pp)
 
 View(X1_1Effect_size_cal_gene_protein_expression_wo_LepR_IGF2)
 datag<-X1_1Effect_size_cal_gene_protein_expression_wo_LepR_IGF2
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag1_MA <- rma.mv(yi = SMD, V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
 summary(datag1_MA)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
@@ -369,7 +368,7 @@ funnel(res.tf)
 ######################time-lag effects##########################
 View(X1Effect_size_cal_gene_protein_expression)
 datag<-X1Effect_size_cal_gene_protein_expression
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag1_MA <- rma.mv(yi = SMD, V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
 summary(datag1_MA)
 datag1[,'Year']<-as.numeric(datag$Year)
@@ -389,7 +388,7 @@ orchaRd::bubble_plot(datag1_bubble, group = "ID", mod = "Year", xlab = "Year",le
 #--------------growth  overall---------------------------------
 View(X2Effect_size_cal_GROWTH)
 datag<-X2Effect_size_cal_GROWTH
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag1_MA <- rma.mv(yi = SMD , V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
 summary(datag1_MA)
 model_results <- orchaRd::mod_results(datag1_MA, mod = "1", at = NULL, group = "Author")
@@ -476,7 +475,7 @@ funnel(res.tf)
 ######################time-lag effects##########################
 View(X2Effect_size_cal_GROWTH)
 datag<-X2Effect_size_cal_GROWTH
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag1_MA <- rma.mv(yi = SMD, V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
 summary(datag1_MA)
 datag1[,'Year']<-as.numeric(datag$Year)
@@ -496,7 +495,7 @@ orchaRd::bubble_plot(datag1_bubble, group = "ID", mod = "Year", xlab = "Year",le
 #--------------disease  overall---------------------------------
 View(X3Effect_size_cal_DISEASE_RESISTANCE)
 datag<-X3Effect_size_cal_DISEASE_RESISTANCE
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag1_MA <- rma.mv(yi = SMD , V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
 summary(datag1_MA)
 model_results <- orchaRd::mod_results(datag1_MA, mod = "1", at = NULL, group = "Author")
@@ -583,7 +582,7 @@ funnel(res.tf, main = "Trim and Fill Funnel Plot")
 ######################time-lag effects##########################
 View(X3Effect_size_cal_DISEASE_RESISTANCE)
 datag<-X3Effect_size_cal_DISEASE_RESISTANCE
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag1_MA <- rma.mv(yi = SMD, V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
 summary(datag1_MA)
 datag1[,'Year']<-as.numeric(datag$Year)
@@ -603,7 +602,7 @@ orchaRd::bubble_plot(datag1_bubble, group = "ID", mod = "Year", xlab = "Year",le
 #--------------fatty acid  overall---------------------------------
 View(X4Effect_size_cal_FATTY_ACID)
 datag<-X4Effect_size_cal_FATTY_ACID
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag1_MA <- rma.mv(yi = SMD , V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
 summary(datag1_MA)
 model_results <- orchaRd::mod_results(datag1_MA, mod = "1", at = NULL, group = "Author")
@@ -691,7 +690,7 @@ funnel(res.tf, main = "Trim and Fill Funnel Plot")
 ######################time-lag effects##########################
 View(X4Effect_size_cal_FATTY_ACID)
 datag<-X4Effect_size_cal_FATTY_ACID
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag1_MA <- rma.mv(yi = SMD, V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
 summary(datag1_MA)
 datag1[,'Year']<-as.numeric(datag$Year)
@@ -713,14 +712,14 @@ orchaRd::bubble_plot(datag1_bubble, group = "ID", mod = "Year", xlab = "Year",le
 #---------------GENE AND PROTEIN EXPRESISON-------------------------
 View(X1Effect_size_cal_gene_protein_expression)
 datag<-X1Effect_size_cal_gene_protein_expression
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag1_MA <- rma.mv(yi = SMD , V = vSMD, random = list(~1 | Author, ~1 | ID),data = datag1)
 summary(datag1_MA)
-model_results <- orchaRd::mod_results(datap1_MA, mod = "1", at = NULL, group = "Author")
+model_results <- orchaRd::mod_results(datag1_MA, mod = "1", at = NULL, group = "Author")
 model_results
-orchaRd::orchard_plot(datap1_MA, mod = "1", group = "Author", xlab = "Standardised mean difference",transfm = "none", twig.size = 0.5, trunk.size = 1)
+orchaRd::orchard_plot(datag1_MA, mod = "1", group = "Author", xlab = "Standardised mean difference",transfm = "none", twig.size = 0.5, trunk.size = 1)
 # use i2_sn function to obtain the total I^2
-I2 <- orchaRd::i2_ml(datap1_MA)
+I2 <- orchaRd::i2_ml(datag1_MA)
 I2
 setwd("C:/Users/v1lliu34/Downloads")
 pp<-orchaRd::orchard_plot(model_results, mod = "1", xlab = "Standardised mean difference") +annotate(geom = "text", x = 0.8, y = 0.25, label = paste0("italic(I)^{2} == ", round(I2[1],2), "*\"%\""), color = "black", parse = TRUE, size = 5) + scale_fill_manual(values = "#00b3b0") +
@@ -738,7 +737,7 @@ ggsave('production_overall.pdf',width = 15,height = 12,pp)
 
 View(X1Effect_size_cal_gene_protein_expression)
 datag<-X1Effect_size_cal_gene_protein_expression
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~method - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
 summary(datag1_MR)
 # Plot the meta-regression model
@@ -751,7 +750,7 @@ R2
 View(X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2)
 datag<-X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2
 
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~species, random = list(~1 | Author, ~1 | ID), data = datag2)
@@ -796,7 +795,7 @@ p1
 View(X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2)
 datag<-X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2
 
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~tissue, random = list(~1 | Author, ~1 | ID), data = datag2)
@@ -815,7 +814,7 @@ p1
 View(X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2)
 datag<-X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2
 
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~promoter, random = list(~1 | Author, ~1 | ID), data = datag2)
@@ -834,7 +833,7 @@ p1
 View(X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2)
 datag<-X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2
 
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~generation, random = list(~1 | Author, ~1 | ID), data = datag2)
@@ -854,7 +853,7 @@ p1
 View(X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2)
 datag<-X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2
 
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~parameter, random = list(~1 | Author, ~1 | ID), data = datag2)
@@ -873,7 +872,7 @@ p1
 View(X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2)
 datag<-X1_2transgenesis_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2
 
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
@@ -894,7 +893,7 @@ p1
 View(X1_3gene_editing_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2)
 datag<-X1_3gene_editing_Effect_size_cal_gene_protein_expression_wo_LepR_IGF2
 
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~species, random = list(~1 | Author, ~1 | ID), data = datag2)
@@ -995,7 +994,7 @@ p1
 # gene (IGF2, LEPR) as a moderator (gene editing)
 View(X1_4Effect_size_cal_gene_protein_expression_only_IGF2_LepR)
 datag<-X1_4Effect_size_cal_gene_protein_expression_only_IGF2_LepR
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1015,7 +1014,7 @@ p1
 
 View(X2Effect_size_cal_GROWTH)
 datag<-X2Effect_size_cal_GROWTH
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~method - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
 summary(datag1_MR)
 # Plot the meta-regression model for transgenesis
@@ -1038,7 +1037,7 @@ R2
 View(X2_1Effect_size_cal_GROWTH_transgenesis)
 datag<-X2_1Effect_size_cal_GROWTH_transgenesis
 
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~parameter, random = list(~1 | Author, ~1 | ID), data = datag2)
@@ -1053,7 +1052,7 @@ p1
 # category as a moderator (transgenesis)
 View(X2_1Effect_size_cal_GROWTH_transgenesis)
 datag<-X2_1Effect_size_cal_GROWTH_transgenesis
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1071,7 +1070,7 @@ p1
 # gene as a moderator (transgenesis)
 View(X2_1Effect_size_cal_GROWTH_transgenesis)
 datag<-X2_1Effect_size_cal_GROWTH_transgenesis
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1087,7 +1086,7 @@ p1
 
 View(X2_2Effect_size_cal_GROWTH_gene_editing)
 datag<-X2_2Effect_size_cal_GROWTH_gene_editing
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~parameter - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
 R2 <- orchaRd::r2_ml(datag1_MR)
 R2
@@ -1105,7 +1104,7 @@ p1
 # category as a moderator (gene editing)
 View(X2_2Effect_size_cal_GROWTH_gene_editing)
 datag<-X2_2Effect_size_cal_GROWTH_gene_editing
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1121,7 +1120,7 @@ p1
 # gene as a moderator (gene editing)
 View(X2_2Effect_size_cal_GROWTH_gene_editing)
 datag<-X2_2Effect_size_cal_GROWTH_gene_editing
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1137,7 +1136,7 @@ p1
 # generation as a moderator (gene editing)
 View(X2_2Effect_size_cal_GROWTH_gene_editing)
 datag<-X2_2Effect_size_cal_GROWTH_gene_editing
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~generation, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1156,7 +1155,7 @@ p1
 
 View(X3Effect_size_cal_DISEASE_RESISTANCE)
 datag<-X3Effect_size_cal_DISEASE_RESISTANCE
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~method - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
 summary(datag1_MR)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
@@ -1180,7 +1179,7 @@ R2
 View(X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis)
 datag<-X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis
 
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~parameter, random = list(~1 | Author, ~1 | ID), data = datag2)
@@ -1202,7 +1201,7 @@ R2
 # category as a moderator (transgenesis)
 View(X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis)
 datag<-X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1219,7 +1218,7 @@ p1
 View(X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis)
 datag<-X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis
 
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
@@ -1236,7 +1235,7 @@ R2
 View(X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis)
 datag<-X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis
 
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 
 datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~pathogen - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
 summary(datag1_MR)
@@ -1257,7 +1256,7 @@ R2
 View(X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis)
 datag<-X3_1Effect_size_cal_DISEASE_RESISTANCE_transgenesis
 
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 
 datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~generation - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
 summary(datag1_MR)
@@ -1278,7 +1277,7 @@ R2
 # category as a moderator (transgenesis)
 View(X3_3Effect_size_cal_DISEASE_RESISTANCE_transgenesis_CSR)
 datag<-X3_3Effect_size_cal_DISEASE_RESISTANCE_transgenesis_CSR
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1294,7 +1293,7 @@ p1
 # category as a moderator (transgenesis)
 View(X3_6Effect_size_cal_DISEASE_RESISTANCE_transgenesis_virus_RNA)
 datag<-X3_6Effect_size_cal_DISEASE_RESISTANCE_transgenesis_virus_RNA
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1310,7 +1309,7 @@ p1
 # category as a moderator (transgenesis)
 View(X3_4Effect_size_cal_DISEASE_RESISTANCE_transgenesis_pathogen_load)
 datag<-X3_4Effect_size_cal_DISEASE_RESISTANCE_transgenesis_pathogen_load
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1326,7 +1325,7 @@ p1
 # category as a moderator (transgenesis)
 View(X3_7Effect_size_cal_DISEASE_RESISTANCE_transgenesis_virus_titer)
 datag<-X3_7Effect_size_cal_DISEASE_RESISTANCE_transgenesis_virus_titer
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1343,7 +1342,7 @@ p1
 View(X3_3Effect_size_cal_DISEASE_RESISTANCE_transgenesis_CSR)
 datag<-X3_3Effect_size_cal_DISEASE_RESISTANCE_transgenesis_CSR
 
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
@@ -1361,7 +1360,7 @@ R2
 View(X3_4Effect_size_cal_DISEASE_RESISTANCE_transgenesis_pathogen_load)
 datag<-X3_4Effect_size_cal_DISEASE_RESISTANCE_transgenesis_pathogen_load
 
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
@@ -1380,7 +1379,7 @@ R2
 View(X3_3Effect_size_cal_DISEASE_RESISTANCE_transgenesis_CSR)
 datag<-X3_3Effect_size_cal_DISEASE_RESISTANCE_transgenesis_CSR
 
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~promoter, random = list(~1 | Author, ~1 | ID), data = datag2)
@@ -1398,7 +1397,7 @@ R2
 View(X3_4Effect_size_cal_DISEASE_RESISTANCE_transgenesis_pathogen_load)
 datag<-X3_4Effect_size_cal_DISEASE_RESISTANCE_transgenesis_pathogen_load
 
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~promoter, random = list(~1 | Author, ~1 | ID), data = datag2)
@@ -1416,7 +1415,7 @@ R2
 
 View(X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing)
 datag<-X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~pathogen - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
 R2 <- orchaRd::r2_ml(datag1_MR)
 R2
@@ -1436,7 +1435,7 @@ p1
 
 View(X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing)
 datag<-X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~generation - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
 R2 <- orchaRd::r2_ml(datag1_MR)
 R2
@@ -1454,7 +1453,7 @@ p1
 
 View(X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing)
 datag<-X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~parameter - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
 R2 <- orchaRd::r2_ml(datag1_MR)
 R2
@@ -1472,7 +1471,7 @@ p1
 # category as a moderator (gene editing)
 View(X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing)
 datag<-X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1488,7 +1487,7 @@ p1
 # gene as a moderator (gene editing)
 View(X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing)
 datag<-X3_2Effect_size_cal_DISEASE_RESISTANCE_gene_editing
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1505,7 +1504,7 @@ p1
 # category as a moderator (gene editing)
 View(X3_10Effect_size_cal_DISEASE_RESISTANCE_gene_editing_virus_RNA)
 datag<-X3_10Effect_size_cal_DISEASE_RESISTANCE_gene_editing_virus_RNA
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1521,7 +1520,7 @@ p1
 # gene as a moderator (gene editing)
 View(X3_10Effect_size_cal_DISEASE_RESISTANCE_gene_editing_virus_RNA)
 datag<-X3_10Effect_size_cal_DISEASE_RESISTANCE_gene_editing_virus_RNA
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1539,7 +1538,7 @@ p1
 
 View(X4_1Effect_size_cal_FATTY_ACID_transgenesis)
 datag<-X4_1Effect_size_cal_FATTY_ACID_transgenesis
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~parameter - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
 summary(datag1_MR)
 # Plot the meta-regression model for transgenesis
@@ -1552,7 +1551,7 @@ R2
 View(X4_1Effect_size_cal_FATTY_ACID_transgenesis)
 datag<-X4_1Effect_size_cal_FATTY_ACID_transgenesis
 
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~parameter, random = list(~1 | Author, ~1 | ID), data = datag2)
@@ -1568,7 +1567,7 @@ p1
 # category as a moderator (transgenesis)
 View(X4_1Effect_size_cal_FATTY_ACID_transgenesis)
 datag<-X4_1Effect_size_cal_FATTY_ACID_transgenesis
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1586,7 +1585,7 @@ p1
 # category as a moderator (transgenesis)
 View(X4_3Effect_size_cal_FATTY_ACID_transgenesis_n_3)
 datag<-X4_3Effect_size_cal_FATTY_ACID_transgenesis_n_3
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1602,7 +1601,7 @@ p1
 # gene as a moderator (transgenesis)
 View(X4_3Effect_size_cal_FATTY_ACID_transgenesis_n_3)
 datag<-X4_3Effect_size_cal_FATTY_ACID_transgenesis_n_3
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1620,7 +1619,7 @@ p1
 # category as a moderator (transgenesis)
 View(X4_4Effect_size_cal_FATTY_ACID_transgenesis_n_6)
 datag<-X4_4Effect_size_cal_FATTY_ACID_transgenesis_n_6
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1637,7 +1636,7 @@ p1
 # gene as a moderator (transgenesis)
 View(X4_4Effect_size_cal_FATTY_ACID_transgenesis_n_6)
 datag<-X4_4Effect_size_cal_FATTY_ACID_transgenesis_n_6
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1655,7 +1654,7 @@ p1
 # category as a moderator (transgenesis)
 View(X4_7Effect_size_cal_FATTY_ACID_transgenesis_n_6_n_3)
 datag<-X4_7Effect_size_cal_FATTY_ACID_transgenesis_n_6_n_3
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1672,7 +1671,7 @@ p1
 # gene as a moderator (transgenesis)
 View(X4_7Effect_size_cal_FATTY_ACID_transgenesis_n_6_n_3)
 datag<-X4_7Effect_size_cal_FATTY_ACID_transgenesis_n_6_n_3
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1690,7 +1689,7 @@ p1
 # category as a moderator (transgenesis)
 View(X4_5Effect_size_cal_FATTY_ACID_transgenesis_DHA)
 datag<-X4_5Effect_size_cal_FATTY_ACID_transgenesis_DHA
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1840,10 +1839,132 @@ p1<- orchaRd::orchard_plot(res2, mod = "gene", group = "Author", xlab = "Standar
 p1
 
 
+#############phylogenetic tree#############
+# Load necessary libraries
+library(metafor)
+library(ape)
+library(phytools)
 
-################################
-###########################
-##########END FROM HERE##############
-################################
-##################################
+# Set working directory and load the dataset
+View(X1Effect_size_cal_gene_protein_expression)
+data <- X1Effect_size_cal_gene_protein_expression
+head(data)
+
+# Calculate Hedges' g effect sizes
+data$yi <- escalc(measure = "SMDH", 
+                  m1i = data$treat_mean, sd1i = data$treat_sd, n1i = data$treat_n,
+                  m2i = data$control_mean, sd2i = data$control_sd, n2i = data$control_n)$yi
+
+# Calculate variances of the effect sizes
+data$vi <- escalc(measure = "SMDH", 
+                  m1i = data$treat_mean, sd1i = data$treat_sd, n1i = data$treat_n,
+                  m2i = data$control_mean, sd2i = data$control_sd, n2i = data$control_n)$vi
+
+# Extract unique species from the dataset
+species <- unique(data$species)
+
+# Simulate a phylogenetic tree with species names
+set.seed(123)  # For reproducibility
+phylo_tree <- rtree(length(species), tip.label = species)
+
+# Step 1: Print species names to check alignment
+print("Species in the dataset:")
+print(data$species)  # Species names from the dataset
+
+print("Species in the phylogenetic tree:")
+print(phylo_tree$tip.label)  # Species names from the tree
+
+# Step 2: Identify species in the dataset that are not in the tree and vice versa
+missing_in_tree <- setdiff(data$species, phylo_tree$tip.label)
+print("Species in the dataset but not in the tree:")
+print(missing_in_tree)
+
+missing_in_data <- setdiff(phylo_tree$tip.label, data$species)
+print("Species in the tree but not in the dataset:")
+print(missing_in_data)
+
+# Step 3: Align dataset and phylogenetic tree by keeping only the matching species
+species_in_both <- intersect(data$species, phylo_tree$tip.label)  # Only keep matching species
+
+# Filter the dataset to keep only the species that match those in the phylogenetic tree
+data_filtered <- data[data$species %in% species_in_both, ]
+
+# Update the effect_sizes to match the filtered dataset
+effect_sizes <- setNames(data_filtered$yi, data_filtered$species)
+
+# Step 4: Print the length of the effect_sizes and the phylogenetic tree tips to debug
+print(paste("Number of species in dataset (effect sizes):", length(effect_sizes)))
+print(paste("Number of tips in the phylogenetic tree:", length(phylo_tree$tip.label)))
+
+# Step 5: Print the species in both the dataset and the tree
+print("Species in the filtered dataset:")
+print(data_filtered$species)
+
+print("Species in the phylogenetic tree:")
+print(phylo_tree$tip.label)
+
+# Step 6: Print the effect sizes (names and values)
+print("Effect sizes (names and values):")
+print(effect_sizes)
+
+# Step 7: Check for negative or missing values in effect_sizes
+if (any(effect_sizes < 0, na.rm = TRUE)) {
+  print("Warning: Some effect sizes are negative. Converting negative values to zero.")
+  effect_sizes[effect_sizes < 0] <- 0  # Set negative values to zero
+}
+
+# Ensure that effect_sizes are numeric and non-negative
+if (any(is.na(effect_sizes))) {
+  print("There are missing values in the effect_sizes. These will be set to zero.")
+  effect_sizes[is.na(effect_sizes)] <- 0  # Set NA values to zero
+}
+
+# Step 8: Ensure the number of effect sizes matches the number of species in the tree
+if (length(effect_sizes) != length(phylo_tree$tip.label)) {
+  stop("The number of effect sizes does not match the number of species in the phylogenetic tree.")
+}
+
+# Step 9: Visualize the phylogenetic tree (initial check)
+plot(phylo_tree, main = "Simulated Phylogenetic Tree")
+nodelabels()
+
+# Step 10: Visualize the tree with mapped effect sizes
+
+# Convert effect_sizes to a vector if it's not already a simple numeric vector
+effect_sizes_vector <- as.vector(effect_sizes)
+
+# Check the structure of the effect_sizes_vector
+print("Structure of effect_sizes_vector:")
+print(str(effect_sizes_vector))
+
+# Ensure non-negative effect sizes
+if (any(effect_sizes_vector < 0, na.rm = TRUE)) {
+  print("Warning: Some effect sizes are negative. Converting negative values to zero.")
+  effect_sizes_vector[effect_sizes_vector < 0] <- 0  # Set negative values to zero
+}
+
+# Check that effect_sizes_vector has the same length as the number of tips in the tree
+if (length(effect_sizes_vector) != length(phylo_tree$tip.label)) {
+  stop("The length of effect_sizes_vector does not match the number of tips in the phylogenetic tree.")
+}
+
+# Now we map the effect sizes to the tree tips using pie labels
+plotTree(phylo_tree, fsize = 0.8)
+
+# Apply the effect sizes using pie labels
+tiplabels(pie = effect_sizes_vector, piecol = c("blue", "red"), cex = 0.6)
+
+# Add the title to the plot
+title("Phylogenetic Tree with Effect Sizes")
+
+# Step 11: Fit a multilevel model with phylogeny
+res <- rma.mv(yi = yi, V = vi, random = list(~1 | species, ~1 | ID), data = data_filtered)
+
+# Summary of the meta-analysis
+summary(res)
+
+
+#########END #############################################
+##########################################################
+##########################################################
 
