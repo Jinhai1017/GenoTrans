@@ -1,0 +1,189 @@
+ID,Study_ID,Author,Year,taxon,species,Species,gene,method,trait,promoter,tissue,parameter,generation,age,treat_n,treat_mean,treat_sd,control_n,control_mean,control_sd
+1,1,Bee et al.,2007,pig,DeKalb,Sus scrofa,IGF-I,transgenesis,growth,?-actin,heart,mRNA,F1,0,3,3.748,1.249,3,0,0
+2,1,Bee et al.,2007,pig,DeKalb,Sus scrofa,IGF-I,transgenesis,growth,?-actin,gastrocnemius,mRNA,F1,0,3,2.498,1.143,3,0,0
+3,1,Bee et al.,2007,pig,DeKalb,Sus scrofa,IGF-I,transgenesis,growth,?-actin,gluteus medius,mRNA,F1,0,3,1.94,1.249,3,0,0
+4,1,Bee et al.,2007,pig,DeKalb,Sus scrofa,IGF-I,transgenesis,growth,?-actin,longissimus,mRNA,F1,0,3,3.056,1.169,3,0,0
+5,1,Bee et al.,2007,pig,DeKalb,Sus scrofa,IGF-I,transgenesis,growth,?-actin,semitendinosus,mRNA,F1,0,3,1.196,1.249,3,0,0
+6,1,Bee et al.,2007,pig,DeKalb,Sus scrofa,IGF-I,transgenesis,growth,?-actin,serratus ventralis,mRNA,F1,0,3,1.807,1.169,3,0,0
+7,1,Bee et al.,2007,pig,DeKalb,Sus scrofa,IGF-I,transgenesis,growth,?-actin,heart,mRNA,F1,0,3,3.482,1.116,3,0,0
+8,1,Bee et al.,2007,pig,DeKalb,Sus scrofa,IGF-I,transgenesis,growth,?-actin,gastrocnemius,mRNA,F1,0,3,3.561,1.223,3,0,0
+9,1,Bee et al.,2007,pig,DeKalb,Sus scrofa,IGF-I,transgenesis,growth,?-actin,gluteus medius,mRNA,F1,0,3,2.95,1.196,3,0,0
+10,1,Bee et al.,2007,pig,DeKalb,Sus scrofa,IGF-I,transgenesis,growth,?-actin,longissimus,mRNA,F1,0,3,6.591,1.223,3,0,0
+11,1,Bee et al.,2007,pig,DeKalb,Sus scrofa,IGF-I,transgenesis,growth,?-actin,semitendinosus,mRNA,F1,0,3,1.382,1.196,3,0,0
+12,1,Bee et al.,2007,pig,DeKalb,Sus scrofa,IGF-I,transgenesis,growth,?-actin,serratus ventralis,mRNA,F1,0,3,1.542,1.143,3,0,0
+13,2,Qian et al.,2015,pig,Meishan,,mstn,gene_editing,growth,NA,longissimus ,mRNA,P1,240,3,0.485,0.204,3,1.35,0.187
+14,2,Qian et al.,2015,pig,Meishan,,mstn,gene_editing,growth,NA,longissimus ,mRNA,P1,240,3,0,0,3,1.35,0.187
+15,2,Qian et al.,2015,pig,Meishan,,mstn,gene_editing,growth,NA,longissimus ,protein,P1,240,3,7.119,1.136,3,8.587,0.831
+16,2,Qian et al.,2015,pig,Meishan,,mstn,gene_editing,growth,NA,longissimus ,protein,P1,240,3,0,0,3,8.587,0.831
+17,3,Rao et al.,2016,pig,Crossbred,,mstn,gene_editing,growth,NA,in vitro,protein,NA,NA,3,9.184,0.702,3,19.196,1.276
+18,3,Rao et al.,2016,pig,Crossbred,,mstn,gene_editing,growth,NA,in vitro,protein,NA,NA,3,9.694,0.638,3,19.196,1.276
+19,4,Guo et al.,2016,rabbit,Jiangsu,Oryctolagus cuniculus,mstn,gene_editing,growth,NA,skeletal muscle,protein,P1,0,6,2577.031,268.908,3,6319.328,694.678
+20,5,Jiang et al.,2017,fish,blunt snout bream,Megalobrama amblycephala,gcFST,transgenesis,growth,Mylz2,skeletal muscle,mRNA,F1,510,3,9.363,0.676,3,4.225,0.811
+21,5,Jiang et al.,2017,fish,blunt snout bream,Megalobrama amblycephala,gcFST,transgenesis,growth,Mylz2,skeletal muscle,mRNA,F1,510,3,9.307,1.227,3,4.057,0.58
+22,6,Wang et al.,2018,goat,Cashmere,Capra hircus,mstn,gene_editing,growth,NA,muscle,mRNA,P1,0,3,0.574,0.235,3,2.162,0.412
+23,7,Li et al.,2020,pig,Duroc Meishan,,mstn,gene_editing,growth,NA,longissimus,mRNA,F1,210,3,0.677,0.106,3,1.019,0.041
+24,8,Tao et al.,2021,fish,Pond loach,Misgurnus anguillicaudatus,mstn,gene_editing,growth,NA,muscle,mRNA,P1,3,3,0.491,0.092,3,1.039,0.206
+25,8,Tao et al.,2021,fish,Pond loach,Misgurnus anguillicaudatus,mstn,gene_editing,growth,NA,muscle,mRNA,P1,30,3,0.399,0.096,3,1.004,0.101
+26,8,Tao et al.,2021,fish,Pond loach,Misgurnus anguillicaudatus,mstn,gene_editing,growth,NA,muscle,protein,P1,90,3,0.436,0.168,3,1,0
+27,9,Mankiewicz et al.,2022,fish,rainbow trout,Oncorhynchus mykiss,LepR,gene_editing,growth,NA,liver,mRNA,P1,21,6,1.573,0.171,8,1,0.162
+28,9,Mankiewicz et al.,2022,fish,rainbow trout,Oncorhynchus mykiss,LepR,gene_editing,growth,NA,liver,mRNA,P1,42,6,1.051,0.128,8,1.299,0.197
+29,9,Mankiewicz et al.,2022,fish,rainbow trout,Oncorhynchus mykiss,LepR,gene_editing,growth,NA,liver,protein,P1,21,6,144.681,29.787,8,49.362,30.638
+30,9,Mankiewicz et al.,2022,fish,rainbow trout,Oncorhynchus mykiss,LepR,gene_editing,growth,NA,liver,protein,P1,42,6,157.447,22.979,8,117.447,24.681
+31,10,Zhou et al.,2022,sheep,Ningxia Tianyuan,Ovis aries,mstn,gene_editing,growth,NA,muscle,mRNA,P1,60,2,0.02,0.015,3,1.01,0.152
+32,11,Coogan et al.,2022,fish,channel catfish,Ictalurus punctatus,mstn,gene_editing,growth,NA,muscle,mRNA,P1,270,3,1,0,3,6.305,0.203
+33,11,Coogan et al.,2022,fish,channel catfish,Ictalurus punctatus,mstn,gene_editing,growth,NA,muscle,mRNA,F1,270,3,1,0,3,3.61,0.356
+34,11,Coogan et al.,2022,fish,channel catfish,Ictalurus punctatus,mstn,gene_editing,growth,NA,muscle,mRNA,F1,270,3,1,0,3,3.864,0.203
+35,11,Coogan et al.,2022,fish,channel catfish,Ictalurus punctatus,mstn,gene_editing,growth,NA,spleen,mRNA,P1,270,3,1,0,3,1.525,0.864
+36,11,Coogan et al.,2022,fish,channel catfish,Ictalurus punctatus,mstn,gene_editing,growth,NA,spleen,mRNA,F1,270,3,1,0,3,5.085,0.203
+37,11,Coogan et al.,2022,fish,channel catfish,Ictalurus punctatus,mstn,gene_editing,growth,NA,spleen,mRNA,F1,270,3,1,0,3,2.339,0.203
+38,11,Coogan et al.,2022,fish,channel catfish,Ictalurus punctatus,mstn,gene_editing,growth,NA,heart,mRNA,P1,270,3,1,0,3,5.797,0.203
+39,11,Coogan et al.,2022,fish,channel catfish,Ictalurus punctatus,mstn,gene_editing,growth,NA,heart,mRNA,F1,270,3,1,0,3,4.475,0.102
+40,11,Coogan et al.,2022,fish,channel catfish,Ictalurus punctatus,mstn,gene_editing,growth,NA,liver,mRNA,P1,270,3,1,0,3,1.068,0.305
+41,11,Coogan et al.,2022,fish,channel catfish,Ictalurus punctatus,mstn,gene_editing,growth,NA,liver,mRNA,F1,270,3,1,0,3,2.136,0.814
+42,11,Coogan et al.,2022,fish,channel catfish,Ictalurus punctatus,mstn,gene_editing,growth,NA,liver,mRNA,F1,270,3,1,0,3,1.831,0.254
+43,11,Coogan et al.,2022,fish,channel catfish,Ictalurus punctatus,mstn,gene_editing,growth,NA,brain,mRNA,P1,270,3,1,0,3,1.119,0.203
+44,11,Coogan et al.,2022,fish,channel catfish,Ictalurus punctatus,mstn,gene_editing,growth,NA,brain,mRNA,F1,270,3,1,0,3,2.542,0.153
+45,11,Coogan et al.,2022,fish,channel catfish,Ictalurus punctatus,mstn,gene_editing,growth,NA,brain,mRNA,F1,270,3,1,0,3,1.017,0.305
+46,11,Coogan et al.,2022,fish,channel catfish,Ictalurus punctatus,mstn,gene_editing,growth,NA,gonad,mRNA,P1,270,3,1,0,3,3.254,2.136
+47,11,Coogan et al.,2022,fish,channel catfish,Ictalurus punctatus,mstn,gene_editing,growth,NA,gonad,mRNA,F1,270,3,1,0,3,1.22,0.661
+48,11,Coogan et al.,2022,fish,channel catfish,Ictalurus punctatus,mstn,gene_editing,growth,NA,gonad,mRNA,F1,270,3,1,0,3,2.542,0.356
+49,12,Buwono et al.,2023,fish,mutiara catfish,Clarias gariepinus,cgGH,transgenesis,growth,CMV,fin,mRNA,F1,45,3,2.944,0.472,3,0,0
+50,12,Buwono et al.,2023,fish,mutiara catfish,Clarias gariepinus,cgGH,transgenesis,growth,CMV,fin,mRNA,F1,45,3,1.753,0.157,3,0,0
+51,12,Buwono et al.,2023,fish,mutiara catfish,Clarias gariepinus,cgGH,transgenesis,growth,CMV,fin,mRNA,F1,45,3,1.213,0.09,3,0,0
+52,13,Zheng et al.,2023,fish,Culter alburnus,Culter alburnus,mstn,gene_editing,growth,NA,muscle,mRNA,F1,60,3,0.391,0.06,3,1.003,0.04
+53,14,Wang et al.,2018,pig,Bama,,IGF2,gene_editing,growth,NA,muscle,mRNA,P1,60,3,3.612,0.119,3,0.985,0.03
+54,14,Wang et al.,2018,pig,Bama,,IGF2,gene_editing,growth,NA,muscle,mRNA,P1,60,3,5.373,0.448,3,0.985,0.03
+55,14,Wang et al.,2018,pig,Bama,,IGF2,gene_editing,growth,NA,muscle,mRNA,P1,60,3,5.105,0.299,3,0.985,0.03
+56,14,Wang et al.,2018,pig,Bama,,IGF2,gene_editing,growth,NA,muscle,mRNA,P1,60,3,4.06,0.119,3,0.985,0.03
+57,14,Wang et al.,2018,pig,Bama,,IGF2,gene_editing,growth,NA,muscle,mRNA,P1,120,3,2.507,0.239,3,1.075,0.269
+58,14,Wang et al.,2018,pig,Bama,,IGF2,gene_editing,growth,NA,muscle,mRNA,P1,120,3,2.925,0.09,3,1.075,0.269
+59,14,Wang et al.,2018,pig,Bama,,IGF2,gene_editing,growth,NA,muscle,mRNA,P1,120,3,4,0.119,3,1.075,0.269
+60,14,Wang et al.,2018,pig,Bama,,IGF2,gene_editing,growth,NA,muscle,mRNA,P1,120,3,2.09,0.507,3,1.075,0.269
+61,15,Liu et al.,2019,pig,Liang Guang Small Spotted ,,IGF2,gene_editing,growth,NA,in vitro,mRNA,NA,NA,3,461.538,75,3,1.059,0.178
+62,16,Yan et al.,2014,pig,Tibetan miniature,,mx1,transgenesis,disease resistance,CMV,ear,mRNA,P1,30,3,22.968,5.461,3,2.02,0.98
+63,16,Yan et al.,2014,pig,Tibetan miniature,,mx1,transgenesis,disease resistance,CMV,ear,mRNA,P1,30,3,14.14,1.047,3,2.02,0.98
+64,16,Yan et al.,2014,pig,Tibetan miniature,,mx1,transgenesis,disease resistance,CMV,ear,mRNA,P1,30,3,13.317,1.721,3,2.02,0.98
+65,16,Yan et al.,2014,pig,Tibetan miniature,,mx1,transgenesis,disease resistance,CMV,ear,mRNA,P1,30,3,16.983,2.544,3,2.02,0.98
+66,16,Yan et al.,2014,pig,Tibetan miniature,,mx1,transgenesis,disease resistance,CMV,ear,mRNA,P1,30,3,20.648,0.973,3,2.02,0.98
+67,17,Hu et al.,2015,pig,unknown,,FMDV-shRNA,transgenesis,disease resistance,H1,in vitro,mRNA,P1,NA,3,4.86,0.27,3,0,0
+68,17,Hu et al.,2015,pig,unknown,,FMDV-shRNA,transgenesis,disease resistance,H1,in vitro,mRNA,P1,NA,3,6.865,0.231,3,0,0
+69,17,Hu et al.,2015,pig,unknown,,FMDV-shRNA,transgenesis,disease resistance,H1,in vitro,mRNA,P1,NA,3,2.931,0.501,3,0,0
+70,17,Hu et al.,2015,pig,unknown,,FMDV-shRNA,transgenesis,disease resistance,H1,in vitro,mRNA,P1,NA,3,9.835,0.309,3,0,0
+71,17,Hu et al.,2015,pig,unknown,,FMDV-shRNA,transgenesis,disease resistance,H1,in vitro,mRNA,P1,NA,3,9.873,0.463,3,0,0
+72,17,Hu et al.,2015,pig,unknown,,FMDV-shRNA,transgenesis,disease resistance,H1,in vitro,mRNA,P1,NA,3,10.876,0.463,3,0,0
+73,17,Hu et al.,2015,pig,unknown,,FMDV-shRNA,transgenesis,disease resistance,H1,in vitro,mRNA,P1,NA,3,5.978,0.424,3,0,0
+74,17,Hu et al.,2015,pig,unknown,,FMDV-shRNA,transgenesis,disease resistance,H1,in vitro,mRNA,P1,NA,3,6.904,0.347,3,0,0
+75,18,Yang et al.,2015,pig,Large White,Sus domesticus,PBD-2,transgenesis,disease resistance,?-actin,heart,protein,P1,60,3,6374.502,239.044,3,4860.558,119.522
+76,18,Yang et al.,2015,pig,Large White,Sus domesticus,PBD-2,transgenesis,disease resistance,?-actin,liver,protein,P1,60,3,8804.781,239.044,3,6135.458,159.363
+77,18,Yang et al.,2015,pig,Large White,Sus domesticus,PBD-2,transgenesis,disease resistance,?-actin,spleen,protein,P1,60,3,8764.94,125.987,3,6015.936,79.681
+78,18,Yang et al.,2015,pig,Large White,Sus domesticus,PBD-2,transgenesis,disease resistance,?-actin,lung,protein,P1,60,3,7569.721,39.841,3,6294.821,79.681
+79,18,Yang et al.,2015,pig,Large White,Sus domesticus,PBD-2,transgenesis,disease resistance,?-actin,kidney,protein,P1,60,3,7211.155,39.841,3,4262.948,79.681
+80,18,Yang et al.,2015,pig,Large White,Sus domesticus,PBD-2,transgenesis,disease resistance,?-actin,jejunum,protein,P1,60,3,3984.064,39.841,3,2231.076,79.681
+81,19,Lu et al.,2017,pig,Landrace,,HDAC6,transgenesis,disease resistance,CMV,blood,mRNA,P1,106,3,36.892,3.243,3,0,0
+82,19,Lu et al.,2017,pig,Landrace,,HDAC6,transgenesis,disease resistance,CMV,heart,mRNA,P1,106,3,139.459,10.541,3,0,0
+83,19,Lu et al.,2017,pig,Landrace,,HDAC6,transgenesis,disease resistance,CMV,liver,mRNA,P1,106,3,21.486,2.838,3,0,0
+84,19,Lu et al.,2017,pig,Landrace,,HDAC6,transgenesis,disease resistance,CMV,kidney,mRNA,P1,106,3,5.676,1.622,3,0,0
+85,19,Lu et al.,2017,pig,Landrace,,HDAC6,transgenesis,disease resistance,CMV,skin,mRNA,P1,106,3,42.162,3.649,3,0,0
+86,19,Lu et al.,2017,pig,Landrace,,HDAC6,transgenesis,disease resistance,CMV,lung,mRNA,P1,106,3,13.378,2.432,3,0,0
+87,19,Lu et al.,2017,pig,Landrace,,HDAC6,transgenesis,disease resistance,CMV,intestine,mRNA,P1,106,3,1.147,2.432,3,0,0
+88,19,Lu et al.,2017,pig,Landrace,,HDAC6,transgenesis,disease resistance,CMV,spleen,mRNA,P1,106,3,6.081,2.432,3,0,0
+89,19,Lu et al.,2017,pig,Landrace,,HDAC6,transgenesis,disease resistance,CMV,lung,mRNA,F1,unknown,9,3.11,0.608,10,1.018,0.212
+90,19,Lu et al.,2017,pig,Landrace,,HDAC6,transgenesis,disease resistance,CMV,skin,mRNA,F1,unknown,9,6.829,0.886,6,0.914,0.2
+91,20,Xie et al.,2018,pig,unknown,,CSFV-shRNA,transgenesis,disease resistance,U6,heart,mRNA,P1,unknown,3,2.902,0.471,3,1,0
+92,20,Xie et al.,2018,pig,unknown,,CSFV-shRNA,transgenesis,disease resistance,U6,spleen,mRNA,P1,unknown,3,15.373,2.039,3,1,0
+93,20,Xie et al.,2018,pig,unknown,,CSFV-shRNA,transgenesis,disease resistance,U6,lung,mRNA,P1,unknown,3,2.824,0.314,3,1,0
+94,20,Xie et al.,2018,pig,unknown,,CSFV-shRNA,transgenesis,disease resistance,U6,kidney,mRNA,P1,unknown,3,8.235,0.471,3,1,0
+95,20,Xie et al.,2018,pig,unknown,,CSFV-shRNA,transgenesis,disease resistance,U6,tongue,mRNA,P1,unknown,3,2.745,0.235,3,1,0
+96,20,Xie et al.,2018,pig,unknown,,CSFV-shRNA,transgenesis,disease resistance,U6,aorta,mRNA,P1,unknown,3,1.333,0.157,3,1,0
+97,20,Xie et al.,2018,pig,unknown,,CSFV-shRNA,transgenesis,disease resistance,U6,brain,mRNA,P1,unknown,3,5.647,0.863,3,1,0
+98,21,Guo et al.,2019,pig,Large White ,Sus domesticus,CD163,gene_editing,disease resistance,NA,in vitro,mRNA,NA,unknown,3,4.978,0.277,3,6.17,0.294
+99,22,Wang et al.,2023,fish,blue catfish,Ictalurus furcatus,cath,transgenesis,disease resistance,UBI,fin,mRNA,P1,120,3,1.974,0.461,3,1,0
+100,22,Wang et al.,2023,fish,blue catfish,Ictalurus furcatus,cath,transgenesis,disease resistance,UBI,barbel,mRNA,P1,120,3,3.158,0.526,3,1,0
+101,22,Wang et al.,2023,fish,blue catfish,Ictalurus furcatus,cath,transgenesis,disease resistance,UBI,skin,mRNA,P1,120,3,7.697,0.461,3,1,0
+102,22,Wang et al.,2023,fish,blue catfish,Ictalurus furcatus,cath,transgenesis,disease resistance,UBI,muscle,mRNA,P1,120,3,6.908,0.526,3,1,0
+103,22,Wang et al.,2023,fish,blue catfish,Ictalurus furcatus,cath,transgenesis,disease resistance,UBI,intestine,mRNA,P1,120,3,5.789,0.987,3,1,0
+104,22,Wang et al.,2023,fish,blue catfish,Ictalurus furcatus,cath,transgenesis,disease resistance,UBI,kidney,mRNA,P1,120,3,14.342,1.184,3,1,0
+105,22,Wang et al.,2023,fish,blue catfish,Ictalurus furcatus,cath,transgenesis,disease resistance,UBI,stomach,mRNA,P1,120,3,1.447,0.461,3,1,0
+106,22,Wang et al.,2023,fish,blue catfish,Ictalurus furcatus,cath,transgenesis,disease resistance,UBI,liver,mRNA,P1,120,3,6.711,1.118,3,1,0
+107,22,Wang et al.,2023,fish,blue catfish,Ictalurus furcatus,cath,transgenesis,disease resistance,UBI,gonad,mRNA,P1,120,3,3.816,0.395,3,1,0
+108,23,Wang et al.,2024,fish,channel catfish,Ictalurus punctatus,cath,transgenesis,disease resistance,UBI,liver,mRNA,P1,120,3,4.74,0.417,3,1,0
+109,23,Wang et al.,2024,fish,channel catfish,Ictalurus punctatus,cath,transgenesis,disease resistance,UBI,kidney,mRNA,P1,120,3,15.312,0.521,3,1,0
+110,23,Wang et al.,2024,fish,channel catfish,Ictalurus punctatus,cath,transgenesis,disease resistance,UBI,spleen,mRNA,P1,120,3,6.042,0.365,3,1,0
+111,23,Wang et al.,2024,fish,channel catfish,Ictalurus punctatus,cath,transgenesis,disease resistance,UBI,blood,mRNA,P1,120,3,8.385,0.833,3,1,0
+112,23,Wang et al.,2024,fish,channel catfish,Ictalurus punctatus,cath,transgenesis,disease resistance,UBI,gill,mRNA,P1,120,3,14.531,0.312,3,1,0
+113,23,Wang et al.,2024,fish,channel catfish,Ictalurus punctatus,cath,transgenesis,disease resistance,UBI,skin,mRNA,P1,120,3,1.458,0.417,3,1,0
+114,23,Wang et al.,2024,fish,channel catfish,Ictalurus punctatus,cath,transgenesis,disease resistance,UBI,intestine,mRNA,P1,120,3,1.511,0.469,3,1,0
+115,23,Wang et al.,2024,fish,channel catfish,Ictalurus punctatus,cath,transgenesis,disease resistance,UBI,fin,mRNA,P1,120,3,5,1.25,3,1,0
+116,23,Wang et al.,2024,fish,channel catfish,Ictalurus punctatus,cath,transgenesis,disease resistance,UBI,barbel,mRNA,P1,120,3,7.5,0.573,3,1,0
+117,23,Wang et al.,2024,fish,channel catfish,Ictalurus punctatus,cath,transgenesis,disease resistance,UBI,muscle,mRNA,P1,120,3,1.823,0.147,3,1,0
+118,23,Wang et al.,2024,fish,channel catfish,Ictalurus punctatus,cath,transgenesis,disease resistance,UBI,stomach,mRNA,P1,120,3,2.708,0.052,3,1,0
+119,23,Wang et al.,2024,fish,channel catfish,Ictalurus punctatus,cath,transgenesis,disease resistance,UBI,brain,mRNA,P1,120,3,1.198,0.469,3,1,0
+120,23,Wang et al.,2024,fish,channel catfish,Ictalurus punctatus,cath,transgenesis,disease resistance,UBI,eye,mRNA,P1,120,3,1.875,0.417,3,1,0
+121,23,Wang et al.,2024,fish,channel catfish,Ictalurus punctatus,cath,transgenesis,disease resistance,UBI,gonad,mRNA,P1,120,3,0.938,0.417,3,1,0
+122,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,1.742,0.418,3,0,0
+123,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,1.498,0.087,3,0,0
+124,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,2.979,0.087,3,0,0
+125,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,0.993,0.105,3,0,0
+126,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,0.836,0.105,3,0,0
+127,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,1.498,0.122,3,0,0
+128,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,4.233,0.087,3,0,0
+129,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,0.714,0.049,3,0,0
+130,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,0.348,0.052,3,0,0
+131,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,0.331,0.052,3,0,0
+132,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,0.557,0.07,3,0,0
+133,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,1.394,0.07,3,0,0
+134,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,1.725,0.087,3,0,0
+135,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,1.272,0.087,3,0,0
+136,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,0.993,0.07,3,0,0
+137,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,CMV,in vitro,mRNA,NA,NA,3,0.122,0.157,3,0,0
+138,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,CMV,in vitro,mRNA,NA,NA,3,0.105,0.07,3,0,0
+139,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,CMV,in vitro,mRNA,NA,NA,3,0.105,0.07,3,0,0
+140,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,CMV,in vitro,mRNA,NA,NA,3,0.158,0.07,3,0,0
+141,24,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,fatty acid,CMV,in vitro,mRNA,NA,NA,3,0.175,0.07,3,0,0
+142,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,1.704,0.181,3,0,0
+143,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,1.686,0.145,3,0,0
+144,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,1.668,0.073,3,0,0
+145,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,1.776,0.29,3,0,0
+146,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,4.35,0.326,3,0,0
+147,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,1.668,0.181,3,0,0
+148,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,2.085,0.218,3,0,0
+149,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,4.858,0.181,3,0,0
+150,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,1.776,0.453,3,0,0
+151,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,4.387,0.145,3,0,0
+152,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,1.631,0.145,3,0,0
+153,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,1.758,0.236,3,0,0
+154,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,1.831,0.363,3,0,0
+155,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,3.281,0.381,3,0,0
+156,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,2.139,0.471,3,0,0
+157,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,3.589,0.363,3,0,0
+158,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,in vitro,mRNA,NA,NA,3,1.921,0.036,3,0,0
+159,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,heart,mRNA,P1,3,3,13.881,2.374,3,0,0
+160,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,liver,mRNA,P1,3,3,6.027,1.461,3,0,0
+161,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,spleen,mRNA,P1,3,3,11.324,4.018,3,0,0
+162,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,lung,mRNA,P1,3,3,1.461,0.731,3,0,0
+163,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,kidney,mRNA,P1,3,3,2.009,0.731,3,0,0
+164,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,muscle,mRNA,P1,3,3,33.059,2.557,3,0,0
+165,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,brain,mRNA,P1,3,3,1.644,0.548,3,0,0
+166,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,skin,mRNA,P1,3,3,1.826,0.548,3,0,0
+167,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,ear,mRNA,P1,3,3,4.201,0.731,3,0,0
+168,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,tongue,mRNA,P1,3,3,25.023,0.731,3,0,0
+169,25,Zhang et al.,2013,sheep,Xinjiang sheep,,fat1,transgenesis,fatty acid,?-actin,tail,mRNA,P1,3,3,2.192,0.365,3,0,0
+170,26,Li et al.,2018,pig,Duroc,,fat1,transgenesis,fatty acid,pRosa26,heart,mRNA,F1,0,3,1.504,0.087,3,0,0
+171,26,Li et al.,2018,pig,Duroc,,fat1,transgenesis,fatty acid,pRosa26,liver,mRNA,F1,0,3,2.747,0.153,3,0,0
+172,26,Li et al.,2018,pig,Duroc,,fat1,transgenesis,fatty acid,pRosa26,spleen,mRNA,F1,0,3,0.545,0.087,3,0,0
+173,26,Li et al.,2018,pig,Duroc,,fat1,transgenesis,fatty acid,pRosa26,lung,mRNA,F1,0,3,6.323,1.003,3,0,0
+174,26,Li et al.,2018,pig,Duroc,,fat1,transgenesis,fatty acid,pRosa26,kidney,mRNA,F1,0,3,3.314,0.676,3,0,0
+175,26,Li et al.,2018,pig,Duroc,,fat1,transgenesis,fatty acid,pRosa26,brain,mRNA,F1,0,3,4.535,0.763,3,0,0
+176,26,Li et al.,2018,pig,Duroc,,fat1,transgenesis,fatty acid,pRosa26,muscle,mRNA,F1,0,3,1.003,0.065,3,0,0
+177,26,Li et al.,2018,pig,Duroc,,fat1,transgenesis,fatty acid,pRosa26,tongue,mRNA,F1,0,3,1.265,0.065,3,0,0
+178,27,Xing et al.,2022,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,fatty acid,?-actin,heart,mRNA,P1,300,3,126.324,21.6342,3,1,0
+179,27,Xing et al.,2022,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,fatty acid,?-actin,brain,mRNA,P1,300,3,61.265,10.935,3,1,0
+180,27,Xing et al.,2022,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,fatty acid,?-actin,kidney,mRNA,P1,300,3,13.247,2.065,3,1,0
+181,27,Xing et al.,2022,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,fatty acid,?-actin,liver,mRNA,P1,300,3,9.118,2.237,3,1,0
+182,27,Xing et al.,2022,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,fatty acid,?-actin,muscle,mRNA,P1,300,3,4.387,2.065,3,1,0
+183,27,Xing et al.,2022,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,fatty acid,?-actin,fin,mRNA,P1,300,3,4.301,1.72,3,1,0
+184,27,Xing et al.,2022,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,fatty acid,?-actin,barbel,mRNA,P1,300,3,3.097,0.946,3,1,0
+185,27,Xing et al.,2022,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,fatty acid,?-actin,skin,mRNA,P1,300,3,2.237,0.688,3,1,0
+186,27,Xing et al.,2022,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,fatty acid,?-actin,spleen,mRNA,P1,300,3,1.204,0.344,3,1,0
+187,27,Xing et al.,2022,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,fatty acid,?-actin,intestine,mRNA,P1,300,3,0.344,0.516,3,1,0
+188,27,Xing et al.,2022,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,fatty acid,?-actin,gill,mRNA,P1,300,3,1.204,0.43,3,1,0
