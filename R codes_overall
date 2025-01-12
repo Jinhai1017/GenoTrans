@@ -1705,7 +1705,7 @@ p1
 # gene as a moderator (transgenesis)
 View(X4_5Effect_size_cal_FATTY_ACID_transgenesis_DHA)
 datag<-X4_5Effect_size_cal_FATTY_ACID_transgenesis_DHA
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1738,7 +1738,7 @@ p1
 # gene as a moderator (transgenesis)
 View(X4_6Effect_size_cal_FATTY_ACID_transgenesis_EPA)
 datag<-X4_6Effect_size_cal_FATTY_ACID_transgenesis_EPA
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1756,7 +1756,7 @@ p1
 View(X4_1Effect_size_cal_FATTY_ACID_transgenesis)
 datag<-X4_1Effect_size_cal_FATTY_ACID_transgenesis
 
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
@@ -1774,7 +1774,7 @@ R2
 View(X4_1Effect_size_cal_FATTY_ACID_transgenesis)
 datag<-X4_1Effect_size_cal_FATTY_ACID_transgenesis
 
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~generation, random = list(~1 | Author, ~1 | ID), data = datag2)
@@ -1791,7 +1791,7 @@ R2
 
 View(X4_2Effect_size_cal_FATTY_ACID_gene_editing)
 datag<-X4_2Effect_size_cal_FATTY_ACID_gene_editing
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag1_MR <- metafor::rma.mv(yi = SMD, V = vSMD, mods = ~parameter - 1, random = list(~1 | Author, ~1 | ID), data = datag1)
 R2 <- orchaRd::r2_ml(datag1_MR)
 R2
@@ -1809,7 +1809,7 @@ p1
 # category as a moderator (gene editing)
 View(X4_2Effect_size_cal_FATTY_ACID_gene_editing)
 datag<-X4_2Effect_size_cal_FATTY_ACID_gene_editing
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~category, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1825,7 +1825,7 @@ p1
 # gene as a moderator (gene editing)
 View(X4_2Effect_size_cal_FATTY_ACID_gene_editing)
 datag<-X4_2Effect_size_cal_FATTY_ACID_gene_editing
-datag1<-escalc(measure = "SMD", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
 datag2 <- escalc(measure = "CVR", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("lnCVR", "vlnCVR"),data = datag1)
 datag_MR0 <- rma.mv(yi = SMD, V = vSMD, mods = ~gene, random = list(~1 | Author, ~1 | ID), data = datag2)
 summary(datag_MR0)
@@ -1963,6 +1963,110 @@ res <- rma.mv(yi = yi, V = vi, random = list(~1 | species, ~1 | ID), data = data
 # Summary of the meta-analysis
 summary(res)
 
+
+
+
+
+
+##################VCV detection#################
+############calculate VCV via function vcalc() in metafor##################
+
+###gene expression#####
+View(X1Effect_size_cal_gene_protein_expression)
+datag<-X1Effect_size_cal_gene_protein_expression
+####Calculate VCV############
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+VCV <- vcalc(vi = vSMD, # sampling variances that are correlated with each within the same study;
+             cluster = Study_ID,  # study identity - clustering variable;
+             obs = ID, # different effect sizes corresponding to the same response/dependent variable
+             data = datag1, 
+             rho = 0.5 # assuming that the effect sizes within the same study are correlated with rho = 0.5
+)
+##########account for both non-independence among effect sizes and sampling errors###########
+mod_ML_SMD_var <- rma.mv(yi = SMD, 
+                          V = VCV, # use covariance for comparison with that fitted by sampling covariance
+                          random = list(~1 | Study_ID, 
+                                        ~1 | ID), 
+                          method = "REML", 
+                          test = "t", 
+                          data = datag1
+)
+
+mod_ML_SMD_var
+
+
+
+###growth#####
+View(X2Effect_size_cal_GROWTH)
+datag<-X2Effect_size_cal_GROWTH
+####Calculate VCV############
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+VCV <- vcalc(vi = vSMD, # sampling variances that are correlated with each within the same study;
+             cluster = Study_ID,  # study identity - clustering variable;
+             obs = ID, # different effect sizes corresponding to the same response/dependent variable
+             data = datag1, 
+             rho = 0.5 # assuming that the effect sizes within the same study are correlated with rho = 0.5
+)
+##########account for both non-independence among effect sizes and sampling errors###########
+mod_ML_SMD_var <- rma.mv(yi = SMD, 
+                         V = VCV, # use covariance for comparison with that fitted by sampling covariance
+                         random = list(~1 | Study_ID, 
+                                       ~1 | ID), 
+                         method = "REML", 
+                         test = "t", 
+                         data = datag1
+)
+
+mod_ML_SMD_var
+
+
+###disease resistance#####
+View(X3Effect_size_cal_DISEASE_RESISTANCE)
+datag<-X3Effect_size_cal_DISEASE_RESISTANCE
+####Calculate VCV############
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+VCV <- vcalc(vi = vSMD, # sampling variances that are correlated with each within the same study;
+             cluster = Study_ID,  # study identity - clustering variable;
+             obs = ID, # different effect sizes corresponding to the same response/dependent variable
+             data = datag1, 
+             rho = 0.5 # assuming that the effect sizes within the same study are correlated with rho = 0.5
+)
+##########account for both non-independence among effect sizes and sampling errors###########
+mod_ML_SMD_var <- rma.mv(yi = SMD, 
+                         V = VCV, # use covariance for comparison with that fitted by sampling covariance
+                         random = list(~1 | Study_ID, 
+                                       ~1 | ID), 
+                         method = "REML", 
+                         test = "t", 
+                         data = datag1
+)
+
+mod_ML_SMD_var
+
+
+
+###disease resistance#####
+View(X4Effect_size_cal_FATTY_ACID)
+datag<-X4Effect_size_cal_FATTY_ACID
+####Calculate VCV############
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+VCV <- vcalc(vi = vSMD, # sampling variances that are correlated with each within the same study;
+             cluster = Study_ID,  # study identity - clustering variable;
+             obs = ID, # different effect sizes corresponding to the same response/dependent variable
+             data = datag1, 
+             rho = 0.5 # assuming that the effect sizes within the same study are correlated with rho = 0.5
+)
+##########account for both non-independence among effect sizes and sampling errors###########
+mod_ML_SMD_var <- rma.mv(yi = SMD, 
+                         V = VCV, # use covariance for comparison with that fitted by sampling covariance
+                         random = list(~1 | Study_ID, 
+                                       ~1 | ID), 
+                         method = "REML", 
+                         test = "t", 
+                         data = datag1
+)
+
+mod_ML_SMD_var
 
 #########END #############################################
 ##########################################################
