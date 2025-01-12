@@ -1,0 +1,104 @@
+##################VCV detection#################
+############calculate VCV via function vcalc() in metafor##################
+
+###gene expression#####
+View(X1Effect_size_cal_gene_protein_expression)
+datag<-X1Effect_size_cal_gene_protein_expression
+####Calculate VCV############
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+VCV <- vcalc(vi = vSMD, # sampling variances that are correlated with each within the same study;
+             cluster = Study_ID,  # study identity - clustering variable;
+             obs = ID, # different effect sizes corresponding to the same response/dependent variable
+             data = datag1, 
+             rho = 0.5 # assuming that the effect sizes within the same study are correlated with rho = 0.5
+)
+##########account for both non-independence among effect sizes and sampling errors###########
+mod_ML_SMD_var <- rma.mv(yi = SMD, 
+                          V = VCV, # use covariance for comparison with that fitted by sampling covariance
+                          random = list(~1 | Study_ID, 
+                                        ~1 | ID), 
+                          method = "REML", 
+                          test = "t", 
+                          data = datag1
+)
+
+mod_ML_SMD_var
+
+
+
+###growth#####
+View(X2Effect_size_cal_GROWTH)
+datag<-X2Effect_size_cal_GROWTH
+####Calculate VCV############
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+VCV <- vcalc(vi = vSMD, # sampling variances that are correlated with each within the same study;
+             cluster = Study_ID,  # study identity - clustering variable;
+             obs = ID, # different effect sizes corresponding to the same response/dependent variable
+             data = datag1, 
+             rho = 0.5 # assuming that the effect sizes within the same study are correlated with rho = 0.5
+)
+##########account for both non-independence among effect sizes and sampling errors###########
+mod_ML_SMD_var <- rma.mv(yi = SMD, 
+                         V = VCV, # use covariance for comparison with that fitted by sampling covariance
+                         random = list(~1 | Study_ID, 
+                                       ~1 | ID), 
+                         method = "REML", 
+                         test = "t", 
+                         data = datag1
+)
+
+mod_ML_SMD_var
+
+
+###disease resistance#####
+View(X3Effect_size_cal_DISEASE_RESISTANCE)
+datag<-X3Effect_size_cal_DISEASE_RESISTANCE
+####Calculate VCV############
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+VCV <- vcalc(vi = vSMD, # sampling variances that are correlated with each within the same study;
+             cluster = Study_ID,  # study identity - clustering variable;
+             obs = ID, # different effect sizes corresponding to the same response/dependent variable
+             data = datag1, 
+             rho = 0.5 # assuming that the effect sizes within the same study are correlated with rho = 0.5
+)
+##########account for both non-independence among effect sizes and sampling errors###########
+mod_ML_SMD_var <- rma.mv(yi = SMD, 
+                         V = VCV, # use covariance for comparison with that fitted by sampling covariance
+                         random = list(~1 | Study_ID, 
+                                       ~1 | ID), 
+                         method = "REML", 
+                         test = "t", 
+                         data = datag1
+)
+
+mod_ML_SMD_var
+
+
+
+###disease resistance#####
+View(X4Effect_size_cal_FATTY_ACID)
+datag<-X4Effect_size_cal_FATTY_ACID
+####Calculate VCV############
+datag1<-escalc(measure = "SMDH", n1i = treat_n, sd1i = treat_sd, m1i = treat_mean,n2i = control_n, sd2i = control_sd, m2i = control_mean, var.names = c("SMD", "vSMD"), data = datag)
+VCV <- vcalc(vi = vSMD, # sampling variances that are correlated with each within the same study;
+             cluster = Study_ID,  # study identity - clustering variable;
+             obs = ID, # different effect sizes corresponding to the same response/dependent variable
+             data = datag1, 
+             rho = 0.5 # assuming that the effect sizes within the same study are correlated with rho = 0.5
+)
+##########account for both non-independence among effect sizes and sampling errors###########
+mod_ML_SMD_var <- rma.mv(yi = SMD, 
+                         V = VCV, # use covariance for comparison with that fitted by sampling covariance
+                         random = list(~1 | Study_ID, 
+                                       ~1 | ID), 
+                         method = "REML", 
+                         test = "t", 
+                         data = datag1
+)
+
+mod_ML_SMD_var
+
+################################END FROM HERE###################################
+################################################################################
+################################################################################
+################################################################################
