@@ -1,0 +1,143 @@
+ID,Study_ID,Author,Year,category,species,Species,gene,method,promoter,generation,age,source,parameter,treat_n,treat_mean,treat_sd,control_n,control_mean,control_sd
+1,1,Saeki et al.,2004,pig,Duroc_Landrace ,,fat2,transgenesis,aP2,P1,150,in vitro,?-6,3,20.3,2.1,3,1.9,0.4
+2,1,Saeki et al.,2004,pig,Duroc_Landrace ,,fat2,transgenesis,aP2,P1,150,in vitro,?-3,3,2.7,1.4,3,1.6,0.6
+3,1,Saeki et al.,2004,pig,Duroc_Landrace ,,fat2,transgenesis,aP2,P1,150,in vitro,?-6/?-3,3,5.6,0.6,3,2.5,1.7
+4,1,Saeki et al.,2004,pig,Duroc_Landrace ,,fat2,transgenesis,aP2,P1,150,white adipose,?-6,3,11.8,0.5,5,9.4,0.5
+5,1,Saeki et al.,2004,pig,Duroc_Landrace ,,fat2,transgenesis,aP2,P1,150,white adipose,?-3,3,0.6,0.2,5,0.8,0.3
+6,1,Saeki et al.,2004,pig,Duroc_Landrace ,,fat2,transgenesis,aP2,P1,150,white adipose,?-6/?-3,3,24.2,9.1,5,10.3,2.3
+7,1,Saeki et al.,2004,pig,Duroc_Landrace ,,fat2,transgenesis,aP2,P1,150,white adipose,?-6,3,11.8,0.4,5,10,0.3
+8,1,Saeki et al.,2004,pig,Duroc_Landrace ,,fat2,transgenesis,aP2,P1,150,white adipose,?-3,3,1.4,0.03,5,1.4,0.1
+9,1,Saeki et al.,2004,pig,Duroc_Landrace ,,fat2,transgenesis,aP2,P1,150,white adipose,?-6/?-3,3,8.3,0.4,5,7.3,0.4
+10,1,Saeki et al.,2004,pig,Duroc_Landrace ,,fat2,transgenesis,aP2,P1,150,blood,?-6,2,45.5,0.2121,3,40.7,1.1
+11,1,Saeki et al.,2004,pig,Duroc_Landrace ,,fat2,transgenesis,aP2,P1,150,blood,?-3,2,2.5,0.2828,3,3.3,0.2
+12,1,Saeki et al.,2004,pig,Duroc_Landrace ,,fat2,transgenesis,aP2,P1,150,blood,EPA,2,0.2,0.1414,3,0.3,0.1
+13,1,Saeki et al.,2004,pig,Duroc_Landrace ,,fat2,transgenesis,aP2,P1,150,blood,DHA,2,0.7,0.1414,3,1.1,0.1
+14,2,Lai et al.,2006,pig,unknown,,fat1,transgenesis,?-actin,P1,2,tail,EPA,8,4.21,0.6,8,0.26,0.07
+15,2,Lai et al.,2006,pig,unknown,,fat1,transgenesis,?-actin,P1,2,tail,DHA,8,1.75,0.23,8,0.95,0.21
+16,2,Lai et al.,2006,pig,unknown,,fat1,transgenesis,?-actin,P1,2,tail,?-6,8,14.28,1.31,8,18.46,1.41
+17,2,Lai et al.,2006,pig,unknown,,fat1,transgenesis,?-actin,P1,2,tail,?-3,8,8.59,0.84,8,2.18,0.25
+18,2,Lai et al.,2006,pig,unknown,,fat1,transgenesis,?-actin,P1,2,tail,?-6/?-3,8,1.69,0.3,8,8.52,0.62
+19,3,Wu et al.,2012,cattle,Holstein,,fat1,transgenesis,?-actin,P1,90,ear,EPA,3,4.9,0.4,3,1.1,0.3
+20,3,Wu et al.,2012,cattle,Holstein,,fat1,transgenesis,?-actin,P1,90,ear,DHA,3,0.72,0.08,3,0.38,0.1
+21,3,Wu et al.,2012,cattle,Holstein,,fat1,transgenesis,?-actin,P1,90,ear,?-6,3,9.23,1.3,3,16.7,2.2
+22,3,Wu et al.,2012,cattle,Holstein,,fat1,transgenesis,?-actin,P1,90,ear,?-3,3,18.02,1.3,3,4.78,0.9
+23,3,Wu et al.,2012,cattle,Holstein,,fat1,transgenesis,?-actin,P1,90,ear,?-6/?-3,3,0.5122,0.034,3,3.4937,0.656
+24,3,Wu et al.,2012,cattle,Holstein,,fat1,transgenesis,?-actin,P1,90,ear,EPA,3,4.9,0.4,3,0,0
+25,3,Wu et al.,2012,cattle,Holstein,,fat1,transgenesis,?-actin,P1,90,ear,DHA,3,0.72,0.08,3,0.41,0.04
+26,3,Wu et al.,2012,cattle,Holstein,,fat1,transgenesis,?-actin,P1,90,ear,?-6,3,9.23,1.3,3,25.4,3.7
+27,3,Wu et al.,2012,cattle,Holstein,,fat1,transgenesis,?-actin,P1,90,ear,?-3,3,18.02,1.3,3,3.31,0.98
+28,3,Wu et al.,2012,cattle,Holstein,,fat1,transgenesis,?-actin,P1,90,ear,?-6/?-3,3,0.5122,0.034,3,7.6737,2.12
+29,3,Wu et al.,2012,cattle,Holstein,,fat1,transgenesis,?-actin,P1,281,milk,EPA,3,0.16,0.04,3,0.03,0.4
+30,3,Wu et al.,2012,cattle,Holstein,,fat1,transgenesis,?-actin,P1,281,milk,DHA,3,0.05,0.12,3,0.02,0.06
+31,3,Wu et al.,2012,cattle,Holstein,,fat1,transgenesis,?-actin,P1,281,milk,?-6,3,2.11,0.35,3,2.89,0.6
+32,3,Wu et al.,2012,cattle,Holstein,,fat1,transgenesis,?-actin,P1,281,milk,?-3,3,2.03,0.23,3,0.68,0.04
+33,3,Wu et al.,2012,cattle,Holstein,,fat1,transgenesis,?-actin,P1,281,milk,?-6/?-3,3,1.04,0.3,3,4.25,0.98
+34,4,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,?-actin,P1,281,in vitro,EPA,2,2.8,0.565685425,1,0.03,0
+35,4,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,?-actin,P1,281,in vitro,DHA,2,1.035,0.318198052,1,0.97,0
+36,4,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,?-actin,P1,281,in vitro,?-6,2,12.53,1.046518036,1,23.42,0
+37,4,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,?-actin,P1,281,in vitro,?-3,2,8.5,2.305168107,1,2.04,0
+38,4,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,?-actin,P1,281,in vitro,?-6/?-3,2,1.545,0.544472222,1,11.48,0
+39,4,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,?-actin,P1,281,heart,?-6/?-3,3,17.48,0.16,3,19.06,0.15
+40,4,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,?-actin,P1,281,liver,?-6/?-3,3,6.01,0.01,3,7.36,0.12
+41,4,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,?-actin,P1,281,spleen,?-6/?-3,3,12.07,0.47,3,15.63,0.07
+42,4,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,?-actin,P1,281,lung,?-6/?-3,3,13.45,0.41,3,18.18,1.02
+43,4,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,?-actin,P1,281,kidney,?-6/?-3,3,12.02,0.25,3,13.1,0.09
+47,4,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,?-actin,P1,281,brain,?-6/?-3,3,0.96,0.09,3,1.94,0.13
+48,4,Zhang et al.,2012,pig,Danish Landrace,,fat1,transgenesis,?-actin,P1,281,testis,?-6/?-3,3,1.93,0.08,3,2.7,0.14
+50,5,Zhang et al.,2013,sheep,Xinjiang,,fat1,transgenesis,?-actin,P1,3,liver,?-6/?-3,3,0.66,0.04,3,1.56,0.05
+51,5,Zhang et al.,2013,sheep,Xinjiang,,fat1,transgenesis,?-actin,P1,3,spleen,?-6/?-3,3,1.5,0.16,3,3.04,0.23
+52,5,Zhang et al.,2013,sheep,Xinjiang,,fat1,transgenesis,?-actin,P1,3,lung,?-6/?-3,3,1.4,0.12,3,2.66,0.46
+53,5,Zhang et al.,2013,sheep,Xinjiang,,fat1,transgenesis,?-actin,P1,3,kidney,?-6/?-3,3,1.36,0.15,3,2.45,0.05
+54,5,Zhang et al.,2013,sheep,Xinjiang,,fat1,transgenesis,?-actin,P1,3,brain,?-6/?-3,3,0.32,0.01,3,0.42,0.01
+55,5,Zhang et al.,2013,sheep,Xinjiang,,fat1,transgenesis,?-actin,P1,3,ear,?-6/?-3,3,1.18,0.25,3,2.89,0.02
+56,5,Zhang et al.,2013,sheep,Xinjiang,,fat1,transgenesis,?-actin,P1,3,tongue,?-6/?-3,3,1.25,0.02,3,1.66,0.13
+57,5,Zhang et al.,2013,sheep,Xinjiang,,fat1,transgenesis,?-actin,P1,3,tail,?-6/?-3,3,2.08,0.63,3,4.6,1.14
+58,5,Zhang et al.,2013,sheep,Xinjiang,,fat1,transgenesis,?-actin,P1,3,muscle,?-6/?-3,3,1.24,0.06,3,2.63,0.05
+59,6,Cheng et al.,2014,fish,common carp,Cyprinus carpio,D5D,transgenesis,?-actin,P1,270,muscle,EPA,13,3.2,0.565685425,20,3.115,0.360624458
+60,6,Cheng et al.,2014,fish,common carp,Cyprinus carpio,D5D,transgenesis,?-actin,P1,270,muscle,DHA,13,5.17,0.494974747,20,5.15,0
+61,6,Cheng et al.,2014,fish,common carp,Cyprinus carpio,D5D,transgenesis,?-actin,P1,270,muscle,?-6,13,5.39,0.480832611,20,5.28,0.494974747
+62,6,Cheng et al.,2014,fish,common carp,Cyprinus carpio,D5D,transgenesis,?-actin,P1,270,muscle,?-3,13,11.76,1.258650071,20,11.52,0.395979797
+63,6,Cheng et al.,2014,fish,common carp,Cyprinus carpio,D5D,transgenesis,?-actin,P1,270,muscle,EPA,13,5.155,0.6151829,20,5.14,0.45254834
+64,6,Cheng et al.,2014,fish,common carp,Cyprinus carpio,D5D,transgenesis,?-actin,P1,270,muscle,DHA,13,8.4,0.268700577,20,8.515,0.233345238
+65,6,Cheng et al.,2014,fish,common carp,Cyprinus carpio,D5D,transgenesis,?-actin,P1,270,muscle,?-6,13,8.745,1.237436867,20,8.735,1.025304833
+66,6,Cheng et al.,2014,fish,common carp,Cyprinus carpio,D5D,transgenesis,?-actin,P1,270,muscle,?-3,13,19.07,0.890954544,20,19.03,0.155563492
+67,7,Kabeya et al.,2014,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,P1,180,brain,EPA,3,4.3,0.13,3,4.83,0.45
+68,7,Kabeya et al.,2014,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,P1,180,eye,EPA,3,3.62,0.43,3,5.34,0.87
+69,7,Kabeya et al.,2014,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,P1,180,heart,EPA,3,7.53,0.49,3,8.09,0.54
+70,7,Kabeya et al.,2014,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,P1,180,liver,EPA,3,2.45,0.44,3,6.6,0.61
+71,7,Kabeya et al.,2014,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,P1,180,kidney,EPA,3,6.57,0.47,3,6.8,0.76
+72,7,Kabeya et al.,2014,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,P1,180,muscle,EPA,3,7.05,0.88,3,5.49,0.57
+73,7,Kabeya et al.,2014,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,P1,180,stomach,EPA,3,7.84,0.91,3,6.74,0.89
+74,7,Kabeya et al.,2014,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,P1,180,intestine,EPA,3,5.35,0.24,3,4.82,0.84
+75,7,Kabeya et al.,2014,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,P1,180,testis,EPA,3,4.66,0.53,3,5.12,0.43
+76,7,Kabeya et al.,2014,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,P1,180,brain,DHA,3,22.14,0.37,3,20.88,1.51
+77,7,Kabeya et al.,2014,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,P1,180,eye,DHA,3,40.08,2.76,3,30.95,8.58
+78,7,Kabeya et al.,2014,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,P1,180,heart,DHA,3,23.67,1.84,3,17.17,2.58
+79,7,Kabeya et al.,2014,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,P1,180,liver,DHA,3,16.14,3,3,15.99,4.56
+80,7,Kabeya et al.,2014,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,P1,180,kidney,DHA,3,9.76,0.42,3,9.08,0.84
+81,7,Kabeya et al.,2014,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,P1,180,muscle,DHA,3,14.4,1.13,3,10.97,1.38
+82,7,Kabeya et al.,2014,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,P1,180,stomach,DHA,3,14.08,3.19,3,10.24,2.87
+83,7,Kabeya et al.,2014,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,P1,180,intestine,DHA,3,9.07,0.4,3,7.65,1.44
+84,7,Kabeya et al.,2014,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,P1,180,testis,DHA,3,28.03,5.17,3,22.91,3.7
+85,8,Kabeya et al.,2016,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,F1,50,whole body,EPA,4,41.7,1.5,4,43.6,0.9
+86,8,Kabeya et al.,2016,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,F1,50,whole body,EPA,4,45,3,4,46.9,1.1
+87,8,Kabeya et al.,2016,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,F1,50,whole body,EPA,4,26.3,0.3,4,26.3,1.2
+88,8,Kabeya et al.,2016,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,F1,50,whole body,DHA,4,52.7,4.1,4,52.2,7.4
+89,8,Kabeya et al.,2016,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,F1,50,whole body,DHA,4,44.3,2.9,4,42,2.5
+90,8,Kabeya et al.,2016,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,F1,50,whole body,DHA,4,180.6,9.3,4,182.2,7.4
+91,8,Kabeya et al.,2016,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,F1,50,whole body,?-3,4,214.7,3.4,4,218.2,1.9
+92,8,Kabeya et al.,2016,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,F1,50,whole body,?-3,4,217.4,10,4,212.5,6.2
+93,8,Kabeya et al.,2016,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,F1,50,whole body,?-3,4,245.8,5.6,4,258.7,13.2
+94,8,Kabeya et al.,2016,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,F1,50,whole body,?-6,4,154.1,4.2,4,149.8,1.4
+95,8,Kabeya et al.,2016,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,F1,50,whole body,?-6,4,137,6,4,133.9,4.6
+96,8,Kabeya et al.,2016,fish,nibe croaker,Nibea mitsukurii,elovl2,transgenesis,Apo-14,F1,50,whole body,?-6,4,153.8,1.9,4,149.7,4
+97,9,Liu et al.,2016,pig,Song-liao black,,fat1,transgenesis,?-actin,P1,90,ear,EPA,5,2.71,0.72,3,1.09,0.12
+98,9,Liu et al.,2016,pig,Song-liao black,,fat1,transgenesis,?-actin,P1,90,ear,DHA,5,1.15,0.17,3,0.38,0.08
+99,9,Liu et al.,2016,pig,Song-liao black,,fat1,transgenesis,?-actin,P1,90,ear,?-3,5,7.34,0.76,3,3.1,0.06
+100,9,Liu et al.,2016,pig,Song-liao black,,fat1,transgenesis,?-actin,P1,90,ear,?-6,5,10.25,2.28,3,13.59,0.24
+101,9,Liu et al.,2016,pig,Song-liao black,,fat1,transgenesis,?-actin,P1,90,ear,?-6/?-3,5,1.81,0.41,3,4.38,0.64
+102,10,Bugg,2017,fish,common carp,Cyprinus carpio,D5D,transgenesis,?-actin,F1,180,muscle,EPA,5,0.65,0.04,2,0.72,0.1
+103,10,Bugg,2017,fish,common carp,Cyprinus carpio,D5D,transgenesis,?-actin,F1,180,muscle,DHA,5,1.4,0.8,2,2.1,0.9
+104,10,Bugg,2017,fish,common carp,Cyprinus carpio,D5D,transgenesis,?-actin,F1,180,muscle,?-3,5,2.25,0.13,2,2.97,1.24
+105,10,Bugg,2017,fish,common carp,Cyprinus carpio,D5D,transgenesis,?-actin,F1,180,muscle,?-6,5,1.26,0.33,2,1.53,0.46
+106,10,Bugg,2017,fish,channel catfish,Ictalurus punctatus,D5D,transgenesis,?-actin,F1,180,muscle,EPA,3,8.2,1.2,2,8.28,2.1
+107,10,Bugg,2017,fish,channel catfish,Ictalurus punctatus,D5D,transgenesis,?-actin,F1,180,muscle,DHA,3,29.25,2.11,2,25.77,2.5
+108,10,Bugg,2017,fish,channel catfish,Ictalurus punctatus,D5D,transgenesis,?-actin,F1,180,muscle,?-3,3,38.45,3.2,2,34.75,3.32
+109,10,Bugg,2017,fish,channel catfish,Ictalurus punctatus,D5D,transgenesis,?-actin,F1,180,muscle,?-6,3,14.6,1.1,2,16.41,2.6
+110,11,Liu et al.,2017,cattle,Holstein,,fat1,transgenesis,?-actin,P1,90,ear,?-3,6,5.63,0.761,6,3.804,0.761
+111,11,Liu et al.,2017,cattle,Holstein,,fat1,transgenesis,?-actin,P1,90,ear,?-6,6,5.63,1.217,6,23.739,4.565
+112,11,Liu et al.,2017,cattle,Holstein,,fat1,transgenesis,?-actin,P1,90,ear,?-6/?-3,6,1.217,0.457,6,5.63,0.304
+118,12,Zhang et al.,2018,goat,Arbas cashmere,,fat2,transgenesis,?-actin,P1,40,in vitro,?-3,3,2.735,0.965,3,2.627,0.751
+119,12,Zhang et al.,2018,goat,Arbas cashmere,,fat2,transgenesis,?-actin,P1,40,in vitro,?-6,3,3.861,0.295,3,6.944,0.885
+120,12,Zhang et al.,2018,goat,Arbas cashmere,,fat2,transgenesis,?-actin,P1,40,in vitro,?-6/?-3,3,1.501,0.107,3,2.949,0.268
+121,13,Park et al.,2019,chicken,White Leghorn,,G0S2,gene editing,NA,P1,70,blood,?-3,3,2.82,0.44,3,2.1,0.28
+122,13,Park et al.,2019,chicken,White Leghorn,,G0S2,gene editing,NA,P1,70,blood,?-6,3,40.44,1.74,3,35.25,0.61
+123,14,Huang et al.,2021,fish,channel catfish,Ictalurus punctatus,D5D,transgenesis,?-actin,F1,360,muscle,EPA,2,8.52,0.06,10,6.95,0.85
+124,14,Huang et al.,2021,fish,channel catfish,Ictalurus punctatus,D5D,transgenesis,?-actin,F1,360,muscle,DHA,2,15.35,0.29,10,11.62,1.84
+125,14,Huang et al.,2021,fish,channel catfish,Ictalurus punctatus,D5D,transgenesis,?-actin,F1,360,muscle,?-3,2,29.22,0.45,10,23.39,2.93
+126,14,Huang et al.,2021,fish,channel catfish,Ictalurus punctatus,D5D,transgenesis,?-actin,F1,360,muscle,?-6,2,10.28,0.13,10,10.97,0.95
+127,14,Huang et al.,2021,fish,channel catfish,Ictalurus punctatus,D5D,transgenesis,?-actin,F1,360,muscle,EPA,8,9.43,1.13,17,7.24,0.69
+128,14,Huang et al.,2021,fish,channel catfish,Ictalurus punctatus,D5D,transgenesis,?-actin,F1,360,muscle,DHA,8,17.13,2.34,17,11.65,1.56
+129,14,Huang et al.,2021,fish,channel catfish,Ictalurus punctatus,D5D,transgenesis,?-actin,F1,360,muscle,?-3,8,32.02,3.55,17,23.74,2.43
+130,14,Huang et al.,2021,fish,channel catfish,Ictalurus punctatus,D5D,transgenesis,?-actin,F1,360,muscle,?-6,8,9.56,1.04,17,11.58,1.19
+131,15,Xing et al.,2022,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,?-actin,P1,300,muscle,EPA,3,5.09,0.43,3,4.32,0.32
+132,15,Xing et al.,2022,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,?-actin,P1,300,muscle,DHA,3,9.86,0.32,3,6.09,1.39
+133,15,Xing et al.,2022,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,?-actin,P1,300,muscle,?-3,3,20.23,1.05,3,14.36,1.55
+134,15,Xing et al.,2022,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,?-actin,P1,300,muscle,?-6,3,14.91,1.76,3,9.94,2.27
+135,15,Xing et al.,2022,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,?-actin,P1,270,muscle,EPA,3,5.18,0.08,3,5.27,0.28
+136,15,Xing et al.,2022,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,?-actin,P1,270,muscle,DHA,3,9.52,0.24,3,7.89,0.49
+137,15,Xing et al.,2022,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,?-actin,P1,270,muscle,?-3,3,17.82,0.29,3,17.31,0.99
+138,15,Xing et al.,2022,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,?-actin,P1,270,muscle,?-6,3,10.89,0.8,3,9.41,3.49
+139,16,Xing et al.,2023,fish,channel catfish,Ictalurus punctatus,fat1,transgenesis,?-actin,P1,210,muscle,EPA,5,4.91,0.34,5,4.43,0.36
+140,16,Xing et al.,2023,fish,channel catfish,Ictalurus punctatus,fat1,transgenesis,?-actin,P1,210,muscle,DHA,5,12.03,1.73,5,8.78,1.01
+141,16,Xing et al.,2023,fish,channel catfish,Ictalurus punctatus,fat1,transgenesis,?-actin,P1,210,muscle,?-3,5,21.72,1.56,5,18.13,1.2
+142,16,Xing et al.,2023,fish,channel catfish,Ictalurus punctatus,fat1,transgenesis,?-actin,P1,210,muscle,?-6,5,15.02,0.38,5,15.72,0.49
+143,16,Xing et al.,2023,fish,channel catfish,Ictalurus punctatus,fat1,transgenesis,?-actin,P1,210,muscle,?-6/?-3,5,0.6944,0.08,5,0.869,0.09
+144,16,Xing et al.,2023,fish,channel catfish,Ictalurus punctatus,fat2,transgenesis,?-actin,P1,210,muscle,EPA,5,4.52,0.6,5,4.43,0.36
+145,16,Xing et al.,2023,fish,channel catfish,Ictalurus punctatus,fat2,transgenesis,?-actin,P1,210,muscle,DHA,5,9.82,1.63,5,8.78,1.01
+146,16,Xing et al.,2023,fish,channel catfish,Ictalurus punctatus,fat2,transgenesis,?-actin,P1,210,muscle,?-3,5,19.03,2.12,5,18.13,1.2
+147,16,Xing et al.,2023,fish,channel catfish,Ictalurus punctatus,fat2,transgenesis,?-actin,P1,210,muscle,?-6,5,16.45,0.58,5,15.72,0.49
+148,16,Xing et al.,2023,fish,channel catfish,Ictalurus punctatus,fat2,transgenesis,?-actin,P1,210,muscle,?-6/?-3,5,0.86206,0.11,5,0.869,0.09
+149,17,Coogan et al.,2023,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,?-actin,P1,180,muscle,EPA,3,1.13,0.7,3,0.51,0.33
+150,17,Coogan et al.,2023,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,?-actin,P1,180,muscle,DHA,3,1.74,0.71,3,1.31,0.6
+151,17,Coogan et al.,2023,fish,channel catfish,Ictalurus punctatus,elovl2,transgenesis,?-actin,P1,180,muscle,?-3,3,2.87,0.38,3,1.82,0.22
